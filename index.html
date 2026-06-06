@@ -3,651 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Gina精选的有趣且免费的AI工具集，涵盖大模型、AI搜索、图像生成、办公效率等领域，国内直连可用。">
-    <meta name="keywords" content="AI工具, 免费AI, 机器人, 图像生成, DeepSeek, Kimi, 豆包, 导航站">
-    <title>Gina觉得有趣的免费AI工具集 | 创意导航</title>
+    <title>AI 工具集 | 创意导航</title>
     <style>
-        :root {
-            --bg-gradient: linear-gradient(135deg, #f9f7fe 0%, #ede7f9 50%, #e3f2fd 100%);
-            --text-main: #1e1b2e;
-            --text-sub: #4a4570;
-            --card-bg: rgba(255, 255, 255, 0.55);
-            --card-border: rgba(255, 255, 255, 0.6);
-            --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.03);
-            --accent: #8b5cf6;
-            --accent-hover: #7c3aed;
-            --nav-bg: rgba(249, 247, 254, 0.5);
-            --input-bg: rgba(255, 255, 255, 0.7);
-            --tag-bg: #f0ebff;
-            --tag-text: #5c3eb8;
-            --glass-blur: 30px;
-        }
-
-        [data-theme="dark"] {
-            --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #1e1b2e 50%, #24243e 100%);
-            --text-main: #f3f4f6;
-            --text-sub: #a5b4fc;
-            --card-bg: rgba(30, 27, 46, 0.55);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-            --accent: #a78bfa;
-            --accent-hover: #c4b5fd;
-            --nav-bg: rgba(15, 12, 41, 0.5);
-            --input-bg: rgba(30, 27, 46, 0.7);
-            --tag-bg: #2d264a;
-            --tag-text: #ddd6fe;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: var(--bg-gradient);
+            background: linear-gradient(135deg, #f9f7fe 0%, #ede7f9 50%, #e3f2fd 100%);
             font-family: 'Segoe UI', system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            padding: 2rem 1.5rem;
             min-height: 100vh;
-            color: var(--text-main);
+            color: #1e1b2e;
             line-height: 1.5;
-            transition: background 0.3s, color 0.3s;
+            padding-top: 70px;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        /* 主题切换按钮 */
-        .theme-toggle {
-            position: absolute;
-            top: -1rem;
-            right: 0;
-            background: var(--card-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--card-border);
-            padding: 0.6rem;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            box-shadow: var(--card-shadow);
-            transition: all 0.2s;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .header h1 {
-            font-size: clamp(2.2rem, 6vw, 3.4rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
-        }
-
-        .header .subtitle {
-            font-size: 1.15rem;
-            color: var(--text-sub);
-            background: var(--input-bg);
-            backdrop-filter: blur(8px);
-            display: inline-block;
-            padding: 0.4rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 500;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-            margin-bottom: 2rem;
-        }
-
-        /* 搜索框样式 */
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 1rem 1.5rem 1rem 3.5rem;
-            border-radius: 20px;
-            border: 2px solid rgba(139, 92, 246, 0.2);
-            background: var(--input-bg);
-            backdrop-filter: blur(10px);
-            font-size: 1.1rem;
-            outline: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            color: var(--text-main);
-        }
-
-        .search-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.15);
-            background: var(--card-bg);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 1.2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.4rem;
-            color: var(--accent);
-            pointer-events: none;
-        }
-
-        /* 分类导航样式 */
         .nav-bar {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            margin-bottom: 2.5rem;
-            position: sticky;
-            top: 1rem;
-            z-index: 100;
-            padding: 0.5rem;
-            background: var(--nav-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            border-radius: 50px;
-            border: 1px solid var(--card-border);
+            position: fixed;
+            top: 0; left: 0; right: 0; z-index: 999;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(139,92,246,0.1);
+            padding: 0.6rem 1.5rem;
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+        }
+        .nav-logo {
+            font-size: 1.3rem; font-weight: 800;
+            background: linear-gradient(135deg, #6c3ce0, #3b82f6);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; cursor: pointer; white-space: nowrap;
+        }
+        .nav-links { display: flex; gap: 0.3rem; flex-wrap: wrap; justify-content: center; }
+        .nav-link {
+            padding: 0.4rem 0.7rem; border-radius: 20px; font-size: 0.8rem;
+            font-weight: 600; color: #4a4570; cursor: pointer; transition: all 0.2s;
+            border: none; background: transparent; white-space: nowrap;
+        }
+        .nav-link:hover { background: #f0ebff; }
+        .nav-link.active { background: #8b5cf6; color: white; }
+        .nav-actions { display: flex; gap: 0.5rem; align-items: center; }
+        .nav-btn {
+            padding: 0.35rem 0.8rem; border-radius: 20px; font-size: 0.75rem;
+            font-weight: 600; background: #f0ebff; color: #5c3eb8; border: none;
+            cursor: pointer; transition: all 0.2s; white-space: nowrap;
+        }
+        .nav-btn:hover { background: #e0d6ff; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
+        .home-section { margin-bottom: 2.5rem; }
+        .section-title {
+            font-size: 1.3rem; font-weight: 700; color: #2d264a;
+            margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
         }
 
-        .nav-item {
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            background: var(--input-bg);
-            color: var(--text-sub);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            border: 1px solid transparent;
+        .api-dashboard {
+            background: rgba(255,255,255,0.6); backdrop-filter: blur(20px);
+            border-radius: 24px; padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.9);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+        }
+        .dashboard-header {
+            display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;
+        }
+        .dashboard-title { font-size: 1.15rem; font-weight: 700; color: #2d264a; }
+        .dashboard-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0.8rem;
         }
 
-        .nav-item:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-2px);
+        .scroll-row {
+            display: flex; gap: 0.8rem; overflow-x: auto; padding-bottom: 0.5rem;
+            scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
+        .scroll-row::-webkit-scrollbar { display: none; }
 
-        .category {
-            margin-bottom: 2.8rem;
-            scroll-margin-top: 6rem;
+        .hot-card {
+            flex: 0 0 220px;
+            background: linear-gradient(135deg, rgba(255,200,100,0.15), rgba(255,120,60,0.08));
+            border: 1px solid rgba(255,150,50,0.2);
+            border-radius: 18px; padding: 1.2rem; scroll-snap-align: start;
+            text-decoration: none; color: inherit; transition: all 0.25s;
+            position: relative; overflow: hidden;
         }
-
-        .category-title {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.7rem;
-            font-weight: 650;
-            margin-bottom: 1.3rem;
-            padding-left: 0.3rem;
-            color: var(--text-main);
-            border-left: 5px solid var(--accent);
-            padding-left: 1rem;
+        .hot-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(255,120,40,0.15); }
+        .hot-card::before {
+            content: "HOT"; position: absolute; top: 10px; right: 10px;
+            font-size: 0.65rem; background: #ff6b35; color: white;
+            padding: 0.15rem 0.6rem; border-radius: 12px; font-weight: 700;
         }
+        .hot-card .hot-emoji { font-size: 2.2rem; margin-bottom: 0.4rem; }
+        .hot-card .hot-name { font-size: 1rem; font-weight: 700; color: #2d264a; }
+        .hot-card .hot-desc { font-size: 0.8rem; color: #4a3f62; margin-top: 0.3rem; }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 1.3rem;
+        .category-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.8rem;
         }
+        .category-entry {
+            background: rgba(255,255,255,0.6); border: 1px solid rgba(139,92,246,0.1);
+            border-radius: 16px; padding: 1rem; text-align: center; cursor: pointer; transition: all 0.2s;
+        }
+        .category-entry:hover { transform: translateY(-3px); border-color: #8b5cf6; box-shadow: 0 8px 20px rgba(139,92,246,0.1); }
+        .category-entry .cat-emoji { font-size: 1.8rem; }
+        .category-entry .cat-name { font-size: 0.8rem; font-weight: 600; margin-top: 0.3rem; color: #4a4570; }
+        .category-entry .cat-count { font-size: 0.7rem; color: #9c97b8; }
 
-        /* ---------- 苹果毛玻璃卡片核心样式 ---------- */
+        .card-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.2rem;
+        }
         .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            border-radius: 28px;
-            padding: 2.2rem 1.2rem 1.6rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.25) inset;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            border: 1px solid var(--card-border);
-            position: relative;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            overflow: hidden;
+            background: rgba(255,255,255,0.75); backdrop-filter: blur(16px);
+            border-radius: 24px; padding: 1.6rem 1.2rem 1.4rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05); transition: all 0.25s;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            border: 1px solid rgba(255,255,255,0.9); text-decoration: none; color: inherit; position: relative;
         }
-
         .card:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 22px 40px rgba(107, 33, 168, 0.12), 0 0 0 1px rgba(139, 92, 246, 0.3) inset;
-            background: rgba(255, 255, 255, 0.7);
-            border-color: var(--accent);
+            transform: translateY(-6px); box-shadow: 0 22px 40px rgba(107,33,168,0.12);
+            background: rgba(255,255,255,0.85); border-color: #c7b9f0;
         }
-
-        [data-theme="dark"] .card:hover {
-            background: rgba(40, 37, 60, 0.7);
+        .card .logo-emoji { font-size: 3rem; margin-bottom: 0.5rem; }
+        .card .tool-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; color: #1e1b2e; }
+        .card .tool-desc { font-size: 0.85rem; color: #4a3f62; margin-bottom: 0.8rem; flex: 1; }
+        .card .feature-tag {
+            background: #f0ebff; color: #5c3eb8; padding: 0.2rem 0.8rem;
+            border-radius: 30px; font-size: 0.75rem; font-weight: 600;
         }
+        .card .visit-hint { font-size: 0.7rem; color: #8b5cf6; margin-top: 0.5rem; opacity: 0; transition: opacity 0.2s; }
+        .card:hover .visit-hint { opacity: 1; }
 
-        /* 高清大号logo容器 */
-        .logo-emoji {
-            width: 90px;
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.8rem;
-            margin-bottom: 0.8rem;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 24px;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid rgba(255, 255, 255, 0.7);
+        .config-overlay {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 1000;
+            align-items: center; justify-content: center;
         }
-
-        .card:hover .logo-emoji {
-            transform: scale(1.1);
-            box-shadow: 0 12px 24px rgba(139, 92, 246, 0.2);
+        .config-overlay.show { display: flex; }
+        .config-panel {
+            background: white; border-radius: 24px; padding: 2rem;
+            max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
-
-        .tool-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            color: var(--text-main);
+        .config-title { font-size: 1.3rem; font-weight: 700; color: #2d264a; margin-bottom: 0.5rem; }
+        .config-section { margin-bottom: 1.2rem; }
+        .config-section-title {
+            font-size: 0.95rem; font-weight: 700; color: #4a4570;
+            margin-bottom: 0.6rem; padding-left: 0.5rem; border-left: 3px solid #8b5cf6;
         }
-
-        .tool-desc {
-            font-size: 0.9rem;
-            color: var(--text-sub);
-            margin-bottom: 0.9rem;
-            line-height: 1.4;
-            flex: 1;
+        .config-item {
+            display: flex; align-items: center; gap: 0.6rem;
+            padding: 0.5rem 0.6rem; border-radius: 10px; margin-bottom: 0.3rem;
         }
-
-        .feature-tag {
-            background: var(--tag-bg);
-            color: var(--tag-text);
-            padding: 0.25rem 0.9rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.2px;
-            margin-top: 0.3rem;
-            transition: background 0.2s, color 0.2s;
+        .config-item:hover { background: #f9f7fe; }
+        .config-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: #8b5cf6; cursor: pointer; }
+        .config-item .item-info { flex: 1; display: flex; align-items: center; gap: 0.4rem; }
+        .config-item .item-emoji { font-size: 1.1rem; }
+        .config-item .item-name { font-size: 0.85rem; font-weight: 600; color: #2d264a; }
+        .config-item .item-balance-input {
+            width: 80px; padding: 0.3rem 0.5rem; border: 1px solid #e0d6f0;
+            border-radius: 8px; font-size: 0.8rem; text-align: right;
         }
-
-        .card:hover .feature-tag {
-            background: var(--accent);
-            color: white;
+        .config-item .item-balance-input:focus { outline: none; border-color: #8b5cf6; }
+        .config-footer {
+            display: flex; justify-content: flex-end; gap: 0.6rem;
+            margin-top: 1.2rem; padding-top: 0.8rem; border-top: 1px solid #f0ebff;
         }
-
-        .visit-hint {
-            font-size: 0.75rem;
-            color: var(--text-sub);
-            margin-top: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.2s;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.2rem;
+        .config-btn {
+            padding: 0.5rem 1.3rem; border-radius: 12px; font-size: 0.85rem;
+            font-weight: 600; cursor: pointer; border: none; transition: all 0.2s;
         }
+        .config-btn.cancel { background: #f0ebff; color: #5c3eb8; }
+        .config-btn.save { background: #8b5cf6; color: white; }
+        .config-btn:hover { transform: translateY(-1px); }
 
-        .card:hover .visit-hint {
-            opacity: 1;
+        .balance-card {
+            background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(59,130,246,0.05));
+            border: 1px solid rgba(139,92,246,0.15);
+            border-radius: 16px; padding: 0.8rem; text-align: center; transition: all 0.2s;
         }
+        .balance-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139,92,246,0.12); }
+        .balance-card .p-emoji { font-size: 1.5rem; }
+        .balance-card .p-name { font-size: 0.8rem; color: #4a4570; font-weight: 600; margin: 0.3rem 0; }
+        .balance-card .p-balance { font-size: 1.3rem; font-weight: 800; color: #6c3ce0; }
+        .balance-card .p-balance.low { color: #ef4444; }
+        .balance-card .p-unit { font-size: 0.7rem; color: #9c97b8; margin-top: 0.2rem; }
 
-        .footer {
-            text-align: center;
-            margin-top: 3.5rem;
-            color: var(--text-sub);
-            font-size: 0.9rem;
-            border-top: 1px dashed #cdbfe8;
-            padding-top: 2rem;
+        .empty-msg { text-align: center; color: #9c97b8; padding: 1.5rem; font-size: 0.9rem; }
+        .back-btn {
+            display: inline-block; margin-bottom: 1rem; padding: 0.4rem 1rem;
+            border-radius: 20px; background: #f0ebff; color: #5c3eb8; font-weight: 600;
+            font-size: 0.85rem; cursor: pointer; border: none;
         }
+        .back-btn:hover { background: #e0d6ff; }
+        .footer { text-align: center; color: #9c97b8; font-size: 0.85rem; padding: 2rem 0 1rem; }
 
-        /* 回到顶部按钮 */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            background: var(--accent-hover);
-        }
-
-        /* Toast 样式 */
-        .toast {
-            position: fixed;
-            top: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(30, 27, 46, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            z-index: 2000;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255,255,255,0.2);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-        }
-
-        .toast.show {
-            opacity: 1;
-            visibility: visible;
-            top: 3rem;
-        }
-
-        /* 响应式调整 */
         @media (max-width: 768px) {
-            body {
-                padding: 1rem 0.8rem;
-            }
-            .header h1 {
-                font-size: 2.2rem;
-                margin-top: 1.5rem;
-            }
-            .theme-toggle {
-                top: -0.5rem;
-                right: 0.5rem;
-            }
-            .grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 0.9rem;
-            }
-            .card {
-                padding: 1.4rem 0.8rem 1.2rem;
-            }
-            .logo-emoji {
-                width: 70px;
-                height: 70px;
-                font-size: 2.8rem;
-                border-radius: 18px;
-                margin-bottom: 0.8rem;
-            }
-            .nav-bar {
-                border-radius: 20px;
-                padding: 0.3rem;
-                gap: 0.4rem;
-            }
-            .nav-item {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.85rem;
-            }
-            .back-to-top {
-                bottom: 1.5rem;
-                right: 1.5rem;
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
+            .nav-links { gap: 0.1rem; }
+            .nav-link { padding: 0.3rem 0.5rem; font-size: 0.7rem; }
+            .nav-logo { font-size: 1rem; }
+            .card-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.8rem; }
+            .card { padding: 1.2rem 0.8rem; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <button class="theme-toggle" id="themeToggle" title="切换主题">🌓</button>
-            <h1>Gina觉得有趣的免费AI工具集</h1>
-            <div class="subtitle">✨ 探索 AI 的无限乐趣 · 个人精选集</div>
-            
-            <div class="search-container">
-                <span class="search-icon">🔍</span>
-                <input type="text" class="search-input" id="searchInput" placeholder="搜索工具名称、功能或分类...">
-            </div>
-
-            <nav class="nav-bar" id="navBar"></nav>
-
-            <button style="margin-top: 1rem; background: none; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; border-radius: 50px; cursor: pointer; font-size: 0.85rem; font-weight: 600;" id="shareBtn">📤 分享此导航</button>
+    <nav class="nav-bar">
+        <span class="nav-logo" onclick="showHome()">✨ AI 工具集</span>
+        <div class="nav-links" id="navLinks"></div>
+        <div class="nav-actions">
+            <button class="nav-btn" onclick="openConfig()">⚙️ 余额</button>
         </div>
+    </nav>
 
-        <div id="app"></div>
-
-        <div class="footer">
-            🌐 点击卡片即可直达官网 · 探索AI的无限乐趣
+    <div class="config-overlay" id="configOverlay">
+        <div class="config-panel">
+            <div class="config-title">⚙️ 配置 API 余额</div>
+            <div style="font-size:0.85rem;color:#7c7a9a;margin-bottom:1.2rem;">勾选你充值的平台，填入余额，仅保存在本地浏览器。</div>
+            <div id="configList"></div>
+            <div class="config-footer">
+                <button class="config-btn cancel" onclick="closeConfig()">取消</button>
+                <button class="config-btn save" onclick="saveConfig()">保存</button>
+            </div>
         </div>
     </div>
 
-    <div class="back-to-top" id="backToTop">↑</div>
-    <div class="toast" id="toast"></div>
+    <div class="container" id="mainContent"></div>
+    <div class="footer">🌐 点击卡片直达官网 · 探索 AI 的无限乐趣</div>
 
     <script>
-        (function() {
-            const toolsData = [
-                {
-                    category: "🤖 核心大模型",
-                    items: [
-                        { name: "DeepSeek", emoji: "🐋", desc: "国产开源大模型标杆，完全免费，逻辑推理与代码生成能力突出，支持联网搜索。", feature: "完全免费·推理强", link: "https://chat.deepseek.com" },
-                        { name: "Kimi", emoji: "🌙", desc: "月之暗面出品，支持200万汉字超长上下文，联网搜索+长文本分析神器。", feature: "超长上下文·学术必备", link: "https://kimi.moonshot.cn" },
-                        { name: "豆包", emoji: "🫘", desc: "字节跳动出品，国内用户量第一的AI助手，语音交互流畅，全能型选手。", feature: "语音领先·全能助手", link: "https://www.doubao.com" },
-                        { name: "通义千问", emoji: "☁️", desc: "阿里大模型，多模态理解、文档解析、长文档处理能力极强。", feature: "阿里生态·文档解析", link: "https://tongyi.aliyun.com" },
-                        { name: "智谱清言", emoji: "🎓", desc: "清华系背景，支持研究模式、PPT模式，逻辑严谨，学术研究首选。", feature: "研究模式·逻辑严密", link: "https://chatglm.cn" },
-                        { name: "腾讯元宝", emoji: "💎", desc: "腾讯出品，深度集成微信公众号、视频号搜索，信息时效性极佳。", feature: "微信生态·实时搜索", link: "https://yuanbao.tencent.com" },
-                    ]
-                },
-                {
-                    category: "🔍 AI 搜索与知识",
-                    items: [
-                        { name: "秘塔 AI 搜索", emoji: "🔍", desc: "国内领先的无广告AI搜索，自动整理大纲、脑图与参考来源。", feature: "无广告·学术整理", link: "https://metaso.cn/" },
-                        { name: "知乎直答", emoji: "🙋", desc: "基于知乎海量优质内容，精准回答问题，支持追问与多维探索。", feature: "专业内容·深度问答", link: "https://zhida.zhihu.com/" },
-                        { name: "飞书妙记", emoji: "📝", desc: "一键将音视频转化为文字，自动提取摘要、待办与关键词。", feature: "音视频转文字·办公神器", link: "https://www.feishu.cn/product/minutes" },
-                    ]
-                },
-                {
-                    category: "🎨 AI 图像与设计",
-                    items: [
-                        { name: "即梦AI", emoji: "✨", desc: "字节跳动出品，实时画板涂鸦变大作，支持海量精美模型生成。", feature: "实时生图·字节生态", link: "https://jimeng.jianying.com" },
-                        { name: "文心一格", emoji: "🖼️", desc: "百度出品，对中国风与古诗词理解出色，诗意成画。", feature: "国风插画·百度模型", link: "https://yige.baidu.com" },
-                        { name: "LiblibAI", emoji: "🎨", desc: "国内领先的AI创作平台，海量模型在线免配置，支持高清生图。", feature: "模型丰富·社区活跃", link: "https://www.liblib.art/" },
-                        { name: "标智客", emoji: "🏷️", desc: "AI一键生成品牌Logo，支持多场景应用预览与在线定制。", feature: "Logo设计·品牌建设", link: "https://www.logomaker.com.cn/" },
-                        { name: "美图设计室", emoji: "📸", desc: "美图公司出品，AI消除、AI换装、AI海报，电商修图神器。", feature: "电商设计·智能修图", link: "https://www.designkit.cn" },
-                    ]
-                },
-                {
-                    category: "📊 AI 办公与效率",
-                    items: [
-                        { name: "讯飞智文", emoji: "🪄", desc: "科大讯飞出品，输入主题一键生成精美PPT，支持大纲编辑与配图。", feature: "一键PPT·智能排版", link: "https://zhiwen.xfyun.cn/" },
-                        { name: "百度文库AI", emoji: "📄", desc: "AI辅助文档创作，支持查资料、写大纲、润色全文与格式转换。", feature: "文档创作·资料库", link: "https://wenku.baidu.com/" },
-                        { name: "稿定AI", emoji: "✂️", desc: "集成AI生图、AI设计、AI文案，覆盖社媒、电商全场景设计需求。", feature: "全场景设计·极速出图", link: "https://www.gaoding.com/ai" },
-                    ]
-                },
-                {
-                    category: "🎙️ AI 音视频创作",
-                    items: [
-                        { name: "海绵音乐", emoji: "🎵", desc: "字节跳动出品，输入文字即可生成完整歌曲，词曲编唱全自动化。", feature: "AI作曲·字节出品", link: "https://www.haimian.com" },
-                        { name: "网易天音", emoji: "🎹", desc: "网易云音乐旗下AI音乐平台，支持一键词曲创作与高清编曲。", feature: "网易生态·音乐创作", link: "https://tianyin.163.com/" },
-                        { name: "剪映/即梦视频", emoji: "🎬", desc: "国内顶尖视频剪辑AI，支持文字生视频、智能分镜与AI配音。", feature: "文字生视频·智能剪辑", link: "https://www.capcut.cn/" },
-                        { name: "Glow-AI", emoji: "💬", desc: "MiniMax出品的AI虚拟角色社交，体验沉浸式的跨次元对话。", feature: "虚拟社交·智能情感", link: "https://growai.app" },
-                    ]
-                },
-                {
-                    category: "💻 AI 编程与开发",
-                    items: [
-                        { name: "Coze 扣子", emoji: "🧩", desc: "字节跳动AI开发平台，零门槛搭建专属AI智能体并一键发布。", feature: "Agent搭建·国内直连", link: "https://www.coze.cn/" },
-                        { name: "豆包MarsCode", emoji: "🫘", desc: "字节跳动AI编程助手，支持Cloud IDE，国内开发者完全免费。", feature: "免费IDE·字节出品", link: "https://www.marscode.cn" },
-                        { name: "CodeGeeX", emoji: "🧠", desc: "清华系背景，完全免费的AI编程助手，支持代码自动补全与翻译。", feature: "开源免费·清华模型", link: "https://codegeex.cn" },
-                        { name: "KULAAI", emoji: "⚡", desc: "国内聚合平台，直连全球顶尖大模型，无需复杂配置，体验极佳。", feature: "模型聚合·国内直连", link: "https://t.kulaai.cn" },
-                    ]
-                }
-            ];
+        var toolsData = {"ai聊天": {"emoji": "🤖", "name": "AI 聊天助手", "items": [{"name": "ChatGPT", "emoji": "🧠", "desc": "OpenAI旗舰助手，GPT-4o支持多模态对话、代码生成，完全免费。", "feature": "行业标杆", "link": "https://chatgpt.com", "hot": true}, {"name": "Claude", "emoji": "🧪", "desc": "Anthropic出品，编程与长文本处理标杆，免费版使用Sonnet 4.5模型。", "feature": "编程·长文本", "link": "https://claude.ai"}, {"name": "DeepSeek", "emoji": "🐋", "desc": "国产开源大模型标杆，完全免费，逻辑推理与代码生成能力突出。", "feature": "完全免费·推理强", "link": "https://chat.deepseek.com", "hot": true}, {"name": "Gemini", "emoji": "💎", "desc": "Google最强大模型，原生多模态，2.5 Pro免费额度慷慨。", "feature": "多模态·免费", "link": "https://gemini.google.com"}, {"name": "通义千问", "emoji": "☁️", "desc": "阿里出品，多模态理解、文档解析、PPT生成一站搞定。", "feature": "阿里生态", "link": "https://tongyi.aliyun.com"}, {"name": "智谱清言", "emoji": "🎓", "desc": "GLM-5模型，128K上下文、研究模式、PPT模式，学术党首选。", "feature": "学术·研究模式", "link": "https://chatglm.cn"}, {"name": "文心一言", "emoji": "🔵", "desc": "百度ERNIE大模型，中文理解出色，免费使用。", "feature": "中文出色", "link": "https://yiyan.baidu.com"}, {"name": "豆包", "emoji": "🫘", "desc": "字节跳动出品，拟人化聊天，免费无限制使用。", "feature": "免费无限制", "link": "https://doubao.com"}, {"name": "Kimi", "emoji": "🌙", "desc": "月之暗面出品，200万字超长上下文，文件阅读神器。", "feature": "超长上下文", "link": "https://kimi.moonshot.cn"}, {"name": "Perplexity", "emoji": "🔍", "desc": "AI搜索鼻祖，实时联网+引源，免费版完全够用。", "feature": "联网搜索", "link": "https://perplexity.ai"}, {"name": "KULAAI", "emoji": "⚡", "desc": "免费聚合GPT/Claude/Gemini/DeepSeek，无需翻墙一站畅用。", "feature": "模型聚合", "link": "https://t.kulaai.cn"}, {"name": "讯飞星火", "emoji": "🔥", "desc": "科大讯飞出品，深度推理+代码+多模态，教育场景出色。", "feature": "教育场景", "link": "https://xinghuo.xfyun.cn"}]}, "ai绘画": {"emoji": "🎨", "name": "AI 绘画与图像", "items": [{"name": "即梦AI", "emoji": "✨", "desc": "字节跳动旗下AI绘画，文生图/图生图，写实画风惊艳。", "feature": "写实惊艳", "link": "https://jimeng.jianying.com"}, {"name": "文心一格", "emoji": "🖼️", "desc": "百度文心系列AI绘画工具，国风与二次元风格尤其出色。", "feature": "国风二次元", "link": "https://yige.baidu.com"}, {"name": "LiblibAI", "emoji": "🦙", "desc": "Stable Diffusion在线平台，海量模型，国产化界面友好。", "feature": "模型海量", "link": "https://liblib.ai"}, {"name": "a1.art", "emoji": "🅰️", "desc": "AI艺术生成器，支持多种风格滤镜，简洁好用。", "feature": "风格多样", "link": "https://a1.art"}, {"name": "Nano Banana", "emoji": "🍌", "desc": "免费AI修图与生成，简单易上手。", "feature": "免费修图", "link": "https://nanobanana.com"}, {"name": "Perchance AI", "emoji": "🎲", "desc": "免费文生图，无需注册，多种生成器。", "feature": "无需注册", "link": "https://perchance.org/ai-text-to-image"}, {"name": "通义万相", "emoji": "🖌️", "desc": "阿里出品AI绘图，文生图/图生图/创意设计。", "feature": "阿里出品", "link": "https://tongyi.aliyun.com/wanxiang"}]}, "ai视频": {"emoji": "🎬", "name": "AI 视频创作", "items": [{"name": "可灵AI", "emoji": "🎥", "desc": "快手出品，文生视频/图生视频，效果震撼，免费使用。", "feature": "效果震撼", "link": "https://kling.kuaishou.com", "hot": true}, {"name": "Pika", "emoji": "🐰", "desc": "AI视频生成先驱，风格多样，操作简单。", "feature": "操作简单", "link": "https://pika.art"}, {"name": "CapCut Web", "emoji": "✂️", "desc": "字节跳动的剪映网页版，AI自动剪辑/字幕/转场。", "feature": "剪辑神器", "link": "https://capcut.cn"}, {"name": "Fogsight 雾象", "emoji": "🌫️", "desc": "AI视频理解与生成，支持视频对话。", "feature": "视频理解", "link": "https://fogsight.ai"}]}, "ai音乐": {"emoji": "🎵", "name": "AI 音乐创作", "items": [{"name": "MusicCreator AI", "emoji": "🎶", "desc": "文字描述生成音乐，支持多种风格和情绪。", "feature": "文生音乐", "link": "https://musiccreator.ai"}, {"name": "海绵音乐", "emoji": "🧽", "desc": "国内AI音乐创作平台，中文歌词生成歌曲。", "feature": "中文歌词", "link": "https://mianmusic.com"}, {"name": "aimusic", "emoji": "🎹", "desc": "AI音乐生成器，支持多种乐器与编曲。", "feature": "多种乐器", "link": "https://aimusic.so"}, {"name": "网易云音乐AI写歌", "emoji": "🎤", "desc": "网易云音乐内置AI，帮你一键写词作曲。", "feature": "写词作曲", "link": "https://music.163.com"}]}, "ai编程": {"emoji": "💻", "name": "AI 编程开发", "items": [{"name": "Coze 扣子", "emoji": "🧩", "desc": "字节跳动AI开发平台，自然语言生成网页/APP/智能体/工作流。", "feature": "全栈开发", "link": "https://www.coze.cn/", "hot": true}, {"name": "Bolt.new", "emoji": "⚡", "desc": "浏览器内AI全栈开发，输入需求直接生成可部署应用。", "feature": "一键部署", "link": "https://bolt.new"}, {"name": "v0.dev", "emoji": "🔼", "desc": "Vercel出品，自然语言生成React/Next.js UI组件。", "feature": "组件生成", "link": "https://v0.dev"}, {"name": "Lovable", "emoji": "❤️", "desc": "AI全栈应用生成器，从想法到上线。", "feature": "想法→上线", "link": "https://lovable.dev"}, {"name": "Replit", "emoji": "🔄", "desc": "在线IDE+AI Agent，免费云端开发环境。", "feature": "云端IDE", "link": "https://replit.com"}, {"name": "DeepSite", "emoji": "🏗️", "desc": "基于DeepSeek的开源AI前端开发，自然语言生成网页。", "feature": "Vibe Coding", "link": "https://deepsite.ai"}, {"name": "豆包MarsCode", "emoji": "🪐", "desc": "字节跳动AI编程助手，支持VSCode/JetBrains插件。", "feature": "IDE插件", "link": "https://marscode.cn"}, {"name": "CodeGeeX", "emoji": "🦎", "desc": "清华智谱出品，开源AI编程助手。", "feature": "开源免费", "link": "https://codegeex.cn"}, {"name": "阿里Qoder", "emoji": "🐧", "desc": "阿里通义灵码，AI编码助手，免费高效。", "feature": "通义生态", "link": "https://tongyi.aliyun.com/lingma"}, {"name": "AnyCoder", "emoji": "🛠️", "desc": "AI编程助手，支持多语言代码生成。", "feature": "多语言", "link": "https://anycoder.ai"}]}, "ai办公": {"emoji": "📊", "name": "AI 办公效率", "items": [{"name": "Gamma", "emoji": "📽️", "desc": "全球最火AI做PPT，输入主题一键生成精美演示文稿。", "feature": "PPT神器", "link": "https://gamma.app", "hot": true}, {"name": "AiPPT", "emoji": "📑", "desc": "国内流行的AI PPT平台，中文模板丰富，每天有免费次数。", "feature": "国内·免费", "link": "https://aippt.cn", "hot": true}, {"name": "美图AI PPT", "emoji": "💄", "desc": "美图出品，设计感极强，免费生成PPT和海报。", "feature": "设计感强", "link": "https://x-design.meitu.com"}, {"name": "ChatPPT", "emoji": "💬", "desc": "对话式生成PPT，支持导出.pptx，办公族神器。", "feature": "对话生成", "link": "https://chatppt.com"}, {"name": "笔灵AI", "emoji": "🖊️", "desc": "国产免费AI写作，公文/论文/小红书文案，模板超多。", "feature": "公文·论文", "link": "https://ibiling.cn"}, {"name": "秘塔AI搜索", "emoji": "🔎", "desc": "国内最火AI搜索，无广告结构化回答，学术/办公神器。", "feature": "无广告搜索", "link": "https://metaso.cn", "hot": true}, {"name": "天工AI搜索", "emoji": "🌤️", "desc": "昆仑万维出品，AI对话+搜索一体化。", "feature": "搜索+对话", "link": "https://tiangong.cn"}, {"name": "飞书智能伙伴", "emoji": "🐦", "desc": "飞书内置AI，文档总结、会议纪要、表格分析。", "feature": "文档·会议", "link": "https://feishu.cn"}, {"name": "Notion AI", "emoji": "📝", "desc": "最强笔记+AI，写作/整理/总结，个人版免费。", "feature": "笔记AI", "link": "https://notion.so"}, {"name": "GitMind", "emoji": "🧠", "desc": "AI生成思维导图，学习/会议/项目梳理神器。", "feature": "思维导图", "link": "https://gitmind.cn"}]}, "ai娱乐": {"emoji": "🎮", "name": "AI 娱乐与社交", "items": [{"name": "Character.AI", "emoji": "🎭", "desc": "对话AI角色鼻祖，海量虚拟人格，沉浸式聊天。", "feature": "角色聊天", "link": "https://character.ai"}, {"name": "Janitor AI", "emoji": "🧹", "desc": "深度定制的沉浸式聊天，可设定性格与世界观。", "feature": "深度定制", "link": "https://janitorai.com"}, {"name": "PolyBuzz.ai", "emoji": "🐝", "desc": "超过2000万个独特角色，随机翻牌开启对话。", "feature": "海量随机", "link": "https://polybuzz.ai"}, {"name": "Gening AI", "emoji": "💚", "desc": "即开即聊虚拟伙伴，无需注册立刻体验。", "feature": "无需注册", "link": "https://gening.ai"}, {"name": "Glow-AI", "emoji": "🌟", "desc": "与虚拟AI智能体的情感连接与社交陪伴。", "feature": "情感陪伴", "link": "https://glow-ai.com"}, {"name": "AI Dungeon", "emoji": "🏰", "desc": "经典AI文字冒险，任何离谱想法都能编织成故事。", "feature": "无限剧情", "link": "https://play.aidungeon.com"}, {"name": "v5games", "emoji": "🕹️", "desc": "角色扮演文字冒险，动漫、科幻等多元宇宙。", "feature": "多风格冒险", "link": "https://v5games.ai"}, {"name": "DeepGamer", "emoji": "🧭", "desc": "AI游戏主持人聊天动态塑造独一无二的世界。", "feature": "AI主持人", "link": "https://deepgamer.ai"}, {"name": "彩云小梦", "emoji": "✍️", "desc": "故事小说续写，独特的情节树功能脑洞极大。", "feature": "情节树续写", "link": "https://if.caiyunai.com"}, {"name": "LlamaGen.AI", "emoji": "📖", "desc": "AI创作漫画、动漫风格的艺术作品与故事。", "feature": "漫画生成", "link": "https://llamagen.ai"}]}, "ai设计": {"emoji": "🎯", "name": "AI 设计与创意", "items": [{"name": "即时AI", "emoji": "⚡", "desc": "即时设计旗下，输入文字生成UI设计稿，免费使用。", "feature": "UI生成", "link": "https://js.design"}, {"name": "堆友AI", "emoji": "📦", "desc": "阿里出品，3D素材生成+AI设计，设计师必备。", "feature": "3D素材", "link": "https://d.design"}, {"name": "Google Stitch", "emoji": "🧵", "desc": "AI将想法直接转化为UI设计稿，无需下载付费。", "feature": "UI设计稿", "link": ""}, {"name": "Skywork AI", "emoji": "☀️", "desc": "昆仑万维出品，AI语音合成与设计创作。", "feature": "语音合成", "link": "https://skywork.ai"}]}, "api平台": {"emoji": "🔌", "name": "API 开发者平台", "items": [{"name": "阿里云百炼", "emoji": "🔮", "desc": "通义千问Qwen系列模型，兼容OpenAI格式，新用户送token额度。", "feature": "Qwen·送额度", "link": "https://bailian.console.aliyun.com"}, {"name": "DeepSeek", "emoji": "🐋", "desc": "推理能力顶尖，价格极低，R1推理模型性价比之王。", "feature": "超强性价比", "link": "https://platform.deepseek.com"}, {"name": "硅基流动", "emoji": "⚡", "desc": "一站式API聚合平台，主流模型超低价调用。", "feature": "聚合低价", "link": "https://siliconflow.cn"}, {"name": "智谱AI", "emoji": "🔷", "desc": "GLM-4系列模型，能力均衡，多模态API支持。", "feature": "GLM·多模态", "link": "https://open.bigmodel.cn"}, {"name": "月之暗面", "emoji": "🌙", "desc": "Kimi母公司，超长上下文200万字，文本处理强。", "feature": "超长上下文", "link": "https://platform.moonshot.cn"}, {"name": "百度千帆", "emoji": "🔵", "desc": "文心大模型ERNIE系列，中文理解强，企业级稳定。", "feature": "文心ERNIE", "link": "https://qianfan.cloud.baidu.com"}, {"name": "豆包·火山引擎", "emoji": "🫘", "desc": "字节跳动旗下，价格极具竞争力。", "feature": "字节·低价", "link": "https://www.volcengine.com/product/doubao"}, {"name": "腾讯混元", "emoji": "🟢", "desc": "腾讯自研大模型，与微信生态深度整合。", "feature": "微信生态", "link": "https://cloud.tencent.com/product/hunyuan"}, {"name": "MiniMax", "emoji": "🎭", "desc": "海螺AI母公司，语音合成与多模态能力突出。", "feature": "语音·多模态", "link": "https://platform.minimaxi.com"}, {"name": "零一万物", "emoji": "0️⃣", "desc": "李开复创办，Yi系列开源模型，中英双语优秀。", "feature": "开源·双语", "link": "https://platform.lingyiwanwu.com"}, {"name": "OpenAI API", "emoji": "🧠", "desc": "GPT-4o/o3系列，综合能力最强，行业标杆。", "feature": "行业标杆", "link": "https://platform.openai.com"}, {"name": "Anthropic", "emoji": "🟠", "desc": "Claude系列模型，代码与长文本能力顶尖。", "feature": "代码·长文本", "link": "https://console.anthropic.com"}, {"name": "Google AI Studio", "emoji": "💎", "desc": "Gemini系列模型，多模态强，免费额度慷慨。", "feature": "免费额度大", "link": "https://aistudio.google.com"}, {"name": "OpenRouter", "emoji": "🔀", "desc": "一个API调用所有主流模型，自动比价路由。", "feature": "统一入口", "link": "https://openrouter.ai"}, {"name": "Groq", "emoji": "⚡", "desc": "自研LPU芯片推理，速度极快。", "feature": "极速推理", "link": "https://console.groq.com"}, {"name": "Mistral AI", "emoji": "🇫🇷", "desc": "欧洲最强AI团队，开源+商业并行，性价比高。", "feature": "欧洲之星", "link": "https://console.mistral.ai"}, {"name": "Cohere", "emoji": "🔗", "desc": "专注企业级NLP，Rerank和Embedding业界领先。", "feature": "RAG专家", "link": "https://dashboard.cohere.com"}, {"name": "Together AI", "emoji": "🤝", "desc": "开源模型推理平台，Llama/Qwen一键部署。", "feature": "开源推理", "link": "https://api.together.ai"}]}, "aiAgent": {"emoji": "🤖", "name": "AI Agent 智能体", "items": [{"name": "Manus", "emoji": "🤖", "desc": "2025最火国产Agent，自主规划执行任务，简历筛选/旅行规划/股票分析全能。", "feature": "自主执行", "link": "https://manus.im", "hot": true}, {"name": "Dify", "emoji": "🛠️", "desc": "国产开源LLMOps平台，可视化搭建AI Agent/工作流/RAG应用，技术首选。", "feature": "开源·可视化", "link": "https://dify.ai"}, {"name": "扣子 Coze", "emoji": "🧩", "desc": "字节跳动Agent平台，零代码搭建智能体，插件/知识库/工作流丰富。", "feature": "零代码·丰富插件", "link": "https://www.coze.cn", "hot": true}, {"name": "百度智能体", "emoji": "🔵", "desc": "百度Agent开发平台，文心大模型驱动，一键发布多端。", "feature": "文心驱动", "link": "https://agents.baidu.com"}, {"name": "智谱AutoGLM", "emoji": "📱", "desc": "智谱AI推出的手机操作Agent，能自主操控APP完成复杂任务。", "feature": "手机操控", "link": "https://autoglm.chatglm.cn"}, {"name": "Claude Code", "emoji": "🧪", "desc": "Anthropic终端Agent，直接读代码库/执行命令/修改文件，程序员最爱。", "feature": "终端Agent", "link": "https://claude.ai/code"}, {"name": "Codex CLI", "emoji": "💻", "desc": "OpenAI开源终端Agent，规划-执行-验证完整循环，本地代码库全能。", "feature": "开源·本地", "link": "https://github.com/openai/codex"}, {"name": "Devin", "emoji": "👨‍💻", "desc": "全球首个AI软件工程师，完整开发-测试-部署闭环，企业级Agent。", "feature": "首个AI工程师", "link": "https://devin.ai"}, {"name": "Cursor Agent", "emoji": "🎯", "desc": "爆款AI IDE内置Agent模式，自主理解项目/编辑多文件/终端操作。", "feature": "IDE内置", "link": "https://cursor.com"}, {"name": "Windsurf", "emoji": "🌊", "desc": "Codeium出品，Cascade模式Agent自动分析代码库并自主编程。", "feature": "自动编程", "link": "https://codeium.com/windsurf"}]}};
+        var hotPicks = [{"name": "Gamma", "emoji": "📽️", "desc": "AI一键生成精美PPT，2025全球最火办公神器", "link": "https://gamma.app"}, {"name": "DeepSeek", "emoji": "🐋", "desc": "R1推理模型免费使用，编程/数学/长文本全能", "link": "https://chat.deepseek.com"}, {"name": "Manus", "emoji": "🤖", "desc": "2025最火国产Agent，自主完成任务，打工人救星", "link": "https://manus.im"}, {"name": "秘塔AI搜索", "emoji": "🔎", "desc": "国内最火AI搜索，无广告版本，学术办公必备", "link": "https://metaso.cn"}, {"name": "AiPPT", "emoji": "📑", "desc": "中文AI PPT平台，每天免费次数，模板丰富", "link": "https://aippt.cn"}, {"name": "可灵AI", "emoji": "🎥", "desc": "快手出品AI视频生成，效果震撼，免费使用", "link": "https://kling.kuaishou.com"}];
 
-            const app = document.getElementById('app');
-            const searchInput = document.getElementById('searchInput');
-            const navBar = document.getElementById('navBar');
-            const backToTop = document.getElementById('backToTop');
-            const toast = document.getElementById('toast');
-            const themeToggle = document.getElementById('themeToggle');
-            const shareBtn = document.getElementById('shareBtn');
+        var apiBalancePlatforms = [
+            {id:"bailian",name:"百炼",emoji:"🔮",group:"国内"},
+            {id:"deepseek",name:"DeepSeek",emoji:"🐋",group:"国内"},
+            {id:"siliconflow",name:"硅基流动",emoji:"⚡",group:"国内"},
+            {id:"zhipu",name:"智谱AI",emoji:"🔷",group:"国内"},
+            {id:"moonshot",name:"月之暗面",emoji:"🌙",group:"国内"},
+            {id:"qianfan",name:"百度千帆",emoji:"🔵",group:"国内"},
+            {id:"doubao",name:"豆包",emoji:"🫘",group:"国内"},
+            {id:"hunyuan",name:"腾讯混元",emoji:"🟢",group:"国内"},
+            {id:"minimax",name:"MiniMax",emoji:"🎭",group:"国内"},
+            {id:"yi",name:"零一万物",emoji:"0️⃣",group:"国内"},
+            {id:"openai",name:"OpenAI",emoji:"🧠",group:"国际"},
+            {id:"anthropic",name:"Anthropic",emoji:"🟠",group:"国际"},
+            {id:"google",name:"Google AI",emoji:"💎",group:"国际"},
+            {id:"openrouter",name:"OpenRouter",emoji:"🔀",group:"国际"},
+            {id:"groq",name:"Groq",emoji:"⚡",group:"国际"},
+            {id:"mistral",name:"Mistral",emoji:"🇫🇷",group:"国际"},
+            {id:"cohere",name:"Cohere",emoji:"🔗",group:"国际"},
+            {id:"together",name:"Together AI",emoji:"🤝",group:"国际"}
+        ];
 
-            // 主题切换
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', currentTheme);
+        var BAL_KEY = "wab", DASH_KEY = "wav", CAT_KEY = "wac";
 
-            themeToggle.addEventListener('click', () => {
-                const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-                document.documentElement.setAttribute('data-theme', theme);
-                localStorage.setItem('theme', theme);
-                showToast(`已切换至${theme === 'dark' ? '深色' : '浅色'}模式`);
+        function cats(){return Object.keys(toolsData);}
+
+        function buildNav(){
+            var h='<button class="nav-link active" onclick="showHome()">🏠 首页</button>';
+            cats().forEach(function(k){
+                var c=toolsData[k];
+                h+='<button class="nav-link" onclick="showCategory(\x27'+k+'\x27)">'+c.emoji+' '+c.name+'</button>';
             });
+            document.getElementById("navLinks").innerHTML=h;
+        }
+        function setNav(i){
+            document.querySelectorAll(".nav-link").forEach(function(e,j){e.classList.toggle("active",j===i);});
+        }
 
-            // 分享功能
-            shareBtn.addEventListener('click', () => {
-                const url = window.location.href;
-                navigator.clipboard.writeText(url).then(() => {
-                    showToast('🔗 链接已复制到剪贴板，快去分享吧！');
-                }).catch(err => {
-                    showToast('复制失败，请手动复制浏览器地址');
+        function showHome(){
+            setNav(0);
+            var h="";
+            h+='<section class="home-section"><div class="api-dashboard" id="apiDashboard"><div class="dashboard-header"><div class="dashboard-title">📊 API 余额看板</div><button class="nav-btn" onclick="toggleDash()" style="font-size:0.75rem;">👁️ 隐藏</button></div><div id="dashboardContent"></div></div></section>';
+
+            h+='<section class="home-section"><div class="section-title">🔥 本周热门推荐 <span style="font-size:0.8rem;color:#9c97b8;font-weight:400;">— 2025.06</span></div><div class="scroll-row">';
+            hotPicks.forEach(function(p){
+                h+='<a href="'+p.link+'" target="_blank" rel="noopener" class="hot-card"><div class="hot-emoji">'+p.emoji+'</div><div class="hot-name">'+p.name+'</div><div class="hot-desc">'+p.desc+'</div></a>';
+            });
+            h+='</div></section>';
+
+            h+='<section class="home-section"><div class="section-title">⭐ 常用工具精选</div><div class="card-grid">'+buildCards(getFeatured())+'</div></section>';
+
+            h+='<section class="home-section"><div class="section-title">📂 全部分类</div><div class="category-grid">';
+            cats().forEach(function(k){
+                var c=toolsData[k];
+                h+='<div class="category-entry" onclick="showCategory(\x27'+k+'\x27)"><div class="cat-emoji">'+c.emoji+'</div><div class="cat-name">'+c.name+'</div><div class="cat-count">'+c.items.length+' 个工具</div></div>';
+            });
+            h+='</div></section>';
+
+            document.getElementById("mainContent").innerHTML=h;
+            renderDashboard();
+            localStorage.setItem(CAT_KEY,"home");
+        }
+
+        function getFeatured(){
+            var f=[];
+            cats().forEach(function(k){
+                var it=toolsData[k].items;
+                it.forEach(function(i){if(i.hot)f.push(i);});
+                if(it.length>0&&it.filter(function(i){return i.hot;}).length===0){
+                    f.push(it[0]);if(it.length>1)f.push(it[1]);
+                }
+            });
+            return f.slice(0,24);
+        }
+
+        function showCategory(k){
+            var c=toolsData[k];if(!c)return;
+            setNav(cats().indexOf(k)+1);
+            document.getElementById("mainContent").innerHTML=
+                '<button class="back-btn" onclick="showHome()">← 返回首页</button>'+
+                '<div class="section-title">'+c.emoji+' '+c.name+' <span style="font-size:0.8rem;color:#9c97b8;font-weight:400;">· '+c.items.length+' 个工具</span></div>'+
+                '<div class="card-grid">'+buildCards(c.items)+'</div>';
+            localStorage.setItem(CAT_KEY,k);
+        }
+
+        function buildCards(items){
+            return items.map(function(t){
+                var has=t.link&&t.link.trim()!=="";
+                var tag=has?"a":"div";
+                var href=has?' href="'+t.link+'" target="_blank" rel="noopener"':'';
+                var vh=has?'<span class="visit-hint">🔗 访问官网</span>':'';
+                return "<"+tag+href+' class="card"><div class="logo-emoji">'+t.emoji+'</div><div class="tool-name">'+t.name+'</div><div class="tool-desc">'+t.desc+'</div><span class="feature-tag">'+t.feature+'</span>'+vh+"</"+tag+">";
+            }).join("");
+        }
+
+        function ldCfg(){try{return JSON.parse(localStorage.getItem(BAL_KEY))||{};}catch(e){return{};}}
+        function svCfg(c){localStorage.setItem(BAL_KEY,JSON.stringify(c));}
+
+        function renderDashboard(){
+            var cfg=ldCfg(),ct=document.getElementById("dashboardContent");
+            if(!ct)return;
+            var en=apiBalancePlatforms.filter(function(p){return cfg[p.id]&&cfg[p.id].enabled;});
+            if(en.length===0){ct.innerHTML='<div class="empty-msg">点击导航栏「⚙️ 余额」添加你充值的 API 平台 💰</div>';return;}
+            var h='<div class="dashboard-grid">';
+            en.forEach(function(p){
+                var bal=cfg[p.id].balance||0,lo=(bal<10&&bal>0)?" low":"",u=p.group==="国际"?"USD":"元";
+                h+='<div class="balance-card"><div class="p-emoji">'+p.emoji+'</div><div class="p-name">'+p.name+'</div><div class="p-balance'+lo+'">'+bal.toFixed(2)+'</div><div class="p-unit">'+u+(lo?" · ⚠️余额不足":"")+'</div></div>';
+            });
+            h+='</div>';ct.innerHTML=h;
+        }
+
+        function renderConfigList(){
+            var cfg=ldCfg(),ct=document.getElementById("configList"),h="";
+            ["国内","国际"].forEach(function(g){
+                var pl=apiBalancePlatforms.filter(function(p){return p.group===g;});
+                h+='<div class="config-section"><div class="config-section-title">'+g+'平台</div>';
+                pl.forEach(function(p){
+                    var s=cfg[p.id]||{};
+                    h+='<div class="config-item"><input type="checkbox" id="chk_'+p.id+'" '+(s.enabled?"checked":"")+'><div class="item-info"><span class="item-emoji">'+p.emoji+'</span><span class="item-name">'+p.name+'</span></div><input type="number" class="item-balance-input" id="bal_'+p.id+'" value="'+(s.balance||"")+'" placeholder="0.00" step="0.01" min="0"></div>';
                 });
+                h+='</div>';
             });
+            ct.innerHTML=h;
+        }
 
-            // 渲染导航栏
-            function renderNav() {
-                const navHtml = toolsData.map((cat, index) => {
-                    const id = `cat-${index}`;
-                    cat.id = id;
-                    // 提取表情符号之后的文字作为导航标签
-                    const label = cat.category.replace(/[\u{1F300}-\u{1F9FF}]|[\u{2700}-\u{27BF}]|[\u{1F600}-\u{1F64F}]|[\u{1F680}-\u{1F6FF}]|[\u{2600}-\u{26FF}]|[\u{2300}-\u{23FF}]/gu, '').trim();
-                    return `<a href="#${id}" class="nav-item">${label}</a>`;
-                }).join('');
-                navBar.innerHTML = navHtml;
-            }
+        window.openConfig=function(){renderConfigList();document.getElementById("configOverlay").classList.add("show");};
+        window.closeConfig=function(){document.getElementById("configOverlay").classList.remove("show");};
+        window.saveConfig=function(){
+            var cfg={};
 
-            // Toast 提示函数
-            function showToast(message) {
-                toast.textContent = message;
-                toast.classList.add('show');
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 3000);
-            }
-
-            function buildCards(items) {
-                return items.map(item => {
-                    return `
-                        <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="card">
-                            <div class="logo-emoji">${item.emoji}</div>
-                            <div class="tool-name">${item.name}</div>
-                            <div class="tool-desc">${item.desc}</div>
-                            <span class="feature-tag">${item.feature}</span>
-                            <span class="visit-hint">🔗 立即访问</span>
-                        </a>
-                    `;
-                }).join('');
-            }
-
-            function renderAll(searchTerm = '') {
-                let html = '';
-                const query = searchTerm.toLowerCase().trim();
-                
-                toolsData.forEach(cat => {
-                    const filteredItems = cat.items.filter(item => 
-                        item.name.toLowerCase().includes(query) || 
-                        item.desc.toLowerCase().includes(query) || 
-                        item.feature.toLowerCase().includes(query) ||
-                        cat.category.toLowerCase().includes(query)
-                    );
-
-                    if (filteredItems.length > 0 || query === '') {
-                        html += `
-                            <section class="category" id="${cat.id || ''}">
-                                <h2 class="category-title">${cat.category}</h2>
-                                <div class="grid">
-                                    ${buildCards(filteredItems)}
-                                </div>
-                            </section>
-                        `;
-                    }
-                });
-
-                if (html === '') {
-                    html = '<div style="text-align: center; padding: 5rem 0;"><div style="font-size: 4rem; margin-bottom: 1rem;">🔍</div><h3 style="color: #4a4570;">没找到相关的工具，换个词试试？</h3></div>';
-                }
-                
-                app.innerHTML = html;
-            }
-
-            // 初始化
-            renderNav();
-            renderAll();
-
-            // 搜索监听
-            searchInput.addEventListener('input', (e) => {
-                renderAll(e.target.value);
+        window.toggleDash=function(){var c=document.getElementById("dashboardContent");if(!c)return;var h=c.style.display==="none";c.style.display=h?"":"none";localStorage.setItem(DASH_KEY,h?"1":"0");this.textContent=h?"👁️ 隐藏":"👁️ 显示";};
+            apiBalancePlatforms.forEach(function(p){
+                var ck=document.getElementById("chk_"+p.id),bl=document.getElementById("bal_"+p.id);
+                if(ck&&ck.checked)cfg[p.id]={enabled:true,balance:parseFloat(bl.value)||0};
             });
+            svCfg(cfg);renderDashboard();closeConfig();
+        };
 
-            // 回到顶部监听
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 500) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
-            });
+        document.getElementById("configOverlay").addEventListener("click",function(e){if(e.target===this)closeConfig();});
 
-            backToTop.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+        buildNav();
+        var sv=localStorage.getItem(CAT_KEY);
+        if(sv&&sv!=="home"&&toolsData[sv])showCategory(sv);else showHome();
 
-            // 平滑滚动
-            navBar.addEventListener('click', (e) => {
-                const anchor = e.target.closest('.nav-item');
-                if (anchor) {
-                    e.preventDefault();
-                    const targetId = anchor.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        })();
+        var dv=localStorage.getItem(DASH_KEY);
+        if(dv==="0")setTimeout(function(){var dc=document.getElementById("dashboardContent");if(dc)dc.style.display="none";},100);
     </script>
 </body>
 </html>
