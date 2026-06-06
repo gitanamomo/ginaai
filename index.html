@@ -176,14 +176,19 @@
         .balance-card {
             background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(59,130,246,0.05));
             border: 1px solid rgba(139,92,246,0.15);
-            border-radius: 16px; padding: 0.8rem; text-align: center; transition: all 0.2s;
+            border-radius: 16px; padding: 0.8rem; text-align: center; text-decoration: none; color: inherit; display: block; cursor: pointer; transition: all 0.2s;
         }
-        .balance-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139,92,246,0.12); }
+        a.balance-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139,92,246,0.12); }
+        div.balance-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139,92,246,0.12); }
         .balance-card .p-emoji { font-size: 1.5rem; }
         .balance-card .p-name { font-size: 0.8rem; color: #4a4570; font-weight: 600; margin: 0.3rem 0; }
         .balance-card .p-balance { font-size: 1.3rem; font-weight: 800; color: #6c3ce0; }
-        .balance-card .p-balance.low { color: #ef4444; }
-        .balance-card .p-unit { font-size: 0.7rem; color: #9c97b8; margin-top: 0.2rem; }
+        .balance-card .p-unit { font-size: 0.7rem; color: #9c97b8; margin-top: 0.2rem; margin-bottom: 0.15rem; }
+        .balance-card .card-link-hint {
+            font-size: 0.65rem; color: #8b5cf6; opacity: 0.65; margin-top: 0.15rem;
+            transition: opacity 0.2s;
+        }
+        a.balance-card:hover .card-link-hint { opacity: 1; }
 
         .empty-msg { text-align: center; color: #9c97b8; padding: 1.5rem; font-size: 0.9rem; }
         .back-btn {
@@ -232,24 +237,24 @@
         var hotPicks = [{"name": "Gamma", "emoji": "📽️", "desc": "AI一键生成精美PPT，2025全球最火办公神器", "link": "https://gamma.app"}, {"name": "DeepSeek", "emoji": "🐋", "desc": "R1推理模型免费使用，编程/数学/长文本全能", "link": "https://chat.deepseek.com"}, {"name": "Manus", "emoji": "🤖", "desc": "2025最火国产Agent，自主完成任务，打工人救星", "link": "https://manus.im"}, {"name": "秘塔AI搜索", "emoji": "🔎", "desc": "国内最火AI搜索，无广告版本，学术办公必备", "link": "https://metaso.cn"}, {"name": "AiPPT", "emoji": "📑", "desc": "中文AI PPT平台，每天免费次数，模板丰富", "link": "https://aippt.cn"}, {"name": "可灵AI", "emoji": "🎥", "desc": "快手出品AI视频生成，效果震撼，免费使用", "link": "https://kling.kuaishou.com"}];
 
         var apiBalancePlatforms = [
-            {id:"bailian",name:"百炼",emoji:"🔮",group:"国内"},
-            {id:"deepseek",name:"DeepSeek",emoji:"🐋",group:"国内"},
-            {id:"siliconflow",name:"硅基流动",emoji:"⚡",group:"国内"},
-            {id:"zhipu",name:"智谱AI",emoji:"🔷",group:"国内"},
-            {id:"moonshot",name:"月之暗面",emoji:"🌙",group:"国内"},
-            {id:"qianfan",name:"百度千帆",emoji:"🔵",group:"国内"},
-            {id:"doubao",name:"豆包",emoji:"🫘",group:"国内"},
-            {id:"hunyuan",name:"腾讯混元",emoji:"🟢",group:"国内"},
-            {id:"minimax",name:"MiniMax",emoji:"🎭",group:"国内"},
-            {id:"yi",name:"零一万物",emoji:"0️⃣",group:"国内"},
-            {id:"openai",name:"OpenAI",emoji:"🧠",group:"国际"},
-            {id:"anthropic",name:"Anthropic",emoji:"🟠",group:"国际"},
-            {id:"google",name:"Google AI",emoji:"💎",group:"国际"},
-            {id:"openrouter",name:"OpenRouter",emoji:"🔀",group:"国际"},
-            {id:"groq",name:"Groq",emoji:"⚡",group:"国际"},
-            {id:"mistral",name:"Mistral",emoji:"🇫🇷",group:"国际"},
-            {id:"cohere",name:"Cohere",emoji:"🔗",group:"国际"},
-            {id:"together",name:"Together AI",emoji:"🤝",group:"国际"}
+            {id:"bailian",name:"百炼",emoji:"🔮",group:"国内",link:"https://bailian.console.aliyun.com"},
+            {id:"deepseek",name:"DeepSeek",emoji:"🐋",group:"国内",link:"https://platform.deepseek.com"},
+            {id:"siliconflow",name:"硅基流动",emoji:"⚡",group:"国内",link:"https://siliconflow.cn"},
+            {id:"zhipu",name:"智谱AI",emoji:"🔷",group:"国内",link:"https://open.bigmodel.cn"},
+            {id:"moonshot",name:"月之暗面",emoji:"🌙",group:"国内",link:"https://platform.moonshot.cn"},
+            {id:"qianfan",name:"百度千帆",emoji:"🔵",group:"国内",link:"https://qianfan.cloud.baidu.com"},
+            {id:"doubao",name:"豆包",emoji:"🫘",group:"国内",link:"https://console.volcengine.com"},
+            {id:"hunyuan",name:"腾讯混元",emoji:"🟢",group:"国内",link:"https://cloud.tencent.com/product/hunyuan"},
+            {id:"minimax",name:"MiniMax",emoji:"🎭",group:"国内",link:"https://platform.minimaxi.com"},
+            {id:"yi",name:"零一万物",emoji:"0️⃣",group:"国内",link:"https://platform.lingyiwanwu.com"},
+            {id:"openai",name:"OpenAI",emoji:"🧠",group:"国际",link:"https://platform.openai.com/account/billing"},
+            {id:"anthropic",name:"Anthropic",emoji:"🟠",group:"国际",link:"https://console.anthropic.com"},
+            {id:"google",name:"Google AI",emoji:"💎",group:"国际",link:"https://aistudio.google.com"},
+            {id:"openrouter",name:"OpenRouter",emoji:"🔀",group:"国际",link:"https://openrouter.ai"},
+            {id:"groq",name:"Groq",emoji:"⚡",group:"国际",link:"https://console.groq.com"},
+            {id:"mistral",name:"Mistral",emoji:"🇫🇷",group:"国际",link:"https://console.mistral.ai"},
+            {id:"cohere",name:"Cohere",emoji:"🔗",group:"国际",link:"https://dashboard.cohere.com"},
+            {id:"together",name:"Together AI",emoji:"🤝",group:"国际",link:"https://api.together.ai"}
         ];
 
         var BAL_KEY = "wab", DASH_KEY = "wav", CAT_KEY = "wac";
@@ -336,7 +341,7 @@
             var h='<div class="dashboard-grid">';
             en.forEach(function(p){
                 var bal=cfg[p.id].balance||0,lo=(bal<10&&bal>0)?" low":"",u=p.group==="国际"?"USD":"元";
-                h+='<div class="balance-card"><div class="p-emoji">'+p.emoji+'</div><div class="p-name">'+p.name+'</div><div class="p-balance'+lo+'">'+bal.toFixed(2)+'</div><div class="p-unit">'+u+(lo?" · ⚠️余额不足":"")+'</div></div>';
+                h+='<a class="balance-card" href="'+p.link+'" target="_blank" rel="noopener" title="点击跳转'+p.name+'充值/账单页"><div class="p-emoji">'+p.emoji+'</div><div class="p-name">'+p.name+'</div><div class="p-balance'+lo+'">'+bal.toFixed(2)+'</div><div class="p-unit">'+u+(lo?" · ⚠️余额不足":"")+'</div><div class="card-link-hint">↗️ 充值查账</div></a>';
             });
             h+='</div>';ct.innerHTML=h;
         }
