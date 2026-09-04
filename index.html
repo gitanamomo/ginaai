@@ -1,386 +1,610 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>AI 工具集 | 创意导航</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3efe6">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23d8ff4f' stroke='%23171713' stroke-width='3'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Arial' font-size='28' font-weight='900' fill='%23171713'%3EG%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Gina AI Atlas：经过筛选和核验的 AI 工具导航。">
+  <title>Gina AI Atlas｜精选 AI 工具导航</title>
+  <style>
+    :root {
+      --paper: #f3efe6;
+      --paper-deep: #e8e1d4;
+      --ink: #171713;
+      --muted: #6e6a61;
+      --line: rgba(23, 23, 19, .15);
+      --acid: #d8ff4f;
+      --blue: #3d52ff;
+      --coral: #ff6b55;
+      --white: #fffdf8;
+      --shadow: 0 20px 60px rgba(42, 38, 29, .10);
+      --radius: 22px;
+    }
 
-        body {
-            background: linear-gradient(135deg, #f9f7fe 0%, #ede7f9 50%, #e3f2fd 100%);
-            font-family: 'Segoe UI', system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            min-height: 100vh;
-            color: #1e1b2e;
-            line-height: 1.5;
-            padding-top: 70px;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(23, 23, 19, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 23, 19, .035) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      font-family: "Avenir Next", Avenir, "PingFang SC", "Hiragino Sans GB", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { color: inherit; }
+    a { color: inherit; }
+    [hidden] { display: none !important; }
 
-        .nav-bar {
-            position: fixed;
-            top: 0; left: 0; right: 0; z-index: 999;
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(139,92,246,0.1);
-            padding: 0.6rem 1.5rem;
-            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-        }
-        .nav-logo {
-            font-size: 1.3rem; font-weight: 800;
-            background: linear-gradient(135deg, #6c3ce0, #3b82f6);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; cursor: pointer; white-space: nowrap;
-        }
-        .nav-links { display: flex; gap: 0.3rem; flex-wrap: wrap; justify-content: center; }
-        .nav-link {
-            padding: 0.4rem 0.7rem; border-radius: 20px; font-size: 0.8rem;
-            font-weight: 600; color: #4a4570; cursor: pointer; transition: all 0.2s;
-            border: none; background: transparent; white-space: nowrap;
-        }
-        .nav-link:hover { background: #f0ebff; }
-        .nav-link.active { background: #8b5cf6; color: white; }
-        .nav-actions { display: flex; gap: 0.5rem; align-items: center; }
-        .nav-btn {
-            padding: 0.35rem 0.8rem; border-radius: 20px; font-size: 0.75rem;
-            font-weight: 600; background: #f0ebff; color: #5c3eb8; border: none;
-            cursor: pointer; transition: all 0.2s; white-space: nowrap;
-        }
-        .nav-btn:hover { background: #e0d6ff; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(243, 239, 230, .92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .header-main {
+      max-width: 1440px;
+      min-height: 74px;
+      margin: 0 auto;
+      padding: 12px 28px;
+      display: grid;
+      grid-template-columns: 220px minmax(260px, 620px) 48px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+    }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      background: var(--acid);
+      font-weight: 900;
+      transform: rotate(-7deg);
+    }
+    .brand-copy strong { display: block; font-size: 15px; letter-spacing: .02em; }
+    .brand-copy small { display: block; margin-top: 1px; color: var(--muted); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+    .search-wrap { position: relative; }
+    .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); opacity: .55; }
+    .search-input {
+      width: 100%;
+      height: 48px;
+      padding: 0 52px 0 45px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      outline: none;
+      background: var(--white);
+      box-shadow: 3px 3px 0 var(--ink);
+      transition: transform .18s, box-shadow .18s;
+    }
+    .search-input:focus { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); }
+    .search-key {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 2px 7px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .header-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .icon-btn {
+      min-height: 42px;
+      border: 1px solid var(--ink);
+      background: var(--white);
+      cursor: pointer;
+      transition: transform .18s, background .18s;
+    }
+    .icon-btn:hover { transform: translateY(-2px); background: var(--acid); }
+    .icon-btn { width: 42px; border-radius: 50%; font-size: 17px; }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
-        .home-section { margin-bottom: 2.5rem; }
-        .section-title {
-            font-size: 1.3rem; font-weight: 700; color: #2d264a;
-            margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
-        }
+    .category-rail {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 28px 12px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .category-rail::-webkit-scrollbar { display: none; }
+    .filter-chip {
+      flex: 0 0 auto;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .filter-chip:hover { border-color: var(--ink); color: var(--ink); }
+    .filter-chip.active { border-color: var(--ink); background: var(--ink); color: var(--paper); }
 
-        .api-dashboard {
-            background: rgba(255,255,255,0.6); backdrop-filter: blur(20px);
-            border-radius: 24px; padding: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.9);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-        }
-        .dashboard-header {
-            display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;
-        }
-        .dashboard-title { font-size: 1.15rem; font-weight: 700; color: #2d264a; }
-        .dashboard-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0.8rem;
-        }
+    main { max-width: 1440px; margin: 0 auto; padding: 0 28px 110px; }
+    #home, #directory { scroll-margin-top: 135px; }
+    .hero {
+      min-height: auto;
+      padding: 46px 0 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 560px);
+      gap: 32px;
+      align-items: center;
+      border-bottom: 1px solid var(--ink);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 7px 11px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: var(--acid);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ink); }
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+      font-size: clamp(42px, 5vw, 72px);
+      font-weight: 600;
+      letter-spacing: -.045em;
+      line-height: 1;
+    }
+    .hero-note { max-width: 560px; }
+    .hero-note p { margin: 0 0 16px; color: #403d36; font-size: 15px; line-height: 1.75; }
+    .hero-note strong { color: var(--ink); }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+    .meta-pill { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: 11px; background: rgba(255,253,248,.6); }
 
-        .scroll-row {
-            display: flex; gap: 0.8rem; overflow-x: auto; padding-bottom: 0.5rem;
-            scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        .scroll-row::-webkit-scrollbar { display: none; }
+    .quick-strip {
+      margin: 22px 0 42px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .quick-action { min-height: 78px; padding: 16px 18px; }
+    .quick-action {
+      border: 0;
+      border-left: 1px solid var(--line);
+      background: var(--white);
+      cursor: pointer;
+      text-align: left;
+      transition: background .2s;
+    }
+    .quick-action:hover { background: var(--acid); }
+    .quick-action:first-child { border-left: 0; }
+    .quick-action span { display: block; color: var(--muted); font-size: 11px; margin-bottom: 12px; }
+    .quick-action strong { font-size: 14px; }
 
-        .hot-card {
-            flex: 0 0 220px;
-            background: linear-gradient(135deg, rgba(255,200,100,0.15), rgba(255,120,60,0.08));
-            border: 1px solid rgba(255,150,50,0.2);
-            border-radius: 18px; padding: 1.2rem; scroll-snap-align: start;
-            text-decoration: none; color: inherit; transition: all 0.25s;
-            position: relative; overflow: hidden;
-        }
-        .hot-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(255,120,40,0.15); }
-        .hot-card::before {
-            content: "HOT"; position: absolute; top: 10px; right: 10px;
-            font-size: 0.65rem; background: #ff6b35; color: white;
-            padding: 0.15rem 0.6rem; border-radius: 12px; font-weight: 700;
-        }
-        .hot-card .hot-emoji { font-size: 2.2rem; margin-bottom: 0.4rem; }
-        .hot-card .hot-name { font-size: 1rem; font-weight: 700; color: #2d264a; }
-        .hot-card .hot-desc { font-size: 0.8rem; color: #4a3f62; margin-top: 0.3rem; }
+    .section-head {
+      margin: 0 0 20px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .section-kicker { display: block; margin-bottom: 6px; color: var(--blue); font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    h2 { margin: 0; font: 600 clamp(28px, 4vw, 48px)/1 "Iowan Old Style", "Songti SC", serif; letter-spacing: -.035em; }
+    .result-count { color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .tool-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .tool-card {
+      position: relative;
+      min-height: 265px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,253,248,.78);
+      overflow: hidden;
+      transition: transform .22s, box-shadow .22s, border-color .22s;
+      animation: card-in .45s both;
+    }
+    .tool-card:hover { transform: translateY(-5px); border-color: var(--ink); box-shadow: 7px 7px 0 var(--ink); }
+    @keyframes card-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .tool-mark {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 15px;
+      background: var(--accent, var(--acid));
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: -.03em;
+    }
+    .fav-btn {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      font-size: 17px;
+    }
+    .fav-btn:hover, .fav-btn.active { border-color: var(--ink); background: var(--acid); }
+    .tool-card h3 { margin: 18px 0 7px; font-size: 20px; letter-spacing: -.025em; }
+    .tool-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .tag-row { margin-top: auto; padding-top: 18px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { padding: 5px 8px; border-radius: 6px; background: var(--paper-deep); color: #504c44; font-size: 10px; font-weight: 700; }
+    .tag.new { background: var(--coral); color: #fff; }
+    .card-footer { margin-top: 14px; padding-top: 13px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); }
+    .verified { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 10px; }
+    .verified::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #47a447; box-shadow: 0 0 0 3px rgba(71,164,71,.12); }
+    .visit-link { text-decoration: none; font-size: 12px; font-weight: 900; }
+    .visit-link:hover { color: var(--blue); }
+    .empty-state { grid-column: 1 / -1; padding: 80px 20px; border: 1px dashed var(--muted); border-radius: var(--radius); text-align: center; }
+    .empty-state strong { display: block; font: 600 28px/1.2 "Iowan Old Style", "Songti SC", serif; }
+    .empty-state span { display: block; margin-top: 10px; color: var(--muted); }
 
-        .category-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.8rem;
-        }
-        .category-entry {
-            background: rgba(255,255,255,0.6); border: 1px solid rgba(139,92,246,0.1);
-            border-radius: 16px; padding: 1rem; text-align: center; cursor: pointer; transition: all 0.2s;
-        }
-        .category-entry:hover { transform: translateY(-3px); border-color: #8b5cf6; box-shadow: 0 8px 20px rgba(139,92,246,0.1); }
-        .category-entry .cat-emoji { font-size: 1.8rem; }
-        .category-entry .cat-name { font-size: 0.8rem; font-weight: 600; margin-top: 0.3rem; color: #4a4570; }
-        .category-entry .cat-count { font-size: 0.7rem; color: #9c97b8; }
+    .site-footer { margin-top: 70px; padding: 28px 0; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--ink); color: var(--muted); font-size: 11px; }
+    .site-footer strong { color: var(--ink); }
 
-        .card-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.2rem;
-        }
-        .card {
-            background: rgba(255,255,255,0.75); backdrop-filter: blur(16px);
-            border-radius: 24px; padding: 1.6rem 1.2rem 1.4rem;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.05); transition: all 0.25s;
-            display: flex; flex-direction: column; align-items: center; text-align: center;
-            border: 1px solid rgba(255,255,255,0.9); text-decoration: none; color: inherit; position: relative;
-        }
-        .card:hover {
-            transform: translateY(-6px); box-shadow: 0 22px 40px rgba(107,33,168,0.12);
-            background: rgba(255,255,255,0.85); border-color: #c7b9f0;
-        }
-        .card .logo-emoji { font-size: 3rem; margin-bottom: 0.5rem; }
-        .card .tool-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; color: #1e1b2e; }
-        .card .tool-desc { font-size: 0.85rem; color: #4a3f62; margin-bottom: 0.8rem; flex: 1; }
-        .card .feature-tag {
-            background: #f0ebff; color: #5c3eb8; padding: 0.2rem 0.8rem;
-            border-radius: 30px; font-size: 0.75rem; font-weight: 600;
-        }
-        .card .visit-hint { font-size: 0.7rem; color: #8b5cf6; margin-top: 0.5rem; opacity: 0; transition: opacity 0.2s; }
-        .card:hover .visit-hint { opacity: 1; }
+    .toast { position: fixed; left: 50%; bottom: 28px; z-index: 140; transform: translate(-50%, 20px); padding: 11px 16px; border: 1px solid var(--ink); border-radius: 999px; background: var(--ink); color: var(--paper); opacity: 0; pointer-events: none; transition: .22s; font-size: 12px; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    .mobile-nav { display: none; }
 
-        .config-overlay {
-            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 1000;
-            align-items: center; justify-content: center;
-        }
-        .config-overlay.show { display: flex; }
-        .config-panel {
-            background: white; border-radius: 24px; padding: 2rem;
-            max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-        }
-        .config-title { font-size: 1.3rem; font-weight: 700; color: #2d264a; margin-bottom: 0.5rem; }
-        .config-section { margin-bottom: 1.2rem; }
-        .config-section-title {
-            font-size: 0.95rem; font-weight: 700; color: #4a4570;
-            margin-bottom: 0.6rem; padding-left: 0.5rem; border-left: 3px solid #8b5cf6;
-        }
-        .config-item {
-            display: flex; align-items: center; gap: 0.6rem;
-            padding: 0.5rem 0.6rem; border-radius: 10px; margin-bottom: 0.3rem;
-        }
-        .config-item:hover { background: #f9f7fe; }
-        .config-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: #8b5cf6; cursor: pointer; }
-        .config-item .item-info { flex: 1; display: flex; align-items: center; gap: 0.4rem; }
-        .config-item .item-emoji { font-size: 1.1rem; }
-        .config-item .item-name { font-size: 0.85rem; font-weight: 600; color: #2d264a; }
-        .config-item .item-balance-input {
-            width: 80px; padding: 0.3rem 0.5rem; border: 1px solid #e0d6f0;
-            border-radius: 8px; font-size: 0.8rem; text-align: right;
-        }
-        .config-item .item-balance-input:focus { outline: none; border-color: #8b5cf6; }
-        .config-footer {
-            display: flex; justify-content: flex-end; gap: 0.6rem;
-            margin-top: 1.2rem; padding-top: 0.8rem; border-top: 1px solid #f0ebff;
-        }
-        .config-btn {
-            padding: 0.5rem 1.3rem; border-radius: 12px; font-size: 0.85rem;
-            font-weight: 600; cursor: pointer; border: none; transition: all 0.2s;
-        }
-        .config-btn.cancel { background: #f0ebff; color: #5c3eb8; }
-        .config-btn.save { background: #8b5cf6; color: white; }
-        .config-btn:hover { transform: translateY(-1px); }
+    @media (max-width: 1080px) {
+      .header-main { grid-template-columns: 180px 1fr auto; }
+      .brand-copy small { display: none; }
+      .tool-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .quick-strip { grid-template-columns: repeat(4, 1fr); }
+      .quick-action:first-of-type { border-left: 0; }
+    }
 
-        .balance-card {
-            background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(59,130,246,0.05));
-            border: 1px solid rgba(139,92,246,0.15);
-            border-radius: 16px; padding: 0.8rem; text-align: center; text-decoration: none; color: inherit; display: block; cursor: pointer; transition: all 0.2s;
-        }
-        a.balance-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139,92,246,0.12); }
-        div.balance-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139,92,246,0.12); }
-        .balance-card .p-emoji { font-size: 1.5rem; }
-        .balance-card .p-name { font-size: 0.8rem; color: #4a4570; font-weight: 600; margin: 0.3rem 0; }
-        .balance-card .p-balance { font-size: 1.3rem; font-weight: 800; color: #6c3ce0; }
-        .balance-card .p-unit { font-size: 0.7rem; color: #9c97b8; margin-top: 0.2rem; margin-bottom: 0.15rem; }
-        .balance-card .card-link-hint {
-            font-size: 0.65rem; color: #8b5cf6; opacity: 0.65; margin-top: 0.15rem;
-            transition: opacity 0.2s;
-        }
-        a.balance-card:hover .card-link-hint { opacity: 1; }
+    @media (max-width: 760px) {
+      body { padding-bottom: calc(74px + env(safe-area-inset-bottom)); }
+      .site-header { position: sticky; }
+      .header-main { min-height: auto; padding: 11px 16px 9px; grid-template-columns: 1fr auto; gap: 10px; }
+      .brand-mark { width: 34px; height: 34px; }
+      .brand-copy strong { font-size: 14px; }
+      .search-wrap { grid-column: 1 / -1; grid-row: 2; }
+      .search-input { height: 43px; box-shadow: 2px 2px 0 var(--ink); }
+      .search-key { display: none; }
+      .header-actions .icon-btn { width: 36px; min-height: 36px; }
+      .category-rail { padding: 0 16px 10px; }
+      main { padding: 0 16px 80px; }
+      #home, #directory { scroll-margin-top: 170px; }
+      .hero { min-height: auto; padding: 28px 0 24px; display: block; }
+      h1 { max-width: 350px; font-size: clamp(42px, 12vw, 56px); }
+      .hero-note { padding-top: 20px; max-width: 100%; }
+      .hero-note p { font-size: 14px; }
+      .quick-strip { margin-top: 14px; grid-template-columns: repeat(2, 1fr); border-radius: 18px; }
+      .quick-action { min-height: 78px; padding: 14px; border-top: 1px solid var(--line); }
+      .quick-action:nth-of-type(odd) { border-left: 0; }
+      .section-head { align-items: flex-start; }
+      .tool-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .tool-card { min-height: 250px; padding: 14px; border-radius: 17px; }
+      .tool-mark { width: 43px; height: 43px; border-radius: 12px; font-size: 10px; }
+      .tool-card h3 { margin-top: 14px; font-size: 17px; }
+      .tool-card p { font-size: 11px; line-height: 1.55; }
+      .tag-row { padding-top: 13px; }
+      .tag { font-size: 9px; }
+      .site-footer { display: block; line-height: 1.8; }
+      .mobile-nav {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: calc(10px + env(safe-area-inset-bottom));
+        z-index: 60;
+        padding: 7px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border: 1px solid var(--ink);
+        border-radius: 18px;
+        background: rgba(23,23,19,.94);
+        backdrop-filter: blur(14px);
+      }
+      .mobile-nav button { padding: 7px 3px; border: 0; border-radius: 12px; background: transparent; color: var(--paper); font-size: 10px; cursor: pointer; }
+      .mobile-nav button span { display: block; margin-bottom: 2px; font-size: 17px; }
+      .mobile-nav button:active { background: rgba(255,255,255,.12); }
+    }
 
-        .empty-msg { text-align: center; color: #9c97b8; padding: 1.5rem; font-size: 0.9rem; }
-        .back-btn {
-            display: inline-block; margin-bottom: 1rem; padding: 0.4rem 1rem;
-            border-radius: 20px; background: #f0ebff; color: #5c3eb8; font-weight: 600;
-            font-size: 0.85rem; cursor: pointer; border: none;
-        }
-        .back-btn:hover { background: #e0d6ff; }
-        .footer { text-align: center; color: #9c97b8; font-size: 0.85rem; padding: 2rem 0 1rem; }
+    @media (max-width: 410px) {
+      .tool-grid { grid-template-columns: 1fr; }
+      .tool-card { min-height: 230px; }
+    }
 
-        @media (max-width: 768px) {
-            .nav-links { gap: 0.1rem; }
-            .nav-link { padding: 0.3rem 0.5rem; font-size: 0.7rem; }
-            .nav-logo { font-size: 1rem; }
-            .card-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.8rem; }
-            .card { padding: 1.2rem 0.8rem; }
-        }
-    </style>
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="nav-bar">
-        <span class="nav-logo" onclick="showHome()">✨ AI 工具集</span>
-        <div class="nav-links" id="navLinks"></div>
-        <div class="nav-actions">
-            <button class="nav-btn" onclick="openConfig()">⚙️ 余额</button>
-        </div>
-    </nav>
-
-    <div class="config-overlay" id="configOverlay">
-        <div class="config-panel">
-            <div class="config-title">⚙️ 配置 API 余额</div>
-            <div style="font-size:0.85rem;color:#7c7a9a;margin-bottom:1.2rem;">勾选你充值的平台，填入余额，仅保存在本地浏览器。</div>
-            <div id="configList"></div>
-            <div class="config-footer">
-                <button class="config-btn cancel" onclick="closeConfig()">取消</button>
-                <button class="config-btn save" onclick="saveConfig()">保存</button>
-            </div>
-        </div>
+  <header class="site-header">
+    <div class="header-main">
+      <button class="brand" type="button" data-action="home" aria-label="返回首页">
+        <span class="brand-mark">G</span>
+        <span class="brand-copy"><strong>Gina AI Atlas</strong><small>AI 工具导航</small></span>
+      </button>
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="searchInput" class="search-input" type="search" placeholder="搜索工具、用途或标签…" autocomplete="off" aria-label="搜索 AI 工具">
+        <span class="search-key">⌘ K</span>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" type="button" data-action="favorites" aria-label="查看收藏">☆</button>
+      </div>
     </div>
+    <nav id="categoryRail" class="category-rail" aria-label="工具分类"></nav>
+  </header>
 
-    <div class="container" id="mainContent"></div>
-    <div class="footer">🌐 点击卡片直达官网 · 探索 AI 的无限乐趣</div>
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <span class="eyebrow">2026.09 · 已清洗</span>
+        <h1>AI 工具导航</h1>
+      </div>
+      <div class="hero-note">
+        <p>常用 AI 网站合集，按用途分类整理。支持直接搜索和筛选，点击卡片即可访问官网。</p>
+        <div class="hero-meta">
+          <span class="meta-pill"><strong id="heroCount">0</strong> 个精选工具</span>
+          <span class="meta-pill">10 个使用场景</span>
+          <span class="meta-pill">本地收藏，不上传</span>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        var toolsData = {"ai聊天": {"emoji": "🤖", "name": "AI 聊天助手", "items": [{"name": "ChatGPT", "emoji": "🧠", "desc": "OpenAI旗舰助手，GPT-4o支持多模态对话、代码生成，完全免费。", "feature": "行业标杆", "link": "https://chatgpt.com", "hot": true}, {"name": "Claude", "emoji": "🧪", "desc": "Anthropic出品，编程与长文本处理标杆，免费版使用Sonnet 4.5模型。", "feature": "编程·长文本", "link": "https://claude.ai"}, {"name": "DeepSeek", "emoji": "🐋", "desc": "国产开源大模型标杆，完全免费，逻辑推理与代码生成能力突出。", "feature": "完全免费·推理强", "link": "https://chat.deepseek.com", "hot": true}, {"name": "Gemini", "emoji": "💎", "desc": "Google最强大模型，原生多模态，2.5 Pro免费额度慷慨。", "feature": "多模态·免费", "link": "https://gemini.google.com"}, {"name": "通义千问", "emoji": "☁️", "desc": "阿里出品，多模态理解、文档解析、PPT生成一站搞定。", "feature": "阿里生态", "link": "https://tongyi.aliyun.com"}, {"name": "智谱清言", "emoji": "🎓", "desc": "GLM-5模型，128K上下文、研究模式、PPT模式，学术党首选。", "feature": "学术·研究模式", "link": "https://chatglm.cn"}, {"name": "文心一言", "emoji": "🔵", "desc": "百度ERNIE大模型，中文理解出色，免费使用。", "feature": "中文出色", "link": "https://yiyan.baidu.com"}, {"name": "豆包", "emoji": "🫘", "desc": "字节跳动出品，拟人化聊天，免费无限制使用。", "feature": "免费无限制", "link": "https://doubao.com"}, {"name": "Kimi", "emoji": "🌙", "desc": "月之暗面出品，200万字超长上下文，文件阅读神器。", "feature": "超长上下文", "link": "https://kimi.moonshot.cn"}, {"name": "Perplexity", "emoji": "🔍", "desc": "AI搜索鼻祖，实时联网+引源，免费版完全够用。", "feature": "联网搜索", "link": "https://perplexity.ai"}, {"name": "KULAAI", "emoji": "⚡", "desc": "免费聚合GPT/Claude/Gemini/DeepSeek，无需翻墙一站畅用。", "feature": "模型聚合", "link": "https://t.kulaai.cn"}, {"name": "讯飞星火", "emoji": "🔥", "desc": "科大讯飞出品，深度推理+代码+多模态，教育场景出色。", "feature": "教育场景", "link": "https://xinghuo.xfyun.cn"}]}, "ai绘画": {"emoji": "🎨", "name": "AI 绘画与图像", "items": [{"name": "即梦AI", "emoji": "✨", "desc": "字节跳动旗下AI绘画，文生图/图生图，写实画风惊艳。", "feature": "写实惊艳", "link": "https://jimeng.jianying.com"}, {"name": "文心一格", "emoji": "🖼️", "desc": "百度文心系列AI绘画工具，国风与二次元风格尤其出色。", "feature": "国风二次元", "link": "https://yige.baidu.com"}, {"name": "LiblibAI", "emoji": "🦙", "desc": "Stable Diffusion在线平台，海量模型，国产化界面友好。", "feature": "模型海量", "link": "https://liblib.ai"}, {"name": "a1.art", "emoji": "🅰️", "desc": "AI艺术生成器，支持多种风格滤镜，简洁好用。", "feature": "风格多样", "link": "https://a1.art"}, {"name": "Nano Banana", "emoji": "🍌", "desc": "免费AI修图与生成，简单易上手。", "feature": "免费修图", "link": "https://nanobanana.com"}, {"name": "Perchance AI", "emoji": "🎲", "desc": "免费文生图，无需注册，多种生成器。", "feature": "无需注册", "link": "https://perchance.org/ai-text-to-image"}, {"name": "通义万相", "emoji": "🖌️", "desc": "阿里出品AI绘图，文生图/图生图/创意设计。", "feature": "阿里出品", "link": "https://tongyi.aliyun.com/wanxiang"}]}, "ai视频": {"emoji": "🎬", "name": "AI 视频创作", "items": [{"name": "可灵AI", "emoji": "🎥", "desc": "快手出品，文生视频/图生视频，效果震撼，免费使用。", "feature": "效果震撼", "link": "https://kling.kuaishou.com", "hot": true}, {"name": "Pika", "emoji": "🐰", "desc": "AI视频生成先驱，风格多样，操作简单。", "feature": "操作简单", "link": "https://pika.art"}, {"name": "CapCut Web", "emoji": "✂️", "desc": "字节跳动的剪映网页版，AI自动剪辑/字幕/转场。", "feature": "剪辑神器", "link": "https://capcut.cn"}, {"name": "Fogsight 雾象", "emoji": "🌫️", "desc": "AI视频理解与生成，支持视频对话。", "feature": "视频理解", "link": "https://fogsight.ai"}]}, "ai音乐": {"emoji": "🎵", "name": "AI 音乐创作", "items": [{"name": "MusicCreator AI", "emoji": "🎶", "desc": "文字描述生成音乐，支持多种风格和情绪。", "feature": "文生音乐", "link": "https://musiccreator.ai"}, {"name": "海绵音乐", "emoji": "🧽", "desc": "国内AI音乐创作平台，中文歌词生成歌曲。", "feature": "中文歌词", "link": "https://mianmusic.com"}, {"name": "aimusic", "emoji": "🎹", "desc": "AI音乐生成器，支持多种乐器与编曲。", "feature": "多种乐器", "link": "https://aimusic.so"}, {"name": "网易云音乐AI写歌", "emoji": "🎤", "desc": "网易云音乐内置AI，帮你一键写词作曲。", "feature": "写词作曲", "link": "https://music.163.com"}]}, "ai编程": {"emoji": "💻", "name": "AI 编程开发", "items": [{"name": "Coze 扣子", "emoji": "🧩", "desc": "字节跳动AI开发平台，自然语言生成网页/APP/智能体/工作流。", "feature": "全栈开发", "link": "https://www.coze.cn/", "hot": true}, {"name": "Bolt.new", "emoji": "⚡", "desc": "浏览器内AI全栈开发，输入需求直接生成可部署应用。", "feature": "一键部署", "link": "https://bolt.new"}, {"name": "v0.dev", "emoji": "🔼", "desc": "Vercel出品，自然语言生成React/Next.js UI组件。", "feature": "组件生成", "link": "https://v0.dev"}, {"name": "Lovable", "emoji": "❤️", "desc": "AI全栈应用生成器，从想法到上线。", "feature": "想法→上线", "link": "https://lovable.dev"}, {"name": "Replit", "emoji": "🔄", "desc": "在线IDE+AI Agent，免费云端开发环境。", "feature": "云端IDE", "link": "https://replit.com"}, {"name": "DeepSite", "emoji": "🏗️", "desc": "基于DeepSeek的开源AI前端开发，自然语言生成网页。", "feature": "Vibe Coding", "link": "https://deepsite.ai"}, {"name": "豆包MarsCode", "emoji": "🪐", "desc": "字节跳动AI编程助手，支持VSCode/JetBrains插件。", "feature": "IDE插件", "link": "https://marscode.cn"}, {"name": "CodeGeeX", "emoji": "🦎", "desc": "清华智谱出品，开源AI编程助手。", "feature": "开源免费", "link": "https://codegeex.cn"}, {"name": "阿里Qoder", "emoji": "🐧", "desc": "阿里通义灵码，AI编码助手，免费高效。", "feature": "通义生态", "link": "https://tongyi.aliyun.com/lingma"}, {"name": "AnyCoder", "emoji": "🛠️", "desc": "AI编程助手，支持多语言代码生成。", "feature": "多语言", "link": "https://anycoder.ai"}]}, "ai办公": {"emoji": "📊", "name": "AI 办公效率", "items": [{"name": "Gamma", "emoji": "📽️", "desc": "全球最火AI做PPT，输入主题一键生成精美演示文稿。", "feature": "PPT神器", "link": "https://gamma.app", "hot": true}, {"name": "AiPPT", "emoji": "📑", "desc": "国内流行的AI PPT平台，中文模板丰富，每天有免费次数。", "feature": "国内·免费", "link": "https://aippt.cn", "hot": true}, {"name": "美图AI PPT", "emoji": "💄", "desc": "美图出品，设计感极强，免费生成PPT和海报。", "feature": "设计感强", "link": "https://x-design.meitu.com"}, {"name": "ChatPPT", "emoji": "💬", "desc": "对话式生成PPT，支持导出.pptx，办公族神器。", "feature": "对话生成", "link": "https://chatppt.com"}, {"name": "笔灵AI", "emoji": "🖊️", "desc": "国产免费AI写作，公文/论文/小红书文案，模板超多。", "feature": "公文·论文", "link": "https://ibiling.cn"}, {"name": "秘塔AI搜索", "emoji": "🔎", "desc": "国内最火AI搜索，无广告结构化回答，学术/办公神器。", "feature": "无广告搜索", "link": "https://metaso.cn", "hot": true}, {"name": "天工AI搜索", "emoji": "🌤️", "desc": "昆仑万维出品，AI对话+搜索一体化。", "feature": "搜索+对话", "link": "https://tiangong.cn"}, {"name": "飞书智能伙伴", "emoji": "🐦", "desc": "飞书内置AI，文档总结、会议纪要、表格分析。", "feature": "文档·会议", "link": "https://feishu.cn"}, {"name": "Notion AI", "emoji": "📝", "desc": "最强笔记+AI，写作/整理/总结，个人版免费。", "feature": "笔记AI", "link": "https://notion.so"}, {"name": "GitMind", "emoji": "🧠", "desc": "AI生成思维导图，学习/会议/项目梳理神器。", "feature": "思维导图", "link": "https://gitmind.cn"}]}, "ai娱乐": {"emoji": "🎮", "name": "AI 娱乐与社交", "items": [{"name": "Character.AI", "emoji": "🎭", "desc": "对话AI角色鼻祖，海量虚拟人格，沉浸式聊天。", "feature": "角色聊天", "link": "https://character.ai"}, {"name": "Janitor AI", "emoji": "🧹", "desc": "深度定制的沉浸式聊天，可设定性格与世界观。", "feature": "深度定制", "link": "https://janitorai.com"}, {"name": "PolyBuzz.ai", "emoji": "🐝", "desc": "超过2000万个独特角色，随机翻牌开启对话。", "feature": "海量随机", "link": "https://polybuzz.ai"}, {"name": "Gening AI", "emoji": "💚", "desc": "即开即聊虚拟伙伴，无需注册立刻体验。", "feature": "无需注册", "link": "https://gening.ai"}, {"name": "Glow-AI", "emoji": "🌟", "desc": "与虚拟AI智能体的情感连接与社交陪伴。", "feature": "情感陪伴", "link": "https://glow-ai.com"}, {"name": "AI Dungeon", "emoji": "🏰", "desc": "经典AI文字冒险，任何离谱想法都能编织成故事。", "feature": "无限剧情", "link": "https://play.aidungeon.com"}, {"name": "v5games", "emoji": "🕹️", "desc": "角色扮演文字冒险，动漫、科幻等多元宇宙。", "feature": "多风格冒险", "link": "https://v5games.ai"}, {"name": "DeepGamer", "emoji": "🧭", "desc": "AI游戏主持人聊天动态塑造独一无二的世界。", "feature": "AI主持人", "link": "https://deepgamer.ai"}, {"name": "彩云小梦", "emoji": "✍️", "desc": "故事小说续写，独特的情节树功能脑洞极大。", "feature": "情节树续写", "link": "https://if.caiyunai.com"}, {"name": "LlamaGen.AI", "emoji": "📖", "desc": "AI创作漫画、动漫风格的艺术作品与故事。", "feature": "漫画生成", "link": "https://llamagen.ai"}]}, "ai设计": {"emoji": "🎯", "name": "AI 设计与创意", "items": [{"name": "即时AI", "emoji": "⚡", "desc": "即时设计旗下，输入文字生成UI设计稿，免费使用。", "feature": "UI生成", "link": "https://js.design"}, {"name": "堆友AI", "emoji": "📦", "desc": "阿里出品，3D素材生成+AI设计，设计师必备。", "feature": "3D素材", "link": "https://d.design"}, {"name": "Google Stitch", "emoji": "🧵", "desc": "AI将想法直接转化为UI设计稿，无需下载付费。", "feature": "UI设计稿", "link": ""}, {"name": "Skywork AI", "emoji": "☀️", "desc": "昆仑万维出品，AI语音合成与设计创作。", "feature": "语音合成", "link": "https://skywork.ai"}]}, "api平台": {"emoji": "🔌", "name": "API 开发者平台", "items": [{"name": "阿里云百炼", "emoji": "🔮", "desc": "通义千问Qwen系列模型，兼容OpenAI格式，新用户送token额度。", "feature": "Qwen·送额度", "link": "https://bailian.console.aliyun.com"}, {"name": "DeepSeek", "emoji": "🐋", "desc": "推理能力顶尖，价格极低，R1推理模型性价比之王。", "feature": "超强性价比", "link": "https://platform.deepseek.com"}, {"name": "硅基流动", "emoji": "⚡", "desc": "一站式API聚合平台，主流模型超低价调用。", "feature": "聚合低价", "link": "https://siliconflow.cn"}, {"name": "智谱AI", "emoji": "🔷", "desc": "GLM-4系列模型，能力均衡，多模态API支持。", "feature": "GLM·多模态", "link": "https://open.bigmodel.cn"}, {"name": "月之暗面", "emoji": "🌙", "desc": "Kimi母公司，超长上下文200万字，文本处理强。", "feature": "超长上下文", "link": "https://platform.moonshot.cn"}, {"name": "百度千帆", "emoji": "🔵", "desc": "文心大模型ERNIE系列，中文理解强，企业级稳定。", "feature": "文心ERNIE", "link": "https://qianfan.cloud.baidu.com"}, {"name": "豆包·火山引擎", "emoji": "🫘", "desc": "字节跳动旗下，价格极具竞争力。", "feature": "字节·低价", "link": "https://www.volcengine.com/product/doubao"}, {"name": "腾讯混元", "emoji": "🟢", "desc": "腾讯自研大模型，与微信生态深度整合。", "feature": "微信生态", "link": "https://cloud.tencent.com/product/hunyuan"}, {"name": "MiniMax", "emoji": "🎭", "desc": "海螺AI母公司，语音合成与多模态能力突出。", "feature": "语音·多模态", "link": "https://platform.minimaxi.com"}, {"name": "零一万物", "emoji": "0️⃣", "desc": "李开复创办，Yi系列开源模型，中英双语优秀。", "feature": "开源·双语", "link": "https://platform.lingyiwanwu.com"}, {"name": "OpenAI API", "emoji": "🧠", "desc": "GPT-4o/o3系列，综合能力最强，行业标杆。", "feature": "行业标杆", "link": "https://platform.openai.com"}, {"name": "Anthropic", "emoji": "🟠", "desc": "Claude系列模型，代码与长文本能力顶尖。", "feature": "代码·长文本", "link": "https://console.anthropic.com"}, {"name": "Google AI Studio", "emoji": "💎", "desc": "Gemini系列模型，多模态强，免费额度慷慨。", "feature": "免费额度大", "link": "https://aistudio.google.com"}, {"name": "OpenRouter", "emoji": "🔀", "desc": "一个API调用所有主流模型，自动比价路由。", "feature": "统一入口", "link": "https://openrouter.ai"}, {"name": "Groq", "emoji": "⚡", "desc": "自研LPU芯片推理，速度极快。", "feature": "极速推理", "link": "https://console.groq.com"}, {"name": "Mistral AI", "emoji": "🇫🇷", "desc": "欧洲最强AI团队，开源+商业并行，性价比高。", "feature": "欧洲之星", "link": "https://console.mistral.ai"}, {"name": "Cohere", "emoji": "🔗", "desc": "专注企业级NLP，Rerank和Embedding业界领先。", "feature": "RAG专家", "link": "https://dashboard.cohere.com"}, {"name": "Together AI", "emoji": "🤝", "desc": "开源模型推理平台，Llama/Qwen一键部署。", "feature": "开源推理", "link": "https://api.together.ai"}]}, "aiAgent": {"emoji": "🤖", "name": "AI Agent 智能体", "items": [{"name": "Manus", "emoji": "🤖", "desc": "2025最火国产Agent，自主规划执行任务，简历筛选/旅行规划/股票分析全能。", "feature": "自主执行", "link": "https://manus.im", "hot": true}, {"name": "Dify", "emoji": "🛠️", "desc": "国产开源LLMOps平台，可视化搭建AI Agent/工作流/RAG应用，技术首选。", "feature": "开源·可视化", "link": "https://dify.ai"}, {"name": "扣子 Coze", "emoji": "🧩", "desc": "字节跳动Agent平台，零代码搭建智能体，插件/知识库/工作流丰富。", "feature": "零代码·丰富插件", "link": "https://www.coze.cn", "hot": true}, {"name": "百度智能体", "emoji": "🔵", "desc": "百度Agent开发平台，文心大模型驱动，一键发布多端。", "feature": "文心驱动", "link": "https://agents.baidu.com"}, {"name": "智谱AutoGLM", "emoji": "📱", "desc": "智谱AI推出的手机操作Agent，能自主操控APP完成复杂任务。", "feature": "手机操控", "link": "https://autoglm.chatglm.cn"}, {"name": "Claude Code", "emoji": "🧪", "desc": "Anthropic终端Agent，直接读代码库/执行命令/修改文件，程序员最爱。", "feature": "终端Agent", "link": "https://claude.ai/code"}, {"name": "Codex CLI", "emoji": "💻", "desc": "OpenAI开源终端Agent，规划-执行-验证完整循环，本地代码库全能。", "feature": "开源·本地", "link": "https://github.com/openai/codex"}, {"name": "Devin", "emoji": "👨‍💻", "desc": "全球首个AI软件工程师，完整开发-测试-部署闭环，企业级Agent。", "feature": "首个AI工程师", "link": "https://devin.ai"}, {"name": "Cursor Agent", "emoji": "🎯", "desc": "爆款AI IDE内置Agent模式，自主理解项目/编辑多文件/终端操作。", "feature": "IDE内置", "link": "https://cursor.com"}, {"name": "Windsurf", "emoji": "🌊", "desc": "Codeium出品，Cascade模式Agent自动分析代码库并自主编程。", "feature": "自动编程", "link": "https://codeium.com/windsurf"}]}};
-        var hotPicks = [{"name": "Gamma", "emoji": "📽️", "desc": "AI一键生成精美PPT，2025全球最火办公神器", "link": "https://gamma.app"}, {"name": "DeepSeek", "emoji": "🐋", "desc": "R1推理模型免费使用，编程/数学/长文本全能", "link": "https://chat.deepseek.com"}, {"name": "Manus", "emoji": "🤖", "desc": "2025最火国产Agent，自主完成任务，打工人救星", "link": "https://manus.im"}, {"name": "秘塔AI搜索", "emoji": "🔎", "desc": "国内最火AI搜索，无广告版本，学术办公必备", "link": "https://metaso.cn"}, {"name": "AiPPT", "emoji": "📑", "desc": "中文AI PPT平台，每天免费次数，模板丰富", "link": "https://aippt.cn"}, {"name": "可灵AI", "emoji": "🎥", "desc": "快手出品AI视频生成，效果震撼，免费使用", "link": "https://kling.kuaishou.com"}];
+    <section class="quick-strip" aria-label="快速筛选">
+      <button class="quick-action" type="button" data-preset="new"><span>01 / NEW</span><strong>最近更新</strong></button>
+      <button class="quick-action" type="button" data-preset="china"><span>02 / ACCESS</span><strong>国内可用</strong></button>
+      <button class="quick-action" type="button" data-preset="free"><span>03 / START</span><strong>可免费体验</strong></button>
+      <button class="quick-action" type="button" data-preset="favorites"><span>04 / SAVED</span><strong>我的收藏</strong></button>
+    </section>
 
-        var apiBalancePlatforms = [
-            {id:"bailian",name:"百炼",emoji:"🔮",group:"国内",link:"https://bailian.console.aliyun.com"},
-            {id:"deepseek",name:"DeepSeek",emoji:"🐋",group:"国内",link:"https://platform.deepseek.com"},
-            {id:"siliconflow",name:"硅基流动",emoji:"⚡",group:"国内",link:"https://siliconflow.cn"},
-            {id:"zhipu",name:"智谱AI",emoji:"🔷",group:"国内",link:"https://open.bigmodel.cn"},
-            {id:"moonshot",name:"月之暗面",emoji:"🌙",group:"国内",link:"https://platform.moonshot.cn"},
-            {id:"qianfan",name:"百度千帆",emoji:"🔵",group:"国内",link:"https://qianfan.cloud.baidu.com"},
-            {id:"doubao",name:"豆包",emoji:"🫘",group:"国内",link:"https://console.volcengine.com"},
-            {id:"hunyuan",name:"腾讯混元",emoji:"🟢",group:"国内",link:"https://cloud.tencent.com/product/hunyuan"},
-            {id:"minimax",name:"MiniMax",emoji:"🎭",group:"国内",link:"https://platform.minimaxi.com"},
-            {id:"yi",name:"零一万物",emoji:"0️⃣",group:"国内",link:"https://platform.lingyiwanwu.com"},
-            {id:"openai",name:"OpenAI",emoji:"🧠",group:"国际",link:"https://platform.openai.com/account/billing"},
-            {id:"anthropic",name:"Anthropic",emoji:"🟠",group:"国际",link:"https://console.anthropic.com"},
-            {id:"google",name:"Google AI",emoji:"💎",group:"国际",link:"https://aistudio.google.com"},
-            {id:"openrouter",name:"OpenRouter",emoji:"🔀",group:"国际",link:"https://openrouter.ai"},
-            {id:"groq",name:"Groq",emoji:"⚡",group:"国际",link:"https://console.groq.com"},
-            {id:"mistral",name:"Mistral",emoji:"🇫🇷",group:"国际",link:"https://console.mistral.ai"},
-            {id:"cohere",name:"Cohere",emoji:"🔗",group:"国际",link:"https://dashboard.cohere.com"},
-            {id:"together",name:"Together AI",emoji:"🤝",group:"国际",link:"https://api.together.ai"}
-        ];
+    <section id="directory" aria-labelledby="directoryTitle">
+      <div class="section-head">
+        <div><span class="section-kicker">工具目录</span><h2 id="directoryTitle">全部工具</h2></div>
+        <div class="result-count" id="resultCount" aria-live="polite"></div>
+      </div>
+      <div id="toolGrid" class="tool-grid"></div>
+    </section>
 
-        var BAL_KEY = "wab", DASH_KEY = "wav", CAT_KEY = "wac";
+    <footer class="site-footer">
+      <div><strong>Gina AI Atlas</strong> · AI 工具网站合集</div>
+      <div>链接核验：2026-09-03 · 定价与可用性以官网为准</div>
+    </footer>
+  </main>
 
-        function cats(){return Object.keys(toolsData);}
+  <nav class="mobile-nav" aria-label="手机快捷导航">
+    <button type="button" data-action="home"><span>⌂</span>首页</button>
+    <button type="button" data-preset="new"><span>✦</span>最新</button>
+    <button type="button" data-action="favorites"><span>☆</span>收藏</button>
+  </nav>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-        function buildNav(){
-            var h='<button class="nav-link active" onclick="showHome()">🏠 首页</button>';
-            cats().forEach(function(k){
-                var c=toolsData[k];
-                h+='<button class="nav-link" onclick="showCategory(\x27'+k+'\x27)">'+c.emoji+' '+c.name+'</button>';
-            });
-            document.getElementById("navLinks").innerHTML=h;
-        }
-        function setNav(i){
-            document.querySelectorAll(".nav-link").forEach(function(e,j){e.classList.toggle("active",j===i);});
-        }
+  <script>
+    const CATEGORY = {
+      all: "全部", assistant: "AI 助手", research: "搜索研究", image: "图像设计",
+      video: "视频创作", audio: "音乐语音", coding: "编程开发", office: "办公演示",
+      agent: "AI Agent", api: "API 平台", social: "娱乐陪伴"
+    };
 
-        function showHome(){
-            setNav(0);
-            var h="";
-            h+='<section class="home-section"><div class="api-dashboard" id="apiDashboard"><div class="dashboard-header"><div class="dashboard-title">📊 API 余额看板</div><button class="nav-btn" onclick="toggleDash()" style="font-size:0.75rem;">👁️ 隐藏</button></div><div id="dashboardContent"></div></div></section>';
+    const TOOLS = [
+      {id:"chatgpt",name:"ChatGPT",mark:"GPT",cat:"assistant",desc:"通用型 AI 助手，覆盖写作、分析、图像、代码与多步骤任务。",url:"https://chatgpt.com/",tags:["多模态","通用"],region:"global",price:"free",featured:true,color:"#d8ff4f"},
+      {id:"claude",name:"Claude",mark:"CL",cat:"assistant",desc:"擅长长文本、严谨写作与复杂代码工作的通用助手。",url:"https://claude.ai/",tags:["长文本","代码"],region:"global",price:"free",featured:true,color:"#efc9a8"},
+      {id:"gemini",name:"Gemini",mark:"GE",cat:"assistant",desc:"Google 多模态助手，与搜索及 Workspace 生态结合紧密。",url:"https://gemini.google.com/",tags:["多模态","Google"],region:"global",price:"free",featured:true,color:"#b9d7ff"},
+      {id:"deepseek",name:"DeepSeek",mark:"DS",cat:"assistant",desc:"面向推理、写作和编程的中文友好型大模型助手。",url:"https://chat.deepseek.com/",tags:["推理","中文"],region:"china",price:"free",featured:true,color:"#b9c8ff"},
+      {id:"doubao",name:"豆包",mark:"豆",cat:"assistant",desc:"字节跳动推出的多模态助手，适合日常问答和内容创作。",url:"https://www.doubao.com/",tags:["多模态","日常"],region:"china",price:"free",color:"#d7edff"},
+      {id:"kimi",name:"Kimi",mark:"K",cat:"assistant",desc:"支持文件阅读、联网检索与长上下文处理的智能助手。",url:"https://www.kimi.com/",tags:["文件","长文本"],region:"china",price:"free",color:"#cfcbff"},
+      {id:"qwen",name:"通义",mark:"QW",cat:"assistant",desc:"阿里巴巴旗下通用 AI 助手，覆盖文本、视觉与创作。",url:"https://tongyi.aliyun.com/",tags:["阿里生态","中文"],region:"china",price:"free",color:"#dfc8ff"},
+      {id:"yuanbao",name:"腾讯元宝",mark:"元",cat:"assistant",desc:"腾讯推出的 AI 助手，连接内容、文档与腾讯生态。",url:"https://yuanbao.tencent.com/",tags:["腾讯生态","文档"],region:"china",price:"free",isNew:true,color:"#bdf0df"},
+      {id:"chatglm",name:"智谱清言",mark:"GLM",cat:"assistant",desc:"智谱推出的对话助手，支持推理、文件和多模态任务。",url:"https://chatglm.cn/",tags:["推理","中文"],region:"china",price:"free",color:"#bde3ff"},
+      {id:"xinghuo",name:"讯飞星火",mark:"讯",cat:"assistant",desc:"科大讯飞大模型助手，覆盖教育、办公与语音场景。",url:"https://xinghuo.xfyun.cn/",tags:["教育","语音"],region:"china",price:"free",color:"#ffccb8"},
 
-            h+='<section class="home-section"><div class="section-title">🔥 本周热门推荐 <span style="font-size:0.8rem;color:#9c97b8;font-weight:400;">— 2025.06</span></div><div class="scroll-row">';
-            hotPicks.forEach(function(p){
-                h+='<a href="'+p.link+'" target="_blank" rel="noopener" class="hot-card"><div class="hot-emoji">'+p.emoji+'</div><div class="hot-name">'+p.name+'</div><div class="hot-desc">'+p.desc+'</div></a>';
-            });
-            h+='</div></section>';
+      {id:"gemini-notebook",name:"Gemini Notebook",mark:"NB",cat:"research",desc:"原 NotebookLM，围绕自有资料进行研究、学习与内容整理。",url:"https://notebook.google.com/",tags:["资料研究","引用"],region:"global",price:"free",isNew:true,featured:true,color:"#8ed3ff"},
+      {id:"perplexity",name:"Perplexity",mark:"PX",cat:"research",desc:"提供来源引用的 AI 搜索与深度研究工具。",url:"https://www.perplexity.ai/",tags:["联网搜索","引用"],region:"global",price:"free",color:"#b8ebe3"},
+      {id:"metaso",name:"秘塔 AI 搜索",mark:"秘",cat:"research",desc:"面向中文用户的结构化 AI 搜索与研究入口。",url:"https://metaso.cn/",tags:["中文搜索","研究"],region:"china",price:"free",featured:true,color:"#c8d3ff"},
+      {id:"ima",name:"ima",mark:"ima",cat:"research",desc:"腾讯推出的知识库与智能工作台，适合资料收集和问答。",url:"https://ima.qq.com/",tags:["知识库","资料"],region:"china",price:"free",isNew:true,color:"#d5edff"},
+      {id:"tiangong",name:"天工 AI",mark:"天",cat:"research",desc:"融合搜索、阅读与内容创作的中文 AI 工作台。",url:"https://www.tiangong.cn/",tags:["搜索","写作"],region:"china",price:"free",color:"#ffe49e"},
 
-            h+='<section class="home-section"><div class="section-title">⭐ 常用工具精选</div><div class="card-grid">'+buildCards(getFeatured())+'</div></section>';
+      {id:"jimeng",name:"即梦 AI",mark:"即",cat:"image",desc:"字节跳动旗下图像与视频创作平台，中文提示词友好。",url:"https://jimeng.jianying.com/",tags:["文生图","中文"],region:"china",price:"free",featured:true,color:"#ffc5df"},
+      {id:"midjourney",name:"Midjourney",mark:"MJ",cat:"image",desc:"风格表现力突出的 AI 图像生成与创意探索工具。",url:"https://www.midjourney.com/",tags:["艺术创作","图像"],region:"global",price:"paid",color:"#d8d8d8"},
+      {id:"firefly",name:"Adobe Firefly",mark:"FF",cat:"image",desc:"Adobe 的生成式创意平台，适合商业设计和素材编辑。",url:"https://firefly.adobe.com/",tags:["商业设计","Adobe"],region:"global",price:"free",color:"#ffb39e"},
+      {id:"canva",name:"Canva AI",mark:"CA",cat:"image",desc:"在 Canva 中生成图片、版式和社交媒体视觉内容。",url:"https://www.canva.com/ai/",tags:["平面设计","模板"],region:"global",price:"free",color:"#9fe9e0"},
+      {id:"figma-make",name:"Figma Make",mark:"FM",cat:"image",desc:"从提示词和设计上下文生成交互界面与原型。",url:"https://www.figma.com/make/",tags:["UI","原型"],region:"global",price:"free",isNew:true,color:"#ffb6a7"},
+      {id:"liblib",name:"LiblibAI",mark:"LIB",cat:"image",desc:"国内 AI 图像创作社区，提供模型、工作流和在线生成。",url:"https://www.liblib.art/",tags:["模型社区","工作流"],region:"china",price:"free",color:"#c7f09d"},
+      {id:"recraft",name:"Recraft",mark:"RC",cat:"image",desc:"擅长品牌视觉、图标、矢量图和一致风格生成。",url:"https://www.recraft.ai/",tags:["矢量图","品牌"],region:"global",price:"free",color:"#ffc85f"},
+      {id:"ideogram",name:"Ideogram",mark:"ID",cat:"image",desc:"文字排版表现突出的图像生成工具，适合海报和标识。",url:"https://ideogram.ai/",tags:["文字生成","海报"],region:"global",price:"free",color:"#d7d2ff"},
+      {id:"wan",name:"通义万相",mark:"万",cat:"image",desc:"阿里旗下视觉创作平台，支持图像、视频与创意设计。",url:"https://tongyi.aliyun.com/wan/",tags:["图像","视频"],region:"china",price:"free",color:"#d7c5ff"},
+      {id:"a1",name:"a1.art",mark:"A1",cat:"image",desc:"提供大量风格应用和轻量化 AI 图像生成玩法。",url:"https://a1.art/",tags:["风格模板","社区"],region:"global",price:"free",color:"#ffeab5"},
 
-            h+='<section class="home-section"><div class="section-title">📂 全部分类</div><div class="category-grid">';
-            cats().forEach(function(k){
-                var c=toolsData[k];
-                h+='<div class="category-entry" onclick="showCategory(\x27'+k+'\x27)"><div class="cat-emoji">'+c.emoji+'</div><div class="cat-name">'+c.name+'</div><div class="cat-count">'+c.items.length+' 个工具</div></div>';
-            });
-            h+='</div></section>';
+      {id:"kling",name:"可灵 AI",mark:"KL",cat:"video",desc:"快手旗下 AI 视频平台，支持文生视频和图生视频。",url:"https://klingai.com/app/",tags:["文生视频","中文"],region:"china",price:"free",featured:true,color:"#d7ff4f"},
+      {id:"runway",name:"Runway",mark:"RW",cat:"video",desc:"面向创作者的生成式视频、视觉特效和编辑平台。",url:"https://runway.com/",tags:["视频生成","编辑"],region:"global",price:"free",color:"#c9c9c9"},
+      {id:"higgsfield",name:"Higgsfield",mark:"HF",cat:"video",desc:"强调镜头语言、角色和广告创意的 AI 视频平台。",url:"https://higgsfield.ai/",tags:["运镜","广告"],region:"global",price:"free",isNew:true,color:"#ffb968"},
+      {id:"hailuo",name:"海螺 AI",mark:"海",cat:"video",desc:"MiniMax 旗下视频生成平台，支持中文创作流程。",url:"https://hailuoai.video/",tags:["视频生成","中文"],region:"china",price:"free",color:"#9cddff"},
+      {id:"vidu",name:"Vidu",mark:"VD",cat:"video",desc:"支持图像、文字与参考主体驱动的视频生成。",url:"https://www.vidu.com/",tags:["主体一致","视频"],region:"china",price:"free",color:"#cfc3ff"},
+      {id:"pika",name:"Pika",mark:"PK",cat:"video",desc:"操作轻量的 AI 视频生成和趣味特效工具。",url:"https://pika.art/",tags:["视频特效","易用"],region:"global",price:"free",color:"#ffe47e"},
+      {id:"luma",name:"Luma Dream Machine",mark:"LU",cat:"video",desc:"Luma 的视频生成工具，注重运动和镜头表现。",url:"https://lumalabs.ai/app",tags:["镜头运动","视频"],region:"global",price:"free",color:"#ccd7ff"},
+      {id:"capcut",name:"剪映 / CapCut",mark:"剪",cat:"video",desc:"覆盖剪辑、字幕、数字人和 AI 辅助创作的综合工具。",url:"https://www.jianying.com/",tags:["剪辑","字幕"],region:"china",price:"free",color:"#e7e7e7"},
 
-            document.getElementById("mainContent").innerHTML=h;
-            renderDashboard();
-            localStorage.setItem(CAT_KEY,"home");
-        }
+      {id:"suno",name:"Suno",mark:"SU",cat:"audio",desc:"从提示词和歌词生成完整歌曲的 AI 音乐平台。",url:"https://suno.com/",tags:["歌曲生成","音乐"],region:"global",price:"free",featured:true,color:"#ffca70"},
+      {id:"udio",name:"Udio",mark:"UD",cat:"audio",desc:"面向音乐创作者的歌曲生成、延展与重混工具。",url:"https://www.udio.com/",tags:["音乐生成","重混"],region:"global",price:"free",color:"#e7c5ff"},
+      {id:"elevenlabs",name:"ElevenLabs",mark:"11",cat:"audio",desc:"高质量语音合成、配音、音效和语音 Agent 平台。",url:"https://elevenlabs.io/",tags:["语音合成","配音"],region:"global",price:"free",color:"#d3d3d3"},
+      {id:"mianmusic",name:"海绵音乐",mark:"海",cat:"audio",desc:"中文歌曲创作平台，支持写词、作曲和演唱生成。",url:"https://mianmusic.com/",tags:["中文歌曲","作曲"],region:"china",price:"free",color:"#b3e6ff"},
+      {id:"musiccreator",name:"MusicCreator AI",mark:"MC",cat:"audio",desc:"根据文字描述生成不同风格与情绪的音乐。",url:"https://www.musiccreator.ai/",tags:["音乐生成","情绪"],region:"global",price:"free",color:"#ffc2d9"},
 
-        function getFeatured(){
-            var f=[];
-            cats().forEach(function(k){
-                var it=toolsData[k].items;
-                it.forEach(function(i){if(i.hot)f.push(i);});
-                if(it.length>0&&it.filter(function(i){return i.hot;}).length===0){
-                    f.push(it[0]);if(it.length>1)f.push(it[1]);
-                }
-            });
-            return f.slice(0,24);
-        }
+      {id:"codex",name:"Codex App",mark:"CX",cat:"coding",desc:"OpenAI 的桌面编程 Agent，可并行处理代码、终端和长期任务。",url:"https://openai.com/codex/",tags:["编程 Agent","桌面端"],region:"global",price:"paid",featured:true,isNew:true,color:"#d8ff4f"},
+      {id:"claude-code",name:"Claude Code",mark:"CC",cat:"coding",desc:"在终端和 IDE 中理解代码库、执行命令并完成开发任务。",url:"https://claude.com/product/claude-code",tags:["终端 Agent","代码库"],region:"global",price:"paid",color:"#efc9a8"},
+      {id:"cursor",name:"Cursor",mark:"CU",cat:"coding",desc:"以 AI Agent 为核心的代码编辑器，支持跨文件开发。",url:"https://cursor.com/",tags:["AI IDE","Agent"],region:"global",price:"free",color:"#c9c9c9"},
+      {id:"copilot",name:"GitHub Copilot",mark:"GH",cat:"coding",desc:"GitHub 的 AI 编程工具，覆盖 IDE、终端和代码审查。",url:"https://github.com/features/copilot",tags:["GitHub","IDE"],region:"global",price:"free",color:"#c6e6ff"},
+      {id:"antigravity",name:"Google Antigravity",mark:"AG",cat:"coding",desc:"Google 面向 Agent 开发与多任务协作的编程工作台。",url:"https://antigravity.google/",tags:["Agent IDE","Google"],region:"global",price:"free",isNew:true,color:"#aecbff"},
+      {id:"trae",name:"TRAE",mark:"TR",cat:"coding",desc:"字节跳动旗下 AI IDE，支持中文环境和 Agent 开发。",url:"https://www.trae.ai/",tags:["AI IDE","中文"],region:"china",price:"free",color:"#a6e5ff"},
+      {id:"qoder",name:"Qoder",mark:"QD",cat:"coding",desc:"阿里推出的 Agent 编程平台，强调代码库理解和任务执行。",url:"https://qoder.com/",tags:["Agent IDE","代码库"],region:"global",price:"free",isNew:true,color:"#d1c1ff"},
+      {id:"replit",name:"Replit",mark:"RE",cat:"coding",desc:"浏览器内开发环境，支持 AI Agent 构建和部署应用。",url:"https://replit.com/",tags:["云端 IDE","部署"],region:"global",price:"free",color:"#ffc293"},
+      {id:"v0",name:"v0",mark:"v0",cat:"coding",desc:"Vercel 推出的 AI 应用构建工具，擅长网页界面与部署。",url:"https://v0.app/",tags:["前端","Vercel"],region:"global",price:"free",color:"#dadada"},
+      {id:"lovable",name:"Lovable",mark:"LV",cat:"coding",desc:"通过对话生成全栈 Web 应用并连接常用服务。",url:"https://lovable.dev/",tags:["全栈应用","低代码"],region:"global",price:"free",color:"#ffb2c0"},
+      {id:"bolt",name:"Bolt",mark:"BT",cat:"coding",desc:"在浏览器中从需求生成、运行和部署 Web 应用。",url:"https://bolt.new/",tags:["全栈应用","浏览器"],region:"global",price:"free",color:"#c5d4ff"},
+      {id:"codegeex",name:"CodeGeeX",mark:"CG",cat:"coding",desc:"智谱推出的开源多语言代码助手和 IDE 插件。",url:"https://codegeex.cn/",tags:["开源","IDE 插件"],region:"china",price:"free",color:"#bce3d4"},
 
-        function showCategory(k){
-            var c=toolsData[k];if(!c)return;
-            setNav(cats().indexOf(k)+1);
-            document.getElementById("mainContent").innerHTML=
-                '<button class="back-btn" onclick="showHome()">← 返回首页</button>'+
-                '<div class="section-title">'+c.emoji+' '+c.name+' <span style="font-size:0.8rem;color:#9c97b8;font-weight:400;">· '+c.items.length+' 个工具</span></div>'+
-                '<div class="card-grid">'+buildCards(c.items)+'</div>';
-            localStorage.setItem(CAT_KEY,k);
-        }
+      {id:"gamma",name:"Gamma",mark:"GA",cat:"office",desc:"快速生成演示文稿、网页和社交内容的 AI 工作台。",url:"https://gamma.app/",tags:["演示文稿","网页"],region:"global",price:"free",featured:true,color:"#d9c8ff"},
+      {id:"aippt",name:"AiPPT",mark:"PPT",cat:"office",desc:"面向中文办公场景的 AI 演示文稿生成和模板平台。",url:"https://www.aippt.cn/",tags:["中文 PPT","模板"],region:"china",price:"free",color:"#ffc98b"},
+      {id:"notion",name:"Notion AI",mark:"N",cat:"office",desc:"集成在 Notion 工作区中的写作、搜索和知识管理能力。",url:"https://www.notion.com/product/ai",tags:["笔记","知识库"],region:"global",price:"paid",color:"#dedede"},
+      {id:"feishu",name:"飞书智能伙伴",mark:"飞",cat:"office",desc:"连接文档、会议、知识库与协作流程的企业 AI 助手。",url:"https://www.feishu.cn/product/ai",tags:["会议","协作"],region:"china",price:"paid",color:"#b9deff"},
+      {id:"skywork",name:"Skywork",mark:"SW",cat:"office",desc:"用于文档、表格、演示和研究任务的 AI 办公平台。",url:"https://skywork.ai/",tags:["文档","研究"],region:"global",price:"free",color:"#b9ddff"},
+      {id:"gitmind",name:"GitMind",mark:"GM",cat:"office",desc:"支持 AI 生成思维导图、流程图和可视化笔记。",url:"https://gitmind.cn/",tags:["思维导图","可视化"],region:"china",price:"free",color:"#c8e8bc"},
 
-        function buildCards(items){
-            return items.map(function(t){
-                var has=t.link&&t.link.trim()!=="";
-                var tag=has?"a":"div";
-                var href=has?' href="'+t.link+'" target="_blank" rel="noopener"':'';
-                var vh=has?'<span class="visit-hint">🔗 访问官网</span>':'';
-                return "<"+tag+href+' class="card"><div class="logo-emoji">'+t.emoji+'</div><div class="tool-name">'+t.name+'</div><div class="tool-desc">'+t.desc+'</div><span class="feature-tag">'+t.feature+'</span>'+vh+"</"+tag+">";
-            }).join("");
-        }
+      {id:"manus",name:"Manus",mark:"MA",cat:"agent",desc:"能够规划并执行研究、网页操作和内容交付的通用 Agent。",url:"https://manus.im/",tags:["通用 Agent","任务执行"],region:"global",price:"free",featured:true,color:"#d8ff4f"},
+      {id:"dify",name:"Dify",mark:"DF",cat:"agent",desc:"开源的 LLM 应用开发平台，支持 Agent、工作流与 RAG。",url:"https://dify.ai/",tags:["开源","工作流"],region:"global",price:"free",color:"#c0d2ff"},
+      {id:"coze",name:"扣子 Coze",mark:"CZ",cat:"agent",desc:"零代码搭建智能体、工作流和知识库应用的平台。",url:"https://www.coze.cn/",tags:["零代码","工作流"],region:"china",price:"free",color:"#bfe4ff"},
+      {id:"genspark",name:"Genspark",mark:"GS",cat:"agent",desc:"面向研究、内容与执行任务的多 Agent 工作空间。",url:"https://www.genspark.ai/",tags:["多 Agent","研究"],region:"global",price:"free",isNew:true,color:"#ffc6eb"},
+      {id:"devin",name:"Devin",mark:"DV",cat:"agent",desc:"面向软件团队的自主编程 Agent，可执行完整开发任务。",url:"https://devin.ai/",tags:["软件工程","企业"],region:"global",price:"paid",color:"#b6d8ff"},
+      {id:"baidu-agent",name:"百度智能体",mark:"BA",cat:"agent",desc:"百度的智能体开发与发布平台，连接文心模型生态。",url:"https://agents.baidu.com/",tags:["智能体平台","百度"],region:"china",price:"free",color:"#c7d3ff"},
 
-        function ldCfg(){try{return JSON.parse(localStorage.getItem(BAL_KEY))||{};}catch(e){return{};}}
-        function svCfg(c){localStorage.setItem(BAL_KEY,JSON.stringify(c));}
+      {id:"openai-api",name:"OpenAI API",mark:"OA",cat:"api",desc:"OpenAI 模型与 Agent 能力的开发者平台。",url:"https://platform.openai.com/",tags:["模型 API","Agent"],region:"global",price:"paid",color:"#d8ff4f"},
+      {id:"anthropic-api",name:"Claude Platform",mark:"AN",cat:"api",desc:"Claude 模型、工具调用和企业级开发入口。",url:"https://platform.claude.com/",tags:["模型 API","长文本"],region:"global",price:"paid",color:"#efc9a8"},
+      {id:"google-ai",name:"Google AI Studio",mark:"AI",cat:"api",desc:"快速试用 Gemini 模型并生成 API 接入代码。",url:"https://aistudio.google.com/",tags:["Gemini","原型"],region:"global",price:"free",color:"#a9d3ff"},
+      {id:"deepseek-api",name:"DeepSeek API",mark:"DS",cat:"api",desc:"DeepSeek 模型的开发者控制台与 API 服务。",url:"https://platform.deepseek.com/",tags:["推理 API","代码"],region:"china",price:"paid",color:"#b7c8ff"},
+      {id:"bailian",name:"阿里云百炼",mark:"百",cat:"api",desc:"阿里云大模型与 Agent 应用开发平台。",url:"https://bailian.console.aliyun.com/",tags:["模型广场","工作流"],region:"china",price:"paid",color:"#d5c2ff"},
+      {id:"volcengine",name:"火山方舟",mark:"火",cat:"api",desc:"字节跳动火山引擎的大模型服务和应用开发平台。",url:"https://www.volcengine.com/product/ark",tags:["模型 API","豆包"],region:"china",price:"paid",color:"#bce4ff"},
+      {id:"bigmodel",name:"智谱开放平台",mark:"GLM",cat:"api",desc:"GLM 系列模型、Agent 与多模态能力的 API 平台。",url:"https://open.bigmodel.cn/",tags:["GLM","模型 API"],region:"china",price:"paid",color:"#b6dbff"},
+      {id:"kimi-api",name:"Kimi 开放平台",mark:"K",cat:"api",desc:"Kimi 模型和长上下文能力的开发者入口。",url:"https://platform.kimi.com/",tags:["长上下文","模型 API"],region:"china",price:"paid",color:"#d2c8ff"},
+      {id:"minimax-api",name:"MiniMax 开放平台",mark:"MM",cat:"api",desc:"提供文本、语音、音乐与视频模型能力。",url:"https://platform.minimaxi.com/",tags:["语音","多模态"],region:"china",price:"paid",color:"#ffc8d8"},
+      {id:"siliconflow",name:"硅基流动",mark:"SF",cat:"api",desc:"提供多种开源和商业模型的统一推理 API。",url:"https://siliconflow.cn/",tags:["模型聚合","推理"],region:"china",price:"paid",color:"#bdede5"},
+      {id:"openrouter",name:"OpenRouter",mark:"OR",cat:"api",desc:"通过统一接口调用多家模型，并提供路由和用量管理。",url:"https://openrouter.ai/",tags:["统一接口","模型聚合"],region:"global",price:"paid",color:"#d4d4d4"},
+      {id:"groq",name:"GroqCloud",mark:"GQ",cat:"api",desc:"以低延迟推理为特点的模型 API 平台。",url:"https://console.groq.com/",tags:["高速推理","API"],region:"global",price:"free",color:"#ffbe9d"},
+      {id:"together",name:"Together AI",mark:"TA",cat:"api",desc:"开源模型推理、微调与专用部署平台。",url:"https://api.together.ai/",tags:["开源模型","微调"],region:"global",price:"paid",color:"#c8ddff"},
 
-        function renderDashboard(){
-            var cfg=ldCfg(),ct=document.getElementById("dashboardContent");
-            if(!ct)return;
-            var en=apiBalancePlatforms.filter(function(p){return cfg[p.id]&&cfg[p.id].enabled;});
-            if(en.length===0){ct.innerHTML='<div class="empty-msg">点击导航栏「⚙️ 余额」添加你充值的 API 平台 💰</div>';return;}
-            var h='<div class="dashboard-grid">';
-            en.forEach(function(p){
-                var bal=cfg[p.id].balance||0,lo=(bal<10&&bal>0)?" low":"",u=p.group==="国际"?"USD":"元";
-                h+='<a class="balance-card" href="'+p.link+'" target="_blank" rel="noopener" title="点击跳转'+p.name+'充值/账单页"><div class="p-emoji">'+p.emoji+'</div><div class="p-name">'+p.name+'</div><div class="p-balance'+lo+'">'+bal.toFixed(2)+'</div><div class="p-unit">'+u+(lo?" · ⚠️余额不足":"")+'</div><div class="card-link-hint">↗️ 充值查账</div></a>';
-            });
-            h+='</div>';ct.innerHTML=h;
-        }
+      {id:"character",name:"Character.AI",mark:"CAI",cat:"social",desc:"创建和体验不同人格角色的 AI 对话社区。",url:"https://character.ai/",tags:["角色对话","社区"],region:"global",price:"free",color:"#d9d9d9"},
+      {id:"janitor",name:"Janitor AI",mark:"JA",cat:"social",desc:"支持角色设定和世界观定制的对话平台。",url:"https://janitorai.com/",tags:["角色设定","对话"],region:"global",price:"free",color:"#c3e8d5"},
+      {id:"aidungeon",name:"AI Dungeon",mark:"AD",cat:"social",desc:"由 AI 动态生成剧情的互动文字冒险游戏。",url:"https://play.aidungeon.com/",tags:["互动故事","游戏"],region:"global",price:"free",color:"#c4b3ff"},
+      {id:"xiaomeng",name:"彩云小梦",mark:"梦",cat:"social",desc:"中文故事续写与情节探索工具。",url:"https://www.xiaomengai.com/",tags:["故事续写","中文"],region:"china",price:"free",color:"#ffc6dd"},
+      {id:"llamagen",name:"LlamaGen.AI",mark:"LG",cat:"social",desc:"面向漫画、动漫与视觉故事创作的 AI 平台。",url:"https://llamagen.ai/",tags:["漫画","故事"],region:"global",price:"free",color:"#ffdf91"}
+    ];
 
-        function renderConfigList(){
-            var cfg=ldCfg(),ct=document.getElementById("configList"),h="";
-            ["国内","国际"].forEach(function(g){
-                var pl=apiBalancePlatforms.filter(function(p){return p.group===g;});
-                h+='<div class="config-section"><div class="config-section-title">'+g+'平台</div>';
-                pl.forEach(function(p){
-                    var s=cfg[p.id]||{};
-                    h+='<div class="config-item"><input type="checkbox" id="chk_'+p.id+'" '+(s.enabled?"checked":"")+'><div class="item-info"><span class="item-emoji">'+p.emoji+'</span><span class="item-name">'+p.name+'</span></div><input type="number" class="item-balance-input" id="bal_'+p.id+'" value="'+(s.balance||"")+'" placeholder="0.00" step="0.01" min="0"></div>';
-                });
-                h+='</div>';
-            });
-            ct.innerHTML=h;
-        }
+    const state = { category:"all", preset:"all", query:"", favorites:new Set(loadJSON("gina-favorites", [])) };
+    const grid = document.getElementById("toolGrid");
+    const title = document.getElementById("directoryTitle");
+    const resultCount = document.getElementById("resultCount");
+    const searchInput = document.getElementById("searchInput");
+    const rail = document.getElementById("categoryRail");
+    const toast = document.getElementById("toast");
+    let toastTimer;
 
-        window.openConfig=function(){renderConfigList();document.getElementById("configOverlay").classList.add("show");};
-        window.closeConfig=function(){document.getElementById("configOverlay").classList.remove("show");};
-        window.saveConfig=function(){
-            var cfg={};
+    function loadJSON(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } }
+    function saveJSON(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
+    function escapeHTML(value) { return String(value).replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char])); }
+    function showToast(message) { toast.textContent = message; toast.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 1800); }
 
-        window.toggleDash=function(){var c=document.getElementById("dashboardContent");if(!c)return;var h=c.style.display==="none";c.style.display=h?"":"none";localStorage.setItem(DASH_KEY,h?"1":"0");this.textContent=h?"👁️ 隐藏":"👁️ 显示";};
-            apiBalancePlatforms.forEach(function(p){
-                var ck=document.getElementById("chk_"+p.id),bl=document.getElementById("bal_"+p.id);
-                if(ck&&ck.checked)cfg[p.id]={enabled:true,balance:parseFloat(bl.value)||0};
-            });
-            svCfg(cfg);renderDashboard();closeConfig();
-        };
+    function renderCategories() {
+      rail.innerHTML = Object.entries(CATEGORY).map(([key, label]) => {
+        const count = key === "all" ? TOOLS.length : TOOLS.filter(tool => tool.cat === key).length;
+        return `<button class="filter-chip ${state.category === key ? "active" : ""}" type="button" data-category="${key}">${label} · ${count}</button>`;
+      }).join("");
+    }
 
-        document.getElementById("configOverlay").addEventListener("click",function(e){if(e.target===this)closeConfig();});
+    function getFilteredTools() {
+      const query = state.query.trim().toLowerCase();
+      return TOOLS.filter(tool => {
+        if (state.category !== "all" && tool.cat !== state.category) return false;
+        if (state.preset === "new" && !tool.isNew) return false;
+        if (state.preset === "china" && tool.region !== "china") return false;
+        if (state.preset === "free" && tool.price !== "free") return false;
+        if (state.preset === "favorites" && !state.favorites.has(tool.id)) return false;
+        if (!query) return true;
+        return [tool.name, tool.desc, CATEGORY[tool.cat], ...tool.tags].join(" ").toLowerCase().includes(query);
+      }).sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)) || Number(Boolean(b.isNew)) - Number(Boolean(a.isNew)) || a.name.localeCompare(b.name, "zh-CN"));
+    }
 
-        buildNav();
-        var sv=localStorage.getItem(CAT_KEY);
-        if(sv&&sv!=="home"&&toolsData[sv])showCategory(sv);else showHome();
+    function renderTools() {
+      const tools = getFilteredTools();
+      const presetTitles = {all:state.category === "all" ? "全部工具" : CATEGORY[state.category],new:"最近更新",china:"国内可用",free:"可免费体验",favorites:"我的收藏"};
+      title.textContent = state.query ? `搜索“${state.query}”` : presetTitles[state.preset];
+      resultCount.textContent = `${tools.length} / ${TOOLS.length} 个工具`;
+      if (!tools.length) {
+        grid.innerHTML = `<div class="empty-state"><strong>这里暂时是空的</strong><span>换个关键词或筛选条件试试。</span></div>`;
+        return;
+      }
+      grid.innerHTML = tools.map((tool, index) => `
+        <article class="tool-card" style="--accent:${tool.color};animation-delay:${Math.min(index, 11) * 28}ms">
+          <div class="card-top">
+            <div class="tool-mark" aria-hidden="true">${escapeHTML(tool.mark)}</div>
+            <button class="fav-btn ${state.favorites.has(tool.id) ? "active" : ""}" type="button" data-favorite="${tool.id}" aria-label="${state.favorites.has(tool.id) ? "取消收藏" : "收藏"}${escapeHTML(tool.name)}">${state.favorites.has(tool.id) ? "★" : "☆"}</button>
+          </div>
+          <h3>${escapeHTML(tool.name)}</h3>
+          <p>${escapeHTML(tool.desc)}</p>
+          <div class="tag-row">${tool.isNew ? '<span class="tag new">2026 新增</span>' : ""}${tool.tags.map(tag => `<span class="tag">${escapeHTML(tag)}</span>`).join("")}</div>
+          <div class="card-footer"><span class="verified">已核验</span><a class="visit-link" href="${tool.url}" target="_blank" rel="noopener noreferrer" data-visit="${tool.id}">访问官网 ↗</a></div>
+        </article>`).join("");
+    }
 
-        var dv=localStorage.getItem(DASH_KEY);
-        if(dv==="0")setTimeout(function(){var dc=document.getElementById("dashboardContent");if(dc)dc.style.display="none";},100);
-    </script>
+    function applyPreset(preset) {
+      state.preset = preset;
+      state.category = "all";
+      state.query = "";
+      searchInput.value = "";
+      renderCategories();
+      renderTools();
+      document.getElementById("directory").scrollIntoView({behavior:"smooth", block:"start"});
+    }
+
+    function toggleFavorite(id) {
+      if (state.favorites.has(id)) state.favorites.delete(id); else state.favorites.add(id);
+      saveJSON("gina-favorites", [...state.favorites]);
+      renderTools();
+      showToast(state.favorites.has(id) ? "已加入收藏" : "已取消收藏");
+    }
+
+    document.addEventListener("click", event => {
+      const categoryButton = event.target.closest("[data-category]");
+      const presetButton = event.target.closest("[data-preset]");
+      const favoriteButton = event.target.closest("[data-favorite]");
+      const actionButton = event.target.closest("[data-action]");
+      const visitLink = event.target.closest("[data-visit]");
+      if (categoryButton) { state.category = categoryButton.dataset.category; state.preset = "all"; renderCategories(); renderTools(); document.getElementById("directory").scrollIntoView({behavior:"smooth",block:"start"}); }
+      if (presetButton) applyPreset(presetButton.dataset.preset);
+      if (favoriteButton) toggleFavorite(favoriteButton.dataset.favorite);
+      if (visitLink) { const recent = loadJSON("gina-recent", []).filter(id => id !== visitLink.dataset.visit); recent.unshift(visitLink.dataset.visit); saveJSON("gina-recent", recent.slice(0, 12)); }
+      if (!actionButton) return;
+      if (actionButton.dataset.action === "home") { state.category="all"; state.preset="all"; state.query=""; searchInput.value=""; renderCategories(); renderTools(); document.getElementById("home").scrollIntoView({behavior:"smooth"}); }
+      if (actionButton.dataset.action === "favorites") applyPreset("favorites");
+    });
+
+    searchInput.addEventListener("input", () => { state.query = searchInput.value; state.category = "all"; state.preset = "all"; renderCategories(); renderTools(); });
+    document.addEventListener("keydown", event => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") { event.preventDefault(); searchInput.focus(); }
+    });
+
+    document.getElementById("heroCount").textContent = TOOLS.length;
+    renderCategories();
+    renderTools();
+  </script>
 </body>
 </html>

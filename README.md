@@ -1,131 +1,141 @@
-# 🌐 AI 工具导航站 (ginaai)
+# Gina AI Atlas
 
-一个轻量级 AI 工具导航网站，收录国内主流 AI 聊天、绘画、视频、音乐、编程、办公、娱乐、Agent 等工具，支持 API 余额管理与直达链接。
+一个轻量、无构建依赖的 AI 网站合集。收录经过清洗和分类的常用工具，支持搜索、筛选与收藏。
 
-> GitHub Pages: [https://gitanamomo.github.io/ginaai/](https://gitanamomo.github.io/ginaai/)
+- 在线地址：<https://gitanamomo.github.io/ginaai/>
+- 技术栈：单文件 HTML / CSS / JavaScript
+- 数据存储：浏览器 `localStorage`
+- 主要兼容：macOS Safari、iOS Safari 与现代桌面浏览器
 
----
+## 功能
 
-## 📁 文件结构
+- 80 个精选 AI 工具，覆盖 10 类使用场景
+- 全局关键词搜索与分类筛选
+- 最近更新、国内可用、免费体验快捷入口
+- 本地收藏和访问记录
+- 桌面、平板和手机端响应式布局
+- 键盘快捷键 `⌘ K` / `Ctrl K` 聚焦搜索
 
+## 文件结构
+
+```text
+ginaai/
+├── index.html                 # GitHub Pages 主页面，完整单文件应用
+├── aiwebsite.html             # 旧入口兼容页，自动跳转至 index.html
+├── scripts/
+│   └── check-links.mjs        # 外链批量核验脚本
+├── ginacode_ai_workbench_react.jsx
+├── README.md
+├── AGENTS.md
+├── .nojekyll
+└── .gitignore
 ```
-webai/
-├── aiwebsite.html              # 主源码（导航站核心）
-├── aiwebsite_backup.html       # 备份文件
-├── ginacode_ai_workbench_react.jsx  # React 工作台组件
-├── README.md                   # 本文档
-├── .gitignore                  # Git 忽略规则
-└── .nojekyll                   # GitHub Pages 禁用 Jekyll 处理
+
+## 本地运行
+
+无需安装依赖。可以直接打开 `index.html`，或启动本地静态服务器：
+
+```bash
+python3 -m http.server 8000
 ```
 
-## 🚀 运行方式
+然后访问 <http://127.0.0.1:8000/>。
 
-纯静态 HTML，无需构建。有两种打开方式：
+## 链接核验
 
-1. **本地打开**：双击 `aiwebsite.html` 或用浏览器打开
-2. **在线访问**：[https://gitanamomo.github.io/ginaai/](https://gitanamomo.github.io/ginaai/)
+```bash
+node scripts/check-links.mjs
+```
 
----
+输出状态：
 
-## 📝 最近改动 (2025.06.06)：方案 A — 余额卡片直达充值链接
+- `✓`：正常访问或正常跳转
+- `△`：网站返回 401 / 403 / 405 / 429，通常为登录或反爬限制，需人工确认
+- `?`：网络超时或当前环境无法判断
+- `✗`：明确的 HTTP 错误，应检查、替换或删除
 
-### 需求背景
+链接治理原则：只有 DNS 失效、明确 404/410 或产品官方确认停止服务时才直接移除；反爬、地区限制和偶发超时一律标记待核实，不凭一次请求误删。
 
-API 余额看板只能手动填数额，查余额需要自己打开各平台网页。方案 A 在每张余额卡片上加了充值/账单页的直达链接。
+## 数据与隐私
 
-### 改动位置（`aiwebsite.html`）
+页面不使用后端。以下数据只保存在当前浏览器：
 
-| 位置 | 说明 |
-|------|------|
-| CSS 179 行 | `.balance-card` 样式增加 `text-decoration: none; color: inherit; display: block; cursor: pointer`，使其适配 `<a>` 标签 |
-| CSS 181-182 行 | hover 拆为 `a.balance-card:hover` 和 `div.balance-card:hover` |
-| CSS 187-191 行 | 新增 `.card-link-hint` 和 `a.balance-card:hover .card-link-hint` 样式 |
-| JS ~249 行 | `apiBalancePlatforms` 数组，每个平台新增 `link` 字段（充值/账单页 URL） |
-| JS ~343 行 | `renderDashboard()` 把卡片从 `<div>` 改为 `<a>` 标签，`target="_blank"`，底部显示「↗️ 充值查账」 |
+| 数据 | localStorage key |
+|---|---|
+| 收藏 | `gina-favorites` |
+| 最近访问 | `gina-recent` |
 
-### 平台链接清单
+## 2026-09-03 改版记录
 
-| 平台 | link |
-|------|------|
-| 百炼 | https://bailian.console.aliyun.com |
-| DeepSeek | https://platform.deepseek.com |
-| 硅基流动 | https://siliconflow.cn |
-| 智谱AI | https://open.bigmodel.cn |
-| 月之暗面 | https://platform.moonshot.cn |
-| 百度千帆 | https://qianfan.cloud.baidu.com |
-| 豆包 | https://console.volcengine.com |
-| 腾讯混元 | https://cloud.tencent.com/product/hunyuan |
-| MiniMax | https://platform.minimaxi.com |
-| 零一万物 | https://platform.lingyiwanwu.com |
-| OpenAI | https://platform.openai.com/account/billing |
-| Anthropic | https://console.anthropic.com |
-| Google AI | https://aistudio.google.com |
-| OpenRouter | https://openrouter.ai |
-| Groq | https://console.groq.com |
-| Mistral | https://console.mistral.ai |
-| Cohere | https://dashboard.cohere.com |
-| Together AI | https://api.together.ai |
+### 页面与视觉
 
----
+- `index.html:45`：重做粘性顶栏、全局搜索和横向分类栏。
+- `index.html:151`：使用简洁的“AI 工具导航”首页介绍。
+- `index.html:224`：重做工具卡片网格、核验状态和收藏交互。
+- `index.html:292`：新增 iOS 手机端布局和三项底部导航。
+- `index.html:351`：重组页面语义结构和无障碍标签。
 
-## 🔄 后续修改指南
+### 工具数据
 
-### 添加新平台
+- `index.html:420`：将工具库整理为 80 个条目、10 个分类。
+- 删除失效入口：AutoGLM 旧域名、DeepGamer、v5games、美图 AI PPT 旧域名。
+- 移除无链接的 Google Stitch 卡片。
+- 更新 Kimi、Claude Platform、通义万相、LiblibAI、TRAE、Runway、可灵等迁移地址。
+- 新增 Gemini Notebook、Codex App、Google Antigravity、腾讯元宝、ima、Midjourney、Runway、Suno、Udio、ElevenLabs、Figma Make、Higgsfield、Genspark 等代表工具。
+- 清理“最火、永久免费、无限制、送额度”等易过期宣传文案，改为能力描述。
 
-在 `apiBalancePlatforms` 数组中按格式添加：
+### 功能
+
+- `index.html:526`：分类数量动态生成。
+- `index.html:546`：搜索、场景筛选、排序和卡片渲染统一处理。
+- `scripts/check-links.mjs`：新增无需依赖的批量外链检查工具。
+
+## 修改指南
+
+### 添加工具
+
+在 `index.html` 的 `TOOLS` 数组中添加对象：
 
 ```javascript
-{id:"newid", name:"平台名", emoji:"🔧", group:"国内", link:"https://..."}
+{
+  id: "unique-id",
+  name: "工具名",
+  mark: "缩写",
+  cat: "coding",
+  desc: "客观、耐久的能力描述。",
+  url: "https://official.example/",
+  tags: ["标签一", "标签二"],
+  region: "china",
+  price: "free",
+  isNew: true,
+  color: "#d8ff4f"
+}
 ```
 
-记得同时在 `toolsData` 和 `hotPicks` 中补充对应条目。
+要求：
 
-### 修改平台链接
+1. 只使用官方入口。
+2. `id` 必须唯一。
+3. 不写无法长期核实的绝对化宣传。
+4. 新增后运行 `node scripts/check-links.mjs`。
+5. 在桌面端和 390px 手机宽度下各检查一次。
 
-直接在 `apiBalancePlatforms` 数组中找到对应 `id`，改 `link` 值即可。
+### 修改分类
 
-### 改 CSS 样式
+分类名称位于 `CATEGORY`，工具通过 `cat` 字段归类。新增分类时，需要同时补充 `CATEGORY` 项和对应工具数据。
 
-所有样式在 `<style>` 标签内（文件前 ~190 行）。余额卡片相关类名：
-- `.balance-card` — 卡片容器
-- `.card-link-hint` — 充值链接提示文字
+### 修改配色
 
-### 同步 GitHub Pages
+全局颜色在 `:root` CSS 变量中维护。卡片图标块颜色由每个工具的 `color` 字段控制。
 
-`index.html` 是 GitHub Pages 入口文件。改了 `aiwebsite.html` 后需要同步：
+## 发布
+
+确认页面效果与链接结果后：
 
 ```bash
-cp aiwebsite.html index.html
-git add index.html aiwebsite.html
-git commit -m "更新说明"
-git push
+git add index.html aiwebsite.html README.md scripts/check-links.mjs
+git commit -m "feat: 重构 AI 工具导航并更新链接库"
+git push origin main
 ```
 
-### 本地预览
-
-直接双击 `aiwebsite.html` 浏览器打开即可。无需构建工具或服务器。
-
-### 数据说明
-
-- 余额配置存储在 `localStorage`（key: `wab`）
-- 看板隐藏状态存储在 `localStorage`（key: `wav`）
-- 分类导航状态存储在 `localStorage`（key: `wac`）
-
----
-
-## 🧹 清理脚本
-
-项目完成后退出/清理，可执行以下步骤：
-
-```bash
-# 1. 停止 Ollama（释放显存）
-ollama stop          # 停掉当前加载的模型
-# 或者
-launchctl unload ~/Library/LaunchAgents/com.ollama.ollama.plist  # 完全退出
-
-# 2. 停止本地开发服务器（如果有）
-kill -9 $(lsof -ti:3000,8080,5500,5173) 2>/dev/null
-
-# 3. 确认所有端口已释放
-lsof -i -P | grep LISTEN | grep -v rapportd
-```
+GitHub Pages 会从 `main` 分支自动更新。
