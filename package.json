@@ -1,0 +1,14 @@
+{
+  "name": "gina-ai-atlas",
+  "version": "1.0.0",
+  "description": "每日更新的 AI 工具信号台，按场景发现可靠的 AI 产品。",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "mkdir -p dist && cp -r index.html aiwebsite.html scripts dist/ 2>/dev/null || true"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

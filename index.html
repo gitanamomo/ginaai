@@ -1,220 +1,1170 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#081314">
-<meta name="description" content="Gina AI Atlas：每日更新的 AI 工具信号台，按场景发现可靠的 AI 产品。">
-<title>Gina AI Atlas · AI Signal Desk</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23d9ff57'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial' font-size='32' font-weight='900' fill='%23081314'%3EG%3C/text%3E%3C/svg%3E">
-<style>
-:root{--bg:#081314;--panel:#0d1d1f;--panel2:#112526;--line:rgba(219,255,224,.14);--text:#eff8ee;--muted:#91aaa3;--lime:#d9ff57;--cyan:#76e8d0;--orange:#ffb36b;--pink:#ff8ca4;--shadow:0 22px 70px rgba(0,0,0,.28);--r:20px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 0%,#173b3b 0,transparent 28%),radial-gradient(circle at 0% 30%,#102b2d 0,transparent 24%),var(--bg);color:var(--text);font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}button,input{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit}[hidden]{display:none!important}
-.site-header{position:sticky;top:0;z-index:20;background:rgba(8,19,20,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.header-main{max-width:1440px;margin:auto;min-height:78px;padding:14px 30px;display:grid;grid-template-columns:245px minmax(240px,620px) auto;align-items:center;gap:28px}.brand{display:flex;align-items:center;gap:12px;background:none;border:0;color:var(--text);cursor:pointer;text-align:left}.brand-mark{width:42px;height:42px;display:grid;place-items:center;background:var(--lime);color:var(--bg);border-radius:14px;font-weight:950;box-shadow:0 0 32px rgba(217,255,87,.18)}.brand-copy strong{display:block;font-size:15px;letter-spacing:.03em}.brand-copy small{display:block;color:var(--muted);font-size:10px;margin-top:3px;letter-spacing:.16em;text-transform:uppercase}.search-wrap{position:relative}.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--cyan);font-size:18px}.search-input{width:100%;height:46px;padding:0 54px 0 44px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.06);color:var(--text);outline:none}.search-input::placeholder{color:#76908a}.search-input:focus{border-color:var(--cyan);box-shadow:0 0 0 4px rgba(118,232,208,.1)}.search-key{position:absolute;right:13px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:11px;border:1px solid var(--line);padding:3px 7px;border-radius:7px}.header-actions{display:flex;justify-content:flex-end}.icon-btn{width:42px;height:42px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.05);color:var(--text);cursor:pointer;font-size:18px}.icon-btn:hover,.icon-btn.active{background:var(--lime);color:var(--bg);border-color:var(--lime)}.category-rail{max-width:1440px;margin:auto;padding:0 30px 13px;display:flex;gap:8px;overflow:auto;scrollbar-width:none}.category-rail::-webkit-scrollbar{display:none}.filter-chip{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);padding:8px 13px;font-size:11px;cursor:pointer}.filter-chip:hover,.filter-chip.active{background:var(--lime);border-color:var(--lime);color:var(--bg);font-weight:800}
-main{max-width:1440px;margin:auto;padding:0 30px 90px}.hero{padding:62px 0 36px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:36px;align-items:end}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--lime);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 6px rgba(217,255,87,.1)}h1{max-width:780px;margin:18px 0 20px;font-size:clamp(54px,8vw,112px);line-height:.88;letter-spacing:-.075em;font-weight:850}h1 em{font-style:normal;color:var(--lime)}.hero-copy{max-width:590px;color:var(--muted);font-size:16px;line-height:1.75}.hero-copy strong{color:var(--text)}.hero-panel{min-height:220px;padding:22px;border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(145deg,rgba(217,255,87,.09),rgba(118,232,208,.04));box-shadow:var(--shadow)}.panel-label{color:var(--cyan);font-size:10px;letter-spacing:.16em;font-weight:800}.signal-row{display:flex;justify-content:space-between;gap:15px;padding:18px 0;border-bottom:1px solid var(--line)}.signal-row:last-child{border-bottom:0}.signal-row strong{font-size:15px}.signal-row span{color:var(--muted);font-size:12px;text-align:right}.signal-dot{display:inline-block;width:7px;height:7px;background:var(--lime);border-radius:50%;margin-right:6px}
-.quick-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 54px}.quick-action{min-height:96px;padding:17px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.045);color:var(--text);cursor:pointer;text-align:left;transition:.2s}.quick-action:hover{transform:translateY(-3px);border-color:var(--lime);background:rgba(217,255,87,.08)}.quick-action span{display:block;color:var(--muted);font-size:10px;letter-spacing:.1em;margin-bottom:18px}.quick-action strong{font-size:15px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:20px}.section-kicker{display:block;color:var(--cyan);font-size:10px;letter-spacing:.17em;font-weight:800;margin-bottom:8px}.section-head h2{margin:0;font-size:clamp(28px,4vw,48px);letter-spacing:-.055em}.result-count{color:var(--muted);font-size:12px}.tool-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.tool-card{position:relative;min-height:270px;padding:18px;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:18px;background:linear-gradient(155deg,rgba(255,255,255,.065),rgba(255,255,255,.025));overflow:hidden;transition:.25s;animation:rise .45s both}.tool-card:after{content:"";position:absolute;width:100px;height:100px;right:-45px;bottom:-50px;border-radius:50%;background:var(--accent);opacity:.15;filter:blur(18px)}.tool-card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 18px 45px rgba(0,0,0,.26)}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}.card-top{display:flex;justify-content:space-between}.tool-mark{width:49px;height:49px;display:grid;place-items:center;border-radius:14px;background:var(--accent);color:var(--bg);font-weight:900;font-size:12px}.fav-btn{width:32px;height:32px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer;font-size:16px}.fav-btn:hover,.fav-btn.active{color:var(--bg);background:var(--lime);border-color:var(--lime)}.tool-card h3{margin:21px 0 8px;font-size:19px;letter-spacing:-.02em}.tool-card p{margin:0;color:var(--muted);font-size:12px;line-height:1.7}.tag-row{margin-top:auto;padding-top:17px;display:flex;flex-wrap:wrap;gap:6px}.tag{padding:5px 8px;border-radius:7px;background:rgba(255,255,255,.08);color:#b4c8c2;font-size:10px}.tag.new{color:var(--bg);background:var(--lime);font-weight:800}.card-footer{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.verified{color:var(--muted);font-size:10px}.verified:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--lime);margin-right:6px}.visit-link{font-size:11px;color:var(--cyan);text-decoration:none;font-weight:800}.empty-state{grid-column:1/-1;padding:80px 20px;text-align:center;border:1px dashed var(--line);border-radius:18px;color:var(--muted)}.empty-state strong{display:block;color:var(--text);font-size:26px;margin-bottom:9px}.site-footer{margin-top:70px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.site-footer strong{color:var(--text)}.toast{position:fixed;z-index:30;bottom:26px;left:50%;transform:translate(-50%,20px);padding:11px 16px;background:var(--lime);color:var(--bg);border-radius:999px;font-size:12px;font-weight:800;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}.mobile-nav{display:none}
-@media(max-width:1100px){.header-main{grid-template-columns:210px 1fr auto}.tool-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){body{padding-bottom:80px}.header-main{padding:12px 16px;grid-template-columns:1fr auto;gap:10px}.search-wrap{grid-column:1/-1;grid-row:2}.brand-copy small{display:none}.category-rail{padding:0 16px 12px}main{padding:0 16px 70px}.hero{display:block;padding:43px 0 27px}.hero h1{font-size:clamp(56px,16vw,86px)}.hero-copy{font-size:14px}.hero-panel{margin-top:28px}.quick-strip{grid-template-columns:repeat(2,1fr);margin-bottom:42px}.quick-action{min-height:82px;padding:14px}.quick-action span{margin-bottom:13px}.tool-grid{grid-template-columns:repeat(2,1fr);gap:10px}.tool-card{min-height:250px;padding:14px}.tool-card h3{font-size:16px}.tool-card p{font-size:11px}.site-footer{display:block;line-height:1.8}.site-footer div+div{margin-top:8px}.mobile-nav{position:fixed;display:grid;grid-template-columns:repeat(3,1fr);left:12px;right:12px;bottom:10px;z-index:20;padding:7px;border:1px solid var(--line);border-radius:17px;background:rgba(13,29,31,.94);backdrop-filter:blur(14px)}.mobile-nav button{padding:7px;border:0;border-radius:11px;background:transparent;color:var(--text);font-size:10px}.mobile-nav span{display:block;color:var(--lime);font-size:17px;margin-bottom:2px}}@media(max-width:410px){.tool-grid{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8fafc">
+  <meta name="description" content="Gina AI · 全球顶尖 AI 网站合集导航。苹果毛玻璃可爱风，精选 86 款全球顶级 Web AI 工具，一目了然直达官网。">
+  <title>Gina AI · 全球顶尖 AI 导航</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='20' fill='%23ffd1dc'/%3E%3Ctext x='32' y='47' text-anchor='middle' font-size='38'%3E👧🏻%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --glass-bg: rgba(255, 255, 255, 0.62);
+      --glass-card: rgba(255, 255, 255, 0.68);
+      --glass-hover: rgba(255, 255, 255, 0.88);
+      --glass-border: rgba(255, 255, 255, 0.82);
+      --glass-inner-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      --card-shadow: 0 10px 30px rgba(100, 116, 139, 0.07);
+      --card-hover-shadow: 0 18px 40px rgba(99, 102, 241, 0.16);
+      --text: #1e293b;
+      --text-sub: #64748b;
+      --text-muted: #94a3b8;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.12);
+      --pink: #ff6b8b;
+      --mint: #10b981;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "SF Pro Text", "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0f19;
+        --glass-bg: rgba(18, 24, 38, 0.72);
+        --glass-card: rgba(22, 30, 48, 0.68);
+        --glass-hover: rgba(30, 41, 64, 0.85);
+        --glass-border: rgba(255, 255, 255, 0.12);
+        --glass-inner-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        --card-hover-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+        --text: #f1f5f9;
+        --text-sub: #94a3b8;
+        --text-muted: #64748b;
+        --accent: #818cf8;
+        --accent-soft: rgba(129, 140, 248, 0.18);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Pastel Glow Spheres */
+    .ambient-glow-1 {
+      position: fixed;
+      top: -120px;
+      left: 5%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(255, 175, 189, 0.38), transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: -1;
+      animation: floatA 20s ease-in-out infinite alternate;
+    }
+    .ambient-glow-2 {
+      position: fixed;
+      top: 20%;
+      right: -80px;
+      width: 560px;
+      height: 560px;
+      background: radial-gradient(circle, rgba(162, 210, 255, 0.38), transparent 70%);
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: -1;
+      animation: floatB 24s ease-in-out infinite alternate;
+    }
+    .ambient-glow-3 {
+      position: fixed;
+      bottom: -150px;
+      left: 25%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(200, 247, 197, 0.35), transparent 70%);
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: -1;
+      animation: floatA 26s ease-in-out infinite alternate;
+    }
+    @keyframes floatA {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 50px) scale(1.1); }
+    }
+    @keyframes floatB {
+      0% { transform: translate(0, 0) scale(1.05); }
+      100% { transform: translate(-50px, 30px) scale(0.95); }
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; border: none; outline: none; background: none; }
+
+    /* Frosted Top Sticky Header */
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--glass-bg);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s ease;
+    }
+
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #ffd1dc, #ffb3c6);
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      line-height: 1;
+      box-shadow: 0 4px 14px rgba(255, 107, 139, 0.32), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .brand-area:hover .brand-icon {
+      transform: scale(1.15) rotate(-5deg);
+    }
+
+    .brand-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title-text {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    /* Apple Glass Search Bar */
+    .search-container {
+      flex: 1;
+      max-width: 480px;
+      position: relative;
+    }
+
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      padding: 0 16px;
+      height: 42px;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+    @media (prefers-color-scheme: dark) {
+      .search-input-wrap {
+        background: rgba(255, 255, 255, 0.07);
+      }
+    }
+
+    .search-input-wrap:focus-within {
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 0 0 3px var(--accent-soft), 0 4px 16px rgba(99, 102, 241, 0.12);
+      transform: scale(1.01);
+    }
+    @media (prefers-color-scheme: dark) {
+      .search-input-wrap:focus-within {
+        background: rgba(30, 41, 64, 0.95);
+      }
+    }
+
+    .search-icon {
+      font-size: 16px;
+      margin-right: 8px;
+      opacity: 0.65;
+    }
+
+    .search-input {
+      flex: 1;
+      font-size: 13.5px;
+      color: var(--text);
+    }
+    .search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-kbd {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-sub);
+      background: rgba(0, 0, 0, 0.05);
+      padding: 2px 6px;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    @media (prefers-color-scheme: dark) {
+      .search-kbd {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    /* Header Actions */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--glass-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .pill-btn:hover {
+      transform: translateY(-2px);
+      background: var(--glass-hover);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    .pill-btn.active {
+      background: #ffe4e6;
+      border-color: #fecdd3;
+      color: #e11d48;
+    }
+    @media (prefers-color-scheme: dark) {
+      .pill-btn.active {
+        background: rgba(244, 63, 94, 0.2);
+        border-color: rgba(244, 63, 94, 0.4);
+        color: #fda4af;
+      }
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 24px 70px;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* Category Scroll Dock */
+    .category-dock-wrap {
+      margin-bottom: 18px;
+    }
+
+    .category-dock {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 2px 10px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .category-dock::-webkit-scrollbar { display: none; }
+
+    .cat-pill {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--glass-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-sub);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      user-select: none;
+    }
+
+    .cat-pill:hover {
+      color: var(--text);
+      background: var(--glass-hover);
+      transform: translateY(-2px);
+    }
+
+    .cat-pill.active {
+      color: #ffffff;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* Filter Strip */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding: 10px 16px;
+      border-radius: 16px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-chip {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--text-sub);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: rgba(0, 0, 0, 0.03);
+    }
+    @media (prefers-color-scheme: dark) {
+      .filter-chip {
+        background: rgba(255, 255, 255, 0.06);
+      }
+    }
+
+    .filter-chip:hover {
+      color: var(--text);
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    .filter-chip.active {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .filter-chip.chip-vpn.active {
+      background: #ffe4e6;
+      color: #e11d48;
+      border-color: #f43f5e;
+    }
+    .filter-chip.chip-china.active {
+      background: #e6fcf5;
+      color: #059669;
+      border-color: #10b981;
+    }
+
+    .count-indicator {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Apple Glass Cards Grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
+      gap: 14px;
+    }
+
+    @media (min-width: 1200px) {
+      .tools-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 16px;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      .tools-grid {
+        grid-template-columns: repeat(7, 1fr);
+      }
+    }
+
+    /* Cute Frosted Glass Card */
+    .tool-card {
+      position: relative;
+      background: var(--glass-card);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      padding: 16px 10px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: var(--card-shadow), var(--glass-inner-shadow);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      background: var(--glass-hover);
+      box-shadow: var(--card-hover-shadow);
+      border-color: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Cute Squircle Emoji Logo */
+    .emoji-logo-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 17px;
+      background: var(--emoji-tint, linear-gradient(135deg, #f0fdf4, #dcfce7));
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .tool-card:hover .emoji-logo-box {
+      transform: scale(1.15) rotate(5deg);
+    }
+
+    /* Tool Name */
+    .tool-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text);
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Network Badge: VPN vs China Direct */
+    .network-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2.5px 7px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .network-badge.vpn {
+      background: rgba(244, 63, 94, 0.1);
+      color: #e11d48;
+      border: 1px solid rgba(244, 63, 94, 0.22);
+    }
+    @media (prefers-color-scheme: dark) {
+      .network-badge.vpn {
+        background: rgba(244, 63, 94, 0.2);
+        color: #fda4af;
+      }
+    }
+
+    .network-badge.china {
+      background: rgba(16, 185, 129, 0.1);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.22);
+    }
+    @media (prefers-color-scheme: dark) {
+      .network-badge.china {
+        background: rgba(16, 185, 129, 0.2);
+        color: #6ee7b7;
+      }
+    }
+
+    /* Favorite Heart Icon */
+    .fav-heart-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      cursor: pointer;
+      opacity: 0;
+      transform: scale(0.85);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      color: var(--text-sub);
+    }
+    @media (prefers-color-scheme: dark) {
+      .fav-heart-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    .tool-card:hover .fav-heart-btn,
+    .fav-heart-btn.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .fav-heart-btn:hover {
+      transform: scale(1.25);
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    .fav-heart-btn.active {
+      color: #ef4444;
+      opacity: 1;
+    }
+
+    /* Empty Box */
+    .empty-box {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--glass-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px dashed var(--glass-border);
+      border-radius: 24px;
+    }
+    .empty-box .empty-emoji { font-size: 40px; margin-bottom: 8px; }
+    .empty-box h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .empty-box p { font-size: 13px; color: var(--text-muted); }
+    .btn-reset {
+      margin-top: 14px;
+      display: inline-block;
+      padding: 7px 18px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 12.5px;
+      font-weight: 700;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    .btn-reset:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 20px 24px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translate(-50%, 20px);
+      background: var(--text);
+      color: var(--bg);
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 100;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding: 10px 16px;
+      }
+      .brand-sub { display: none; }
+      .search-container {
+        order: 3;
+        max-width: 100%;
+        width: 100%;
+      }
+      .search-kbd { display: none; }
+      main { padding: 14px 14px 50px; }
+      .tools-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .tool-card {
+        padding: 12px 6px 10px;
+        border-radius: 18px;
+      }
+      .emoji-logo-box {
+        width: 46px;
+        height: 46px;
+        font-size: 24px;
+        border-radius: 14px;
+        margin-bottom: 6px;
+      }
+      .tool-name {
+        font-size: 12px;
+        margin-bottom: 5px;
+      }
+      .network-badge {
+        font-size: 9px;
+        padding: 2px 5px;
+      }
+      .fav-heart-btn {
+        opacity: 0.8;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
 </head>
 <body>
-<header class="site-header"><div class="header-main"><button class="brand" data-action="home" type="button"><span class="brand-mark">G</span><span class="brand-copy"><strong>Gina AI Atlas</strong><small>AI SIGNAL DESK · 2026</small></span></button><div class="search-wrap"><span class="search-icon">⌕</span><input id="searchInput" class="search-input" type="search" placeholder="搜索工具、用途或标签…" autocomplete="off" aria-label="搜索 AI 工具"><span class="search-key">⌘ K</span></div><div class="header-actions"><button class="icon-btn" data-action="favorites" aria-label="查看收藏">☆</button></div></div><nav id="categoryRail" class="category-rail" aria-label="工具分类"></nav></header>
-<main><section class="hero" id="home"><div><span class="eyebrow">DAILY AI SIGNALS · 2026.09</span><h1>找到下一个<br><em>好用的 AI。</em></h1><p class="hero-copy">不追热词，只收录真正值得打开的工具。按<strong>搜索、创作、编程、办公和 Agent</strong> 分组，给你一张更快、更安静的 AI 工具地图。</p></div><aside class="hero-panel"><div class="panel-label">TODAY'S SIGNALS / 今日信号</div><div class="signal-row"><strong><i class="signal-dot"></i>Agent 正在成为入口</strong><span>Manus · Genspark<br>Coze · Dify</span></div><div class="signal-row"><strong><i class="signal-dot"></i>AI 编程进入协作模式</strong><span>Codex · Cursor<br>Antigravity · Qoder</span></div><div class="signal-row"><strong><i class="signal-dot"></i>视频与视觉继续提速</strong><span>可灵 · Runway<br>即梦 · Vidu</span></div></aside></section>
-<section class="quick-strip" aria-label="快速筛选"><button class="quick-action" data-preset="new"><span>01 / FRESH</span><strong>最近更新 ↗</strong></button><button class="quick-action" data-preset="china"><span>02 / LOCAL</span><strong>中文可用 ↗</strong></button><button class="quick-action" data-preset="free"><span>03 / START</span><strong>可免费体验 ↗</strong></button><button class="quick-action" data-preset="favorites"><span>04 / SAVED</span><strong>我的收藏 ↗</strong></button></section>
-<section id="directory" aria-labelledby="directoryTitle"><div class="section-head"><div><span class="section-kicker">CURATED DIRECTORY / 工具目录</span><h2 id="directoryTitle">全部工具</h2></div><div class="result-count" id="resultCount" aria-live="polite"></div></div><div id="toolGrid" class="tool-grid"></div></section><footer class="site-footer"><div><strong>Gina AI Atlas</strong> · 一张持续更新的 AI 工具地图</div><div>链接核验：2026-09-03 · 定价与可用性以官网为准</div></footer></main>
-<nav class="mobile-nav"><button data-action="home"><span>⌂</span>首页</button><button data-preset="new"><span>✦</span>最新</button><button data-action="favorites"><span>☆</span>收藏</button></nav><div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script>
-    const CATEGORY = {
-      all: "全部", assistant: "AI 助手", research: "搜索研究", image: "图像设计",
-      video: "视频创作", audio: "音乐语音", coding: "编程开发", office: "办公演示",
-      agent: "AI Agent", api: "API 平台", social: "娱乐陪伴"
+
+  <!-- Ambient Glowing Background Spheres -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+  <div class="ambient-glow-3"></div>
+
+  <!-- Frosted Apple Header -->
+  <header class="top-header">
+    <div class="header-inner">
+      <div class="brand-area" id="brandBtn" title="返回全部">
+        <div class="brand-icon" aria-label="Gina AI 女孩头像">👧🏻</div>
+        <div class="brand-title">
+          <div class="brand-title-text">Gina AI</div>
+          <div class="brand-sub">全球顶尖 AI 导航 · 苹果毛玻璃版</div>
+        </div>
+      </div>
+
+      <div class="search-container">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="search" id="searchInput" class="search-input" placeholder="搜索 86 款全球顶尖 AI 工具..." autocomplete="off" aria-label="搜索工具">
+          <span class="search-kbd">⌘ K</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button type="button" class="pill-btn" id="favFilterBtn" title="只看我的收藏">
+          <span id="favHeartIcon">🤍</span>
+          <span>收藏</span>
+          <span id="favCountBadge">(0)</span>
+        </button>
+        <a href="./index_classic.html" class="pill-btn" title="切换回经典深色版">
+          <span>🌙 经典版</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Category Dock -->
+    <div class="category-dock-wrap">
+      <div class="category-dock" id="catScroll">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- Quick Filter Bar -->
+    <div class="filter-bar">
+      <div class="filter-group">
+        <button type="button" class="filter-chip active" data-preset="all">🌈 全部</button>
+        <button type="button" class="filter-chip chip-vpn" data-preset="vpn">🌐 需海外VPN</button>
+        <button type="button" class="filter-chip chip-china" data-preset="china">🇨🇳 国内直连</button>
+        <button type="button" class="filter-chip" data-preset="free">🎁 免费体验</button>
+        <button type="button" class="filter-chip" data-preset="new">✨ 2026 最新</button>
+      </div>
+      <div class="count-indicator" id="resultsCount">展示中...</div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="tools-grid" id="toolsGrid">
+      <!-- Rendered dynamically -->
+    </div>
+  </main>
+
+  <!-- Minimal Frosted Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>Gina AI</strong> · 干净、简洁、一目了然的全球顶尖 AI 网站合集
+      </div>
+      <div class="footer-links">
+        <a href="#top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">回到顶部 ↑</a>
+        <a href="./index_classic.html">进入经典深色版 ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // 10 Core Category Categories with cute icons
+    const CATEGORIES = {
+      all: { label: "全部", icon: "✨" },
+      llm: { label: "大模型", icon: "💬" },
+      search: { label: "搜索研究", icon: "🔍" },
+      coding: { label: "编程全栈", icon: "💻" },
+      image: { label: "图像设计", icon: "🎨" },
+      video: { label: "视频创作", icon: "🎬" },
+      audio: { label: "音乐声音", icon: "🎵" },
+      office: { label: "办公协作", icon: "📑" },
+      agent: { label: "AI Agent", icon: "🦾" },
+      api: { label: "API 开放", icon: "⚡" }
     };
 
-    const TOOLS = [
-      {id:"chatgpt",name:"ChatGPT",mark:"GPT",cat:"assistant",desc:"通用型 AI 助手，覆盖写作、分析、图像、代码与多步骤任务。",url:"https://chatgpt.com/",tags:["多模态","通用"],region:"global",price:"free",featured:true,color:"#d8ff4f"},
-      {id:"claude",name:"Claude",mark:"CL",cat:"assistant",desc:"擅长长文本、严谨写作与复杂代码工作的通用助手。",url:"https://claude.ai/",tags:["长文本","代码"],region:"global",price:"free",featured:true,color:"#efc9a8"},
-      {id:"gemini",name:"Gemini",mark:"GE",cat:"assistant",desc:"Google 多模态助手，与搜索及 Workspace 生态结合紧密。",url:"https://gemini.google.com/",tags:["多模态","Google"],region:"global",price:"free",featured:true,color:"#b9d7ff"},
-      {id:"deepseek",name:"DeepSeek",mark:"DS",cat:"assistant",desc:"面向推理、写作和编程的中文友好型大模型助手。",url:"https://chat.deepseek.com/",tags:["推理","中文"],region:"china",price:"free",featured:true,color:"#b9c8ff"},
-      {id:"doubao",name:"豆包",mark:"豆",cat:"assistant",desc:"字节跳动推出的多模态助手，适合日常问答和内容创作。",url:"https://www.doubao.com/",tags:["多模态","日常"],region:"china",price:"free",color:"#d7edff"},
-      {id:"kimi",name:"Kimi",mark:"K",cat:"assistant",desc:"支持文件阅读、联网检索与长上下文处理的智能助手。",url:"https://www.kimi.com/",tags:["文件","长文本"],region:"china",price:"free",color:"#cfcbff"},
-      {id:"qwen",name:"通义",mark:"QW",cat:"assistant",desc:"阿里巴巴旗下通用 AI 助手，覆盖文本、视觉与创作。",url:"https://tongyi.aliyun.com/",tags:["阿里生态","中文"],region:"china",price:"free",color:"#dfc8ff"},
-      {id:"yuanbao",name:"腾讯元宝",mark:"元",cat:"assistant",desc:"腾讯推出的 AI 助手，连接内容、文档与腾讯生态。",url:"https://yuanbao.tencent.com/",tags:["腾讯生态","文档"],region:"china",price:"free",isNew:true,color:"#bdf0df"},
-      {id:"chatglm",name:"智谱清言",mark:"GLM",cat:"assistant",desc:"智谱推出的对话助手，支持推理、文件和多模态任务。",url:"https://chatglm.cn/",tags:["推理","中文"],region:"china",price:"free",color:"#bde3ff"},
-      {id:"xinghuo",name:"讯飞星火",mark:"讯",cat:"assistant",desc:"科大讯飞大模型助手，覆盖教育、办公与语音场景。",url:"https://xinghuo.xfyun.cn/",tags:["教育","语音"],region:"china",price:"free",color:"#ffccb8"},
+    // 86 Curated Global Top AI Tools with Expressive Cute Emojis & Pastel Tint
+    const TOOLS_DATA = [
+      // 大模型旗舰
+      { id: "chatgpt", name: "ChatGPT", cat: "llm", emoji: "🤖", url: "https://chatgpt.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #e6fffa, #b2f5ea)" },
+      { id: "claude", name: "Claude", cat: "llm", emoji: "🧠", url: "https://claude.ai/", region: "global", price: "free", tint: "linear-gradient(135deg, #fff5f5, #fed7d7)" },
+      { id: "gemini", name: "Gemini", cat: "llm", emoji: "✨", url: "https://gemini.google.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #ebf8ff, #bee3f8)" },
+      { id: "deepseek", name: "DeepSeek", cat: "llm", emoji: "🐬", url: "https://chat.deepseek.com/", region: "china", price: "free", tint: "linear-gradient(135deg, #ebf4ff, #c3dafe)" },
+      { id: "grok", name: "Grok 3", cat: "llm", emoji: "⚡", url: "https://x.ai/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #f7fafc, #edf2f7)" },
+      { id: "mistral", name: "Le Chat", cat: "llm", emoji: "🌪️", url: "https://chat.mistral.ai/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #fffaf0, #feebc8)" },
+      { id: "poe", name: "Poe", cat: "llm", emoji: "🦉", url: "https://poe.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #faf5ff, #e9d8fd)" },
+      { id: "kimi", name: "Kimi", cat: "llm", emoji: "🌙", url: "https://www.kimi.com/", region: "china", price: "free", tint: "linear-gradient(135deg, #f0f5ff, #d6e4ff)" },
+      { id: "doubao", name: "豆包", cat: "llm", emoji: "🥟", url: "https://www.doubao.com/", region: "china", price: "free", tint: "linear-gradient(135deg, #e6f7ff, #bae7ff)" },
+      { id: "tongyi", name: "通义千问", cat: "llm", emoji: "🪄", url: "https://tongyi.aliyun.com/", region: "china", price: "free", tint: "linear-gradient(135deg, #f9f0ff, #efdbff)" },
+      { id: "yuanbao", name: "腾讯元宝", cat: "llm", emoji: "🪙", url: "https://yuanbao.tencent.com/", region: "china", price: "free", isNew: true, tint: "linear-gradient(135deg, #e6fffb, #b5f5ec)" },
+      { id: "chatglm", name: "智谱清言", cat: "llm", emoji: "💬", url: "https://chatglm.cn/", region: "china", price: "free", tint: "linear-gradient(135deg, #e6f7ff, #bae7ff)" },
+      { id: "xinghuo", name: "讯飞星火", cat: "llm", emoji: "🔥", url: "https://xinghuo.xfyun.cn/", region: "china", price: "free", tint: "linear-gradient(135deg, #fff2e8, #ffd8bf)" },
 
-      {id:"gemini-notebook",name:"Gemini Notebook",mark:"NB",cat:"research",desc:"原 NotebookLM，围绕自有资料进行研究、学习与内容整理。",url:"https://notebook.google.com/",tags:["资料研究","引用"],region:"global",price:"free",isNew:true,featured:true,color:"#8ed3ff"},
-      {id:"perplexity",name:"Perplexity",mark:"PX",cat:"research",desc:"提供来源引用的 AI 搜索与深度研究工具。",url:"https://www.perplexity.ai/",tags:["联网搜索","引用"],region:"global",price:"free",color:"#b8ebe3"},
-      {id:"metaso",name:"秘塔 AI 搜索",mark:"秘",cat:"research",desc:"面向中文用户的结构化 AI 搜索与研究入口。",url:"https://metaso.cn/",tags:["中文搜索","研究"],region:"china",price:"free",featured:true,color:"#c8d3ff"},
-      {id:"ima",name:"ima",mark:"ima",cat:"research",desc:"腾讯推出的知识库与智能工作台，适合资料收集和问答。",url:"https://ima.qq.com/",tags:["知识库","资料"],region:"china",price:"free",isNew:true,color:"#d5edff"},
-      {id:"tiangong",name:"天工 AI",mark:"天",cat:"research",desc:"融合搜索、阅读与内容创作的中文 AI 工作台。",url:"https://www.tiangong.cn/",tags:["搜索","写作"],region:"china",price:"free",color:"#ffe49e"},
+      // 搜索与深度研究
+      { id: "perplexity", name: "Perplexity", cat: "search", emoji: "🔮", url: "https://www.perplexity.ai/", region: "global", price: "free", tint: "linear-gradient(135deg, #e6fffa, #b2f5ea)" },
+      { id: "notebooklm", name: "NotebookLM", cat: "search", emoji: "📓", url: "https://notebook.google.com/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #ebf8ff, #bee3f8)" },
+      { id: "metaso", name: "秘塔 AI", cat: "search", emoji: "🗼", url: "https://metaso.cn/", region: "china", price: "free", tint: "linear-gradient(135deg, #f0f5ff, #d6e4ff)" },
+      { id: "genspark", name: "Genspark", cat: "search", emoji: "❇️", url: "https://www.genspark.ai/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #fff0f6, #ffd6e7)" },
+      { id: "phind", name: "Phind", cat: "search", emoji: "🔎", url: "https://www.phind.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #f0fdf4, #bbf7d0)" },
+      { id: "felo", name: "Felo AI", cat: "search", emoji: "🌸", url: "https://felo.ai/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #fff0f5, #fbcfe8)" },
+      { id: "ima", name: "ima 知识库", cat: "search", emoji: "💡", url: "https://ima.qq.com/", region: "china", price: "free", isNew: true, tint: "linear-gradient(135deg, #e6f7ff, #bae7ff)" },
+      { id: "tiangong", name: "天工 AI", cat: "search", emoji: "🪐", url: "https://www.tiangong.cn/", region: "china", price: "free", tint: "linear-gradient(135deg, #fffbe6, #fff1b8)" },
+      { id: "consensus", name: "Consensus", cat: "search", emoji: "📜", url: "https://consensus.app/", region: "global", price: "free", tint: "linear-gradient(135deg, #f6ffed, #d9f7be)" },
 
-      {id:"jimeng",name:"即梦 AI",mark:"即",cat:"image",desc:"字节跳动旗下图像与视频创作平台，中文提示词友好。",url:"https://jimeng.jianying.com/",tags:["文生图","中文"],region:"china",price:"free",featured:true,color:"#ffc5df"},
-      {id:"midjourney",name:"Midjourney",mark:"MJ",cat:"image",desc:"风格表现力突出的 AI 图像生成与创意探索工具。",url:"https://www.midjourney.com/",tags:["艺术创作","图像"],region:"global",price:"paid",color:"#d8d8d8"},
-      {id:"firefly",name:"Adobe Firefly",mark:"FF",cat:"image",desc:"Adobe 的生成式创意平台，适合商业设计和素材编辑。",url:"https://firefly.adobe.com/",tags:["商业设计","Adobe"],region:"global",price:"free",color:"#ffb39e"},
-      {id:"canva",name:"Canva AI",mark:"CA",cat:"image",desc:"在 Canva 中生成图片、版式和社交媒体视觉内容。",url:"https://www.canva.com/ai/",tags:["平面设计","模板"],region:"global",price:"free",color:"#9fe9e0"},
-      {id:"figma-make",name:"Figma Make",mark:"FM",cat:"image",desc:"从提示词和设计上下文生成交互界面与原型。",url:"https://www.figma.com/make/",tags:["UI","原型"],region:"global",price:"free",isNew:true,color:"#ffb6a7"},
-      {id:"liblib",name:"LiblibAI",mark:"LIB",cat:"image",desc:"国内 AI 图像创作社区，提供模型、工作流和在线生成。",url:"https://www.liblib.art/",tags:["模型社区","工作流"],region:"china",price:"free",color:"#c7f09d"},
-      {id:"recraft",name:"Recraft",mark:"RC",cat:"image",desc:"擅长品牌视觉、图标、矢量图和一致风格生成。",url:"https://www.recraft.ai/",tags:["矢量图","品牌"],region:"global",price:"free",color:"#ffc85f"},
-      {id:"ideogram",name:"Ideogram",mark:"ID",cat:"image",desc:"文字排版表现突出的图像生成工具，适合海报和标识。",url:"https://ideogram.ai/",tags:["文字生成","海报"],region:"global",price:"free",color:"#d7d2ff"},
-      {id:"wan",name:"通义万相",mark:"万",cat:"image",desc:"阿里旗下视觉创作平台，支持图像、视频与创意设计。",url:"https://tongyi.aliyun.com/wan/",tags:["图像","视频"],region:"china",price:"free",color:"#d7c5ff"},
-      {id:"a1",name:"a1.art",mark:"A1",cat:"image",desc:"提供大量风格应用和轻量化 AI 图像生成玩法。",url:"https://a1.art/",tags:["风格模板","社区"],region:"global",price:"free",color:"#ffeab5"},
+      // 编程全栈
+      { id: "v0", name: "v0.dev", cat: "coding", emoji: "📐", url: "https://v0.dev/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #f8fafc, #e2e8f0)" },
+      { id: "bolt", name: "Bolt.new", cat: "coding", emoji: "⚡", url: "https://bolt.new/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #fffbeb, #fef3c7)" },
+      { id: "lovable", name: "Lovable", cat: "coding", emoji: "💖", url: "https://lovable.dev/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #fff1f2, #ffe4e6)" },
+      { id: "cursor", name: "Cursor", cat: "coding", emoji: "🖱️", url: "https://www.cursor.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #f0fdf4, #bbf7d0)" },
+      { id: "claude-code", name: "Claude Code", cat: "coding", emoji: "💻", url: "https://claude.ai/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #fff7ed, #ffedd5)" },
+      { id: "copilot", name: "GitHub Copilot", cat: "coding", emoji: "🐙", url: "https://github.com/features/copilot", region: "global", price: "paid", tint: "linear-gradient(135deg, #faf5ff, #f3e8ff)" },
+      { id: "windsurf", name: "Windsurf", cat: "coding", emoji: "🏄", url: "https://codeium.com/windsurf", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #ecfeff, #cffafe)" },
+      { id: "replit", name: "Replit Agent", cat: "coding", emoji: "🚀", url: "https://replit.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #fff7ed, #fed7aa)" },
+      { id: "trae", name: "TRAE", cat: "coding", emoji: "🛠️", url: "https://www.trae.ai/", region: "china", price: "free", isNew: true, tint: "linear-gradient(135deg, #f0fdfa, #ccfbf1)" },
+      { id: "aider", name: "Aider", cat: "coding", emoji: "🤝", url: "https://aider.chat/", region: "global", price: "free", tint: "linear-gradient(135deg, #f0fdf4, #dcfce7)" },
 
-      {id:"kling",name:"可灵 AI",mark:"KL",cat:"video",desc:"快手旗下 AI 视频平台，支持文生视频和图生视频。",url:"https://klingai.com/app/",tags:["文生视频","中文"],region:"china",price:"free",featured:true,color:"#d7ff4f"},
-      {id:"runway",name:"Runway",mark:"RW",cat:"video",desc:"面向创作者的生成式视频、视觉特效和编辑平台。",url:"https://runway.com/",tags:["视频生成","编辑"],region:"global",price:"free",color:"#c9c9c9"},
-      {id:"higgsfield",name:"Higgsfield",mark:"HF",cat:"video",desc:"强调镜头语言、角色和广告创意的 AI 视频平台。",url:"https://higgsfield.ai/",tags:["运镜","广告"],region:"global",price:"free",isNew:true,color:"#ffb968"},
-      {id:"hailuo",name:"海螺 AI",mark:"海",cat:"video",desc:"MiniMax 旗下视频生成平台，支持中文创作流程。",url:"https://hailuoai.video/",tags:["视频生成","中文"],region:"china",price:"free",color:"#9cddff"},
-      {id:"vidu",name:"Vidu",mark:"VD",cat:"video",desc:"支持图像、文字与参考主体驱动的视频生成。",url:"https://www.vidu.com/",tags:["主体一致","视频"],region:"china",price:"free",color:"#cfc3ff"},
-      {id:"pika",name:"Pika",mark:"PK",cat:"video",desc:"操作轻量的 AI 视频生成和趣味特效工具。",url:"https://pika.art/",tags:["视频特效","易用"],region:"global",price:"free",color:"#ffe47e"},
-      {id:"luma",name:"Luma Dream Machine",mark:"LU",cat:"video",desc:"Luma 的视频生成工具，注重运动和镜头表现。",url:"https://lumalabs.ai/app",tags:["镜头运动","视频"],region:"global",price:"free",color:"#ccd7ff"},
-      {id:"capcut",name:"剪映 / CapCut",mark:"剪",cat:"video",desc:"覆盖剪辑、字幕、数字人和 AI 辅助创作的综合工具。",url:"https://www.jianying.com/",tags:["剪辑","字幕"],region:"china",price:"free",color:"#e7e7e7"},
+      // 图像与设计
+      { id: "midjourney", name: "Midjourney", cat: "image", emoji: "🎨", url: "https://www.midjourney.com/", region: "global", price: "paid", tint: "linear-gradient(135deg, #f8fafc, #e2e8f0)" },
+      { id: "flux", name: "FLUX.1", cat: "image", emoji: "🌈", url: "https://blackforestlabs.ai/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #eff6ff, #dbeafe)" },
+      { id: "recraft", name: "Recraft", cat: "image", emoji: "✏️", url: "https://www.recraft.ai/", region: "global", price: "free", tint: "linear-gradient(135deg, #fffbeb, #fef3c7)" },
+      { id: "ideogram", name: "Ideogram", cat: "image", emoji: "🔤", url: "https://ideogram.ai/", region: "global", price: "free", tint: "linear-gradient(135deg, #faf5ff, #f3e8ff)" },
+      { id: "jimeng", name: "即梦 AI", cat: "image", emoji: "🦄", url: "https://jimeng.jianying.com/", region: "china", price: "free", tint: "linear-gradient(135deg, #fdf2f8, #fce7f3)" },
+      { id: "firefly", name: "Adobe Firefly", cat: "image", emoji: "🪶", url: "https://firefly.adobe.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #fff1f2, #ffe4e6)" },
+      { id: "canva", name: "Canva AI", cat: "image", emoji: "🖼️", url: "https://www.canva.com/ai/", region: "global", price: "free", tint: "linear-gradient(135deg, #ecfeff, #cffafe)" },
+      { id: "figma-make", name: "Figma Make", cat: "image", emoji: "🎯", url: "https://www.figma.com/make/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #fff7ed, #ffedd5)" },
+      { id: "liblib", name: "LiblibAI", cat: "image", emoji: "🧸", url: "https://www.liblib.art/", region: "china", price: "free", tint: "linear-gradient(135deg, #f0fdf4, #dcfce7)" },
+      { id: "wan", name: "通义万相", cat: "image", emoji: "🦚", url: "https://tongyi.aliyun.com/wan/", region: "china", price: "free", tint: "linear-gradient(135deg, #faf5ff, #f3e8ff)" },
+      { id: "a1", name: "a1.art", cat: "image", emoji: "🍧", url: "https://a1.art/", region: "global", price: "free", tint: "linear-gradient(135deg, #fffbeb, #fef3c7)" },
 
-      {id:"suno",name:"Suno",mark:"SU",cat:"audio",desc:"从提示词和歌词生成完整歌曲的 AI 音乐平台。",url:"https://suno.com/",tags:["歌曲生成","音乐"],region:"global",price:"free",featured:true,color:"#ffca70"},
-      {id:"udio",name:"Udio",mark:"UD",cat:"audio",desc:"面向音乐创作者的歌曲生成、延展与重混工具。",url:"https://www.udio.com/",tags:["音乐生成","重混"],region:"global",price:"free",color:"#e7c5ff"},
-      {id:"elevenlabs",name:"ElevenLabs",mark:"11",cat:"audio",desc:"高质量语音合成、配音、音效和语音 Agent 平台。",url:"https://elevenlabs.io/",tags:["语音合成","配音"],region:"global",price:"free",color:"#d3d3d3"},
-      {id:"mianmusic",name:"海绵音乐",mark:"海",cat:"audio",desc:"中文歌曲创作平台，支持写词、作曲和演唱生成。",url:"https://mianmusic.com/",tags:["中文歌曲","作曲"],region:"china",price:"free",color:"#b3e6ff"},
-      {id:"musiccreator",name:"MusicCreator AI",mark:"MC",cat:"audio",desc:"根据文字描述生成不同风格与情绪的音乐。",url:"https://www.musiccreator.ai/",tags:["音乐生成","情绪"],region:"global",price:"free",color:"#ffc2d9"},
+      // 视频创作
+      { id: "keling", name: "可灵 AI", cat: "video", emoji: "🎬", url: "https://klingai.kuaishou.com/", region: "china", price: "free", tint: "linear-gradient(135deg, #fff1f2, #ffe4e6)" },
+      { id: "runway", name: "Runway", cat: "video", emoji: "🎞️", url: "https://runwayml.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #fdf4ff, #fae8ff)" },
+      { id: "luma", name: "Luma Dream", cat: "video", emoji: "🛸", url: "https://lumalabs.ai/dream-machine", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #eff6ff, #dbeafe)" },
+      { id: "minimax-video", name: "海螺 AI", cat: "video", emoji: "🐚", url: "https://hailuoai.com/video", region: "china", price: "free", isNew: true, tint: "linear-gradient(135deg, #ecfeff, #cffafe)" },
+      { id: "vidu", name: "Vidu", cat: "video", emoji: "📹", url: "https://www.vidu.studio/", region: "china", price: "free", isNew: true, tint: "linear-gradient(135deg, #f0fdfa, #ccfbf1)" },
+      { id: "pika", name: "Pika", cat: "video", emoji: "🍿", url: "https://pika.art/", region: "global", price: "free", tint: "linear-gradient(135deg, #fffbeb, #fef3c7)" },
+      { id: "kling-global", name: "Kling AI", cat: "video", emoji: "🌠", url: "https://klingai.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #fdf2f8, #fce7f3)" },
+      { id: "heygen", name: "HeyGen", cat: "video", emoji: "🎭", url: "https://www.heygen.com/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #faf5ff, #f3e8ff)" },
+      { id: "jianying", name: "剪映 AI", cat: "video", emoji: "✂️", url: "https://www.capcut.cn/", region: "china", price: "free", tint: "linear-gradient(135deg, #f0fdf4, #dcfce7)" },
 
-      {id:"codex",name:"Codex App",mark:"CX",cat:"coding",desc:"OpenAI 的桌面编程 Agent，可并行处理代码、终端和长期任务。",url:"https://openai.com/codex/",tags:["编程 Agent","桌面端"],region:"global",price:"paid",featured:true,isNew:true,color:"#d8ff4f"},
-      {id:"claude-code",name:"Claude Code",mark:"CC",cat:"coding",desc:"在终端和 IDE 中理解代码库、执行命令并完成开发任务。",url:"https://claude.com/product/claude-code",tags:["终端 Agent","代码库"],region:"global",price:"paid",color:"#efc9a8"},
-      {id:"cursor",name:"Cursor",mark:"CU",cat:"coding",desc:"以 AI Agent 为核心的代码编辑器，支持跨文件开发。",url:"https://cursor.com/",tags:["AI IDE","Agent"],region:"global",price:"free",color:"#c9c9c9"},
-      {id:"copilot",name:"GitHub Copilot",mark:"GH",cat:"coding",desc:"GitHub 的 AI 编程工具，覆盖 IDE、终端和代码审查。",url:"https://github.com/features/copilot",tags:["GitHub","IDE"],region:"global",price:"free",color:"#c6e6ff"},
-      {id:"antigravity",name:"Google Antigravity",mark:"AG",cat:"coding",desc:"Google 面向 Agent 开发与多任务协作的编程工作台。",url:"https://antigravity.google/",tags:["Agent IDE","Google"],region:"global",price:"free",isNew:true,color:"#aecbff"},
-      {id:"trae",name:"TRAE",mark:"TR",cat:"coding",desc:"字节跳动旗下 AI IDE，支持中文环境和 Agent 开发。",url:"https://www.trae.ai/",tags:["AI IDE","中文"],region:"china",price:"free",color:"#a6e5ff"},
-      {id:"qoder",name:"Qoder",mark:"QD",cat:"coding",desc:"阿里推出的 Agent 编程平台，强调代码库理解和任务执行。",url:"https://qoder.com/",tags:["Agent IDE","代码库"],region:"global",price:"free",isNew:true,color:"#d1c1ff"},
-      {id:"replit",name:"Replit",mark:"RE",cat:"coding",desc:"浏览器内开发环境，支持 AI Agent 构建和部署应用。",url:"https://replit.com/",tags:["云端 IDE","部署"],region:"global",price:"free",color:"#ffc293"},
-      {id:"v0",name:"v0",mark:"v0",cat:"coding",desc:"Vercel 推出的 AI 应用构建工具，擅长网页界面与部署。",url:"https://v0.app/",tags:["前端","Vercel"],region:"global",price:"free",color:"#dadada"},
-      {id:"lovable",name:"Lovable",mark:"LV",cat:"coding",desc:"通过对话生成全栈 Web 应用并连接常用服务。",url:"https://lovable.dev/",tags:["全栈应用","低代码"],region:"global",price:"free",color:"#ffb2c0"},
-      {id:"bolt",name:"Bolt",mark:"BT",cat:"coding",desc:"在浏览器中从需求生成、运行和部署 Web 应用。",url:"https://bolt.new/",tags:["全栈应用","浏览器"],region:"global",price:"free",color:"#c5d4ff"},
-      {id:"codegeex",name:"CodeGeeX",mark:"CG",cat:"coding",desc:"智谱推出的开源多语言代码助手和 IDE 插件。",url:"https://codegeex.cn/",tags:["开源","IDE 插件"],region:"china",price:"free",color:"#bce3d4"},
+      // 音乐与声音
+      { id: "suno", name: "Suno", cat: "audio", emoji: "🎵", url: "https://suno.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #fff1f2, #ffe4e6)" },
+      { id: "udio", name: "Udio", cat: "audio", emoji: "🎸", url: "https://www.udio.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #eff6ff, #dbeafe)" },
+      { id: "elevenlabs", name: "ElevenLabs", cat: "audio", emoji: "🎙️", url: "https://elevenlabs.io/", region: "global", price: "free", tint: "linear-gradient(135deg, #f0fdf4, #dcfce7)" },
+      { id: "haimian", name: "海绵音乐", cat: "audio", emoji: "🧽", url: "https://haimian.douyin.com/", region: "china", price: "free", isNew: true, tint: "linear-gradient(135deg, #fffbeb, #fef3c7)" },
+      { id: "skymusic", name: "天工音乐", cat: "audio", emoji: "🎹", url: "https://music.tiangong.cn/", region: "china", price: "free", tint: "linear-gradient(135deg, #faf5ff, #f3e8ff)" },
 
-      {id:"gamma",name:"Gamma",mark:"GA",cat:"office",desc:"快速生成演示文稿、网页和社交内容的 AI 工作台。",url:"https://gamma.app/",tags:["演示文稿","网页"],region:"global",price:"free",featured:true,color:"#d9c8ff"},
-      {id:"aippt",name:"AiPPT",mark:"PPT",cat:"office",desc:"面向中文办公场景的 AI 演示文稿生成和模板平台。",url:"https://www.aippt.cn/",tags:["中文 PPT","模板"],region:"china",price:"free",color:"#ffc98b"},
-      {id:"notion",name:"Notion AI",mark:"N",cat:"office",desc:"集成在 Notion 工作区中的写作、搜索和知识管理能力。",url:"https://www.notion.com/product/ai",tags:["笔记","知识库"],region:"global",price:"paid",color:"#dedede"},
-      {id:"feishu",name:"飞书智能伙伴",mark:"飞",cat:"office",desc:"连接文档、会议、知识库与协作流程的企业 AI 助手。",url:"https://www.feishu.cn/product/ai",tags:["会议","协作"],region:"china",price:"paid",color:"#b9deff"},
-      {id:"skywork",name:"Skywork",mark:"SW",cat:"office",desc:"用于文档、表格、演示和研究任务的 AI 办公平台。",url:"https://skywork.ai/",tags:["文档","研究"],region:"global",price:"free",color:"#b9ddff"},
-      {id:"gitmind",name:"GitMind",mark:"GM",cat:"office",desc:"支持 AI 生成思维导图、流程图和可视化笔记。",url:"https://gitmind.cn/",tags:["思维导图","可视化"],region:"china",price:"free",color:"#c8e8bc"},
+      // 办公协作
+      { id: "gamma", name: "Gamma", cat: "office", emoji: "📑", url: "https://gamma.app/", region: "global", price: "free", tint: "linear-gradient(135deg, #fdf4ff, #fae8ff)" },
+      { id: "notion", name: "Notion AI", cat: "office", emoji: "📝", url: "https://www.notion.com/product/ai", region: "global", price: "paid", tint: "linear-gradient(135deg, #f8fafc, #e2e8f0)" },
+      { id: "aippt", name: "AiPPT", cat: "office", emoji: "📊", url: "https://www.aippt.cn/", region: "china", price: "free", tint: "linear-gradient(135deg, #fff7ed, #ffedd5)" },
+      { id: "feishu", name: "飞书伙伴", cat: "office", emoji: "🕊️", url: "https://www.feishu.cn/product/ai", region: "china", price: "paid", tint: "linear-gradient(135deg, #eff6ff, #dbeafe)" },
+      { id: "skywork", name: "Skywork", cat: "office", emoji: "☁️", url: "https://skywork.ai/", region: "global", price: "free", tint: "linear-gradient(135deg, #ecfeff, #cffafe)" },
+      { id: "gitmind", name: "GitMind", cat: "office", emoji: "🧩", url: "https://gitmind.cn/", region: "china", price: "free", tint: "linear-gradient(135deg, #f0fdf4, #dcfce7)" },
 
-      {id:"manus",name:"Manus",mark:"MA",cat:"agent",desc:"能够规划并执行研究、网页操作和内容交付的通用 Agent。",url:"https://manus.im/",tags:["通用 Agent","任务执行"],region:"global",price:"free",featured:true,color:"#d8ff4f"},
-      {id:"dify",name:"Dify",mark:"DF",cat:"agent",desc:"开源的 LLM 应用开发平台，支持 Agent、工作流与 RAG。",url:"https://dify.ai/",tags:["开源","工作流"],region:"global",price:"free",color:"#c0d2ff"},
-      {id:"coze",name:"扣子 Coze",mark:"CZ",cat:"agent",desc:"零代码搭建智能体、工作流和知识库应用的平台。",url:"https://www.coze.cn/",tags:["零代码","工作流"],region:"china",price:"free",color:"#bfe4ff"},
-      {id:"genspark",name:"Genspark",mark:"GS",cat:"agent",desc:"面向研究、内容与执行任务的多 Agent 工作空间。",url:"https://www.genspark.ai/",tags:["多 Agent","研究"],region:"global",price:"free",isNew:true,color:"#ffc6eb"},
-      {id:"devin",name:"Devin",mark:"DV",cat:"agent",desc:"面向软件团队的自主编程 Agent，可执行完整开发任务。",url:"https://devin.ai/",tags:["软件工程","企业"],region:"global",price:"paid",color:"#b6d8ff"},
-      {id:"baidu-agent",name:"百度智能体",mark:"BA",cat:"agent",desc:"百度的智能体开发与发布平台，连接文心模型生态。",url:"https://agents.baidu.com/",tags:["智能体平台","百度"],region:"china",price:"free",color:"#c7d3ff"},
+      // AI Agent
+      { id: "manus", name: "Manus", cat: "agent", emoji: "🦾", url: "https://manus.im/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #fef08a, #fde047)" },
+      { id: "coze", name: "扣子 Coze", cat: "agent", emoji: "🪢", url: "https://www.coze.cn/", region: "china", price: "free", tint: "linear-gradient(135deg, #e0f2fe, #bae6fd)" },
+      { id: "dify", name: "Dify", cat: "agent", emoji: "🐳", url: "https://dify.ai/", region: "global", price: "free", tint: "linear-gradient(135deg, #e0e7ff, #c7d2fe)" },
+      { id: "devin", name: "Devin", cat: "agent", emoji: "👾", url: "https://devin.ai/", region: "global", price: "paid", tint: "linear-gradient(135deg, #ecfdf5, #a7f3d0)" },
+      { id: "flowise", name: "Flowise", cat: "agent", emoji: "🌊", url: "https://flowiseai.com/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #e0f2fe, #7dd3fc)" },
+      { id: "baidu-agent", name: "文心智能体", cat: "agent", emoji: "🐾", url: "https://agents.baidu.com/", region: "china", price: "free", tint: "linear-gradient(135deg, #ede9fe, #ddd6fe)" },
+      { id: "autogpt", name: "AutoGPT", cat: "agent", emoji: "🤖", url: "https://autogpt.net/", region: "global", price: "free", tint: "linear-gradient(135deg, #fef3c7, #fde68a)" },
 
-      {id:"openai-api",name:"OpenAI API",mark:"OA",cat:"api",desc:"OpenAI 模型与 Agent 能力的开发者平台。",url:"https://platform.openai.com/",tags:["模型 API","Agent"],region:"global",price:"paid",color:"#d8ff4f"},
-      {id:"anthropic-api",name:"Claude Platform",mark:"AN",cat:"api",desc:"Claude 模型、工具调用和企业级开发入口。",url:"https://platform.claude.com/",tags:["模型 API","长文本"],region:"global",price:"paid",color:"#efc9a8"},
-      {id:"google-ai",name:"Google AI Studio",mark:"AI",cat:"api",desc:"快速试用 Gemini 模型并生成 API 接入代码。",url:"https://aistudio.google.com/",tags:["Gemini","原型"],region:"global",price:"free",color:"#a9d3ff"},
-      {id:"deepseek-api",name:"DeepSeek API",mark:"DS",cat:"api",desc:"DeepSeek 模型的开发者控制台与 API 服务。",url:"https://platform.deepseek.com/",tags:["推理 API","代码"],region:"china",price:"paid",color:"#b7c8ff"},
-      {id:"bailian",name:"阿里云百炼",mark:"百",cat:"api",desc:"阿里云大模型与 Agent 应用开发平台。",url:"https://bailian.console.aliyun.com/",tags:["模型广场","工作流"],region:"china",price:"paid",color:"#d5c2ff"},
-      {id:"volcengine",name:"火山方舟",mark:"火",cat:"api",desc:"字节跳动火山引擎的大模型服务和应用开发平台。",url:"https://www.volcengine.com/product/ark",tags:["模型 API","豆包"],region:"china",price:"paid",color:"#bce4ff"},
-      {id:"bigmodel",name:"智谱开放平台",mark:"GLM",cat:"api",desc:"GLM 系列模型、Agent 与多模态能力的 API 平台。",url:"https://open.bigmodel.cn/",tags:["GLM","模型 API"],region:"china",price:"paid",color:"#b6dbff"},
-      {id:"kimi-api",name:"Kimi 开放平台",mark:"K",cat:"api",desc:"Kimi 模型和长上下文能力的开发者入口。",url:"https://platform.kimi.com/",tags:["长上下文","模型 API"],region:"china",price:"paid",color:"#d2c8ff"},
-      {id:"minimax-api",name:"MiniMax 开放平台",mark:"MM",cat:"api",desc:"提供文本、语音、音乐与视频模型能力。",url:"https://platform.minimaxi.com/",tags:["语音","多模态"],region:"china",price:"paid",color:"#ffc8d8"},
-      {id:"siliconflow",name:"硅基流动",mark:"SF",cat:"api",desc:"提供多种开源和商业模型的统一推理 API。",url:"https://siliconflow.cn/",tags:["模型聚合","推理"],region:"china",price:"paid",color:"#bdede5"},
-      {id:"openrouter",name:"OpenRouter",mark:"OR",cat:"api",desc:"通过统一接口调用多家模型，并提供路由和用量管理。",url:"https://openrouter.ai/",tags:["统一接口","模型聚合"],region:"global",price:"paid",color:"#d4d4d4"},
-      {id:"groq",name:"GroqCloud",mark:"GQ",cat:"api",desc:"以低延迟推理为特点的模型 API 平台。",url:"https://console.groq.com/",tags:["高速推理","API"],region:"global",price:"free",color:"#ffbe9d"},
-      {id:"together",name:"Together AI",mark:"TA",cat:"api",desc:"开源模型推理、微调与专用部署平台。",url:"https://api.together.ai/",tags:["开源模型","微调"],region:"global",price:"paid",color:"#c8ddff"},
+      // API 开放平台
+      { id: "openai-api", name: "OpenAI API", cat: "api", emoji: "🗝️", url: "https://platform.openai.com/", region: "global", price: "paid", tint: "linear-gradient(135deg, #dcfce7, #bbf7d0)" },
+      { id: "anthropic-api", name: "Claude API", cat: "api", emoji: "🏛️", url: "https://platform.claude.com/", region: "global", price: "paid", tint: "linear-gradient(135deg, #ffedd5, #fed7aa)" },
+      { id: "google-ai", name: "AI Studio", cat: "api", emoji: "🔬", url: "https://aistudio.google.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #dbeafe, #bfdbfe)" },
+      { id: "deepseek-api", name: "DeepSeek API", cat: "api", emoji: "🌊", url: "https://platform.deepseek.com/", region: "china", price: "paid", tint: "linear-gradient(135deg, #c7d2fe, #a5b4fc)" },
+      { id: "bailian", name: "阿里百炼", cat: "api", emoji: "☁️", url: "https://bailian.console.aliyun.com/", region: "china", price: "paid", tint: "linear-gradient(135deg, #f3e8ff, #e9d8fd)" },
+      { id: "volcengine", name: "火山方舟", cat: "api", emoji: "🌋", url: "https://www.volcengine.com/product/ark", region: "china", price: "paid", tint: "linear-gradient(135deg, #fee2e2, #fecaca)" },
+      { id: "bigmodel", name: "智谱开放平台", cat: "api", emoji: "💫", url: "https://open.bigmodel.cn/", region: "china", price: "paid", tint: "linear-gradient(135deg, #e0f2fe, #bae6fd)" },
+      { id: "kimi-api", name: "Kimi 开放平台", cat: "api", emoji: "🌕", url: "https://platform.kimi.com/", region: "china", price: "paid", tint: "linear-gradient(135deg, #ede9fe, #ddd6fe)" },
+      { id: "minimax-api", name: "MiniMax API", cat: "api", emoji: "🍬", url: "https://platform.minimaxi.com/", region: "china", price: "paid", tint: "linear-gradient(135deg, #fce7f3, #fbcfe8)" },
+      { id: "siliconflow", name: "硅基流动", cat: "api", emoji: "🧪", url: "https://siliconflow.cn/", region: "china", price: "paid", tint: "linear-gradient(135deg, #ccfbf1, #99f6e4)" },
+      { id: "openrouter", name: "OpenRouter", cat: "api", emoji: "🔀", url: "https://openrouter.ai/", region: "global", price: "paid", tint: "linear-gradient(135deg, #f1f5f9, #e2e8f0)" },
+      { id: "groq", name: "GroqCloud", cat: "api", emoji: "🏎️", url: "https://console.groq.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #ffedd5, #fed7aa)" },
+      { id: "together", name: "Together AI", cat: "api", emoji: "🤝", url: "https://api.together.ai/", region: "global", price: "paid", tint: "linear-gradient(135deg, #e0e7ff, #c7d2fe)" },
+      { id: "huggingface", name: "Hugging Face", cat: "api", emoji: "🤗", url: "https://huggingface.co/", region: "global", price: "free", isNew: true, tint: "linear-gradient(135deg, #fef9c3, #fef08a)" },
+      { id: "replicate", name: "Replicate", cat: "api", emoji: "📦", url: "https://replicate.com/", region: "global", price: "paid", tint: "linear-gradient(135deg, #f3e8ff, #e9d8fd)" },
 
-      {id:"character",name:"Character.AI",mark:"CAI",cat:"social",desc:"创建和体验不同人格角色的 AI 对话社区。",url:"https://character.ai/",tags:["角色对话","社区"],region:"global",price:"free",color:"#d9d9d9"},
-      {id:"janitor",name:"Janitor AI",mark:"JA",cat:"social",desc:"支持角色设定和世界观定制的对话平台。",url:"https://janitorai.com/",tags:["角色设定","对话"],region:"global",price:"free",color:"#c3e8d5"},
-      {id:"aidungeon",name:"AI Dungeon",mark:"AD",cat:"social",desc:"由 AI 动态生成剧情的互动文字冒险游戏。",url:"https://play.aidungeon.com/",tags:["互动故事","游戏"],region:"global",price:"free",color:"#c4b3ff"},
-      {id:"xiaomeng",name:"彩云小梦",mark:"梦",cat:"social",desc:"中文故事续写与情节探索工具。",url:"https://www.xiaomengai.com/",tags:["故事续写","中文"],region:"china",price:"free",color:"#ffc6dd"},
-      {id:"llamagen",name:"LlamaGen.AI",mark:"LG",cat:"social",desc:"面向漫画、动漫与视觉故事创作的 AI 平台。",url:"https://llamagen.ai/",tags:["漫画","故事"],region:"global",price:"free",color:"#ffdf91"}
+      // 陪伴与角色互动
+      { id: "character", name: "Character.AI", cat: "office", emoji: "🎭", url: "https://character.ai/", region: "global", price: "free", tint: "linear-gradient(135deg, #f1f5f9, #e2e8f0)" },
+      { id: "aidungeon", name: "AI Dungeon", cat: "office", emoji: "🏰", url: "https://play.aidungeon.com/", region: "global", price: "free", tint: "linear-gradient(135deg, #ede9fe, #ddd6fe)" },
+      { id: "xiaomeng", name: "彩云小梦", cat: "office", emoji: "💭", url: "https://www.xiaomengai.com/", region: "china", price: "free", tint: "linear-gradient(135deg, #fce7f3, #fbcfe8)" }
     ];
 
-    const state = { category:"all", preset:"all", query:"", favorites:new Set(loadJSON("gina-favorites", [])) };
-    const grid = document.getElementById("toolGrid");
-    const title = document.getElementById("directoryTitle");
-    const resultCount = document.getElementById("resultCount");
+    // State
+    const state = {
+      category: "all",
+      preset: "all",
+      query: "",
+      onlyFavorites: false,
+      favorites: new Set(loadFavorites())
+    };
+
+    // DOM Elements
+    const toolsGrid = document.getElementById("toolsGrid");
+    const catScroll = document.getElementById("catScroll");
     const searchInput = document.getElementById("searchInput");
-    const rail = document.getElementById("categoryRail");
+    const resultsCount = document.getElementById("resultsCount");
+    const favFilterBtn = document.getElementById("favFilterBtn");
+    const favCountBadge = document.getElementById("favCountBadge");
+    const favHeartIcon = document.getElementById("favHeartIcon");
+    const brandBtn = document.getElementById("brandBtn");
     const toast = document.getElementById("toast");
-    let toastTimer;
+    let toastTimer = null;
 
-    function loadJSON(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } }
-    function saveJSON(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
-    function escapeHTML(value) { return String(value).replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char])); }
-    function showToast(message) { toast.textContent = message; toast.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 1800); }
-
-    function renderCategories() {
-      rail.innerHTML = Object.entries(CATEGORY).map(([key, label]) => {
-        const count = key === "all" ? TOOLS.length : TOOLS.filter(tool => tool.cat === key).length;
-        return `<button class="filter-chip ${state.category === key ? "active" : ""}" type="button" data-category="${key}">${label} · ${count}</button>`;
-      }).join("");
+    // Helper functions
+    function loadFavorites() {
+      try {
+        return JSON.parse(localStorage.getItem("gina_ai_favorites") || "[]");
+      } catch (e) {
+        return [];
+      }
     }
 
+    function saveFavorites() {
+      localStorage.setItem("gina_ai_favorites", JSON.stringify(Array.from(state.favorites)));
+      updateFavBadge();
+    }
+
+    function updateFavBadge() {
+      const count = state.favorites.size;
+      favCountBadge.textContent = `(${count})`;
+      if (state.onlyFavorites) {
+        favFilterBtn.classList.add("active");
+        favHeartIcon.textContent = "💖";
+      } else {
+        favFilterBtn.classList.remove("active");
+        favHeartIcon.textContent = count > 0 ? "❤️" : "🤍";
+      }
+    }
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1800);
+    }
+
+    function escapeHTML(str) {
+      return String(str).replace(/[&<>'"]/g, tag => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "'": "&#39;",
+        "\"": "&quot;"
+      }[tag] || tag));
+    }
+
+    // Render Categories Dock
+    function renderCategories() {
+      catScroll.innerHTML = Object.entries(CATEGORIES).map(([key, item]) => {
+        const count = key === "all" ? TOOLS_DATA.length : TOOLS_DATA.filter(t => t.cat === key).length;
+        const isActive = state.category === key;
+        return `
+          <button type="button" class="cat-pill ${isActive ? "active" : ""}" data-cat="${key}">
+            <span>${item.icon}</span>
+            <span>${item.label}</span>
+            <span style="font-size: 11px; opacity: 0.75;">(${count})</span>
+          </button>
+        `;
+      }).join("");
+
+      // Bind category events
+      catScroll.querySelectorAll(".cat-pill").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const cat = btn.getAttribute("data-cat");
+          state.category = cat;
+          state.onlyFavorites = false;
+          renderCategories();
+          renderTools();
+        });
+      });
+    }
+
+    // Filter tools
     function getFilteredTools() {
-      const query = state.query.trim().toLowerCase();
-      return TOOLS.filter(tool => {
+      const q = state.query.trim().toLowerCase();
+      return TOOLS_DATA.filter(tool => {
         if (state.category !== "all" && tool.cat !== state.category) return false;
-        if (state.preset === "new" && !tool.isNew) return false;
+        if (state.onlyFavorites && !state.favorites.has(tool.id)) return false;
+        if (state.preset === "vpn" && tool.region !== "global") return false;
         if (state.preset === "china" && tool.region !== "china") return false;
         if (state.preset === "free" && tool.price !== "free") return false;
-        if (state.preset === "favorites" && !state.favorites.has(tool.id)) return false;
-        if (!query) return true;
-        return [tool.name, tool.desc, CATEGORY[tool.cat], ...tool.tags].join(" ").toLowerCase().includes(query);
-      }).sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)) || Number(Boolean(b.isNew)) - Number(Boolean(a.isNew)) || a.name.localeCompare(b.name, "zh-CN"));
+        if (state.preset === "new" && !tool.isNew) return false;
+
+        if (!q) return true;
+        const searchPool = [tool.name, tool.id, CATEGORIES[tool.cat]?.label || ""].join(" ").toLowerCase();
+        return searchPool.includes(q);
+      });
     }
 
+    // Render Tools Grid
     function renderTools() {
       const tools = getFilteredTools();
-      const presetTitles = {all:state.category === "all" ? "全部工具" : CATEGORY[state.category],new:"最近更新",china:"国内可用",free:"可免费体验",favorites:"我的收藏"};
-      title.textContent = state.query ? `搜索“${state.query}”` : presetTitles[state.preset];
-      resultCount.textContent = `${tools.length} / ${TOOLS.length} 个工具`;
-      if (!tools.length) {
-        grid.innerHTML = `<div class="empty-state"><strong>这里暂时是空的</strong><span>换个关键词或筛选条件试试。</span></div>`;
+      resultsCount.textContent = `共 ${tools.length} 款顶尖 AI`;
+
+      if (tools.length === 0) {
+        toolsGrid.innerHTML = `
+          <div class="empty-box">
+            <div class="empty-emoji">🫧</div>
+            <h3>没有找到符合条件的 AI 工具</h3>
+            <p>试试其他分类或搜索关键词吧~</p>
+            <button class="btn-reset" id="resetBtn">查看全部工具</button>
+          </div>
+        `;
+        document.getElementById("resetBtn")?.addEventListener("click", () => {
+          state.category = "all";
+          state.preset = "all";
+          state.query = "";
+          state.onlyFavorites = false;
+          searchInput.value = "";
+          document.querySelectorAll(".filter-chip").forEach(p => p.classList.toggle("active", p.dataset.preset === "all"));
+          renderCategories();
+          renderTools();
+        });
         return;
       }
-      grid.innerHTML = tools.map((tool, index) => `
-        <article class="tool-card" style="--accent:${tool.color};animation-delay:${Math.min(index, 11) * 28}ms">
-          <div class="card-top">
-            <div class="tool-mark" aria-hidden="true">${escapeHTML(tool.mark)}</div>
-            <button class="fav-btn ${state.favorites.has(tool.id) ? "active" : ""}" type="button" data-favorite="${tool.id}" aria-label="${state.favorites.has(tool.id) ? "取消收藏" : "收藏"}${escapeHTML(tool.name)}">${state.favorites.has(tool.id) ? "★" : "☆"}</button>
+
+      toolsGrid.innerHTML = tools.map((tool, idx) => {
+        const isFav = state.favorites.has(tool.id);
+        const isVpn = tool.region === "global";
+        return `
+          <div class="tool-card" data-url="${tool.url}" title="点击直达 ${escapeHTML(tool.name)} 官方网站">
+            <button class="fav-heart-btn ${isFav ? "active" : ""}" data-id="${tool.id}" title="${isFav ? "取消收藏" : "加入收藏"}">
+              ${isFav ? "❤️" : "🤍"}
+            </button>
+            <div class="emoji-logo-box" style="--emoji-tint:${tool.tint}">
+              ${tool.emoji}
+            </div>
+            <div class="tool-name">${escapeHTML(tool.name)}</div>
+            <div>
+              ${isVpn 
+                ? '<span class="network-badge vpn">🌐 需VPN</span>' 
+                : '<span class="network-badge china">🇨🇳 直连</span>'
+              }
+            </div>
           </div>
-          <h3>${escapeHTML(tool.name)}</h3>
-          <p>${escapeHTML(tool.desc)}</p>
-          <div class="tag-row">${tool.isNew ? '<span class="tag new">2026 新增</span>' : ""}${tool.tags.map(tag => `<span class="tag">${escapeHTML(tag)}</span>`).join("")}</div>
-          <div class="card-footer"><span class="verified">已核验</span><a class="visit-link" href="${tool.url}" target="_blank" rel="noopener noreferrer" data-visit="${tool.id}">访问官网 ↗</a></div>
-        </article>`).join("");
+        `;
+      }).join("");
+
+      // Bind card clicks & heart clicks
+      toolsGrid.querySelectorAll(".tool-card").forEach(card => {
+        card.addEventListener("click", (e) => {
+          // If clicked the favorite heart, don't open the url
+          if (e.target.closest(".fav-heart-btn")) return;
+          const url = card.getAttribute("data-url");
+          if (url) window.open(url, "_blank", "noopener,noreferrer");
+        });
+      });
+
+      toolsGrid.querySelectorAll(".fav-heart-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const id = btn.getAttribute("data-id");
+          const tool = TOOLS_DATA.find(t => t.id === id);
+          if (state.favorites.has(id)) {
+            state.favorites.delete(id);
+            btn.classList.remove("active");
+            btn.textContent = "🤍";
+            showToast(`已将 ${tool ? tool.name : ""} 移出收藏`);
+          } else {
+            state.favorites.add(id);
+            btn.classList.add("active");
+            btn.textContent = "❤️";
+            showToast(`已收藏 ${tool ? tool.name : ""}`);
+          }
+          saveFavorites();
+          if (state.onlyFavorites) {
+            renderTools();
+          }
+        });
+      });
     }
 
-    function applyPreset(preset) {
-      state.preset = preset;
+    // Bind Filter Chips
+    document.querySelectorAll(".filter-chip").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter-chip").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        state.preset = btn.dataset.preset;
+        renderTools();
+      });
+    });
+
+    // Search input
+    let searchDebounce = null;
+    searchInput.addEventListener("input", (e) => {
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(() => {
+        state.query = e.target.value;
+        renderTools();
+      }, 120);
+    });
+
+    // Keyboard shortcut ⌘K / Ctrl+K
+    window.addEventListener("keydown", (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        searchInput.focus();
+        searchInput.select();
+      }
+      if (e.key === "Escape" && document.activeElement === searchInput) {
+        searchInput.blur();
+      }
+    });
+
+    // Favorite Filter Toggle
+    favFilterBtn.addEventListener("click", () => {
+      state.onlyFavorites = !state.onlyFavorites;
+      if (state.onlyFavorites && state.favorites.size === 0) {
+        showToast("您还没有收藏任何工具哦，点小爱心即可收藏！");
+      }
+      updateFavBadge();
+      renderTools();
+    });
+
+    // Brand reset
+    brandBtn.addEventListener("click", () => {
       state.category = "all";
+      state.preset = "all";
       state.query = "";
+      state.onlyFavorites = false;
       searchInput.value = "";
+      document.querySelectorAll(".filter-chip").forEach(p => p.classList.toggle("active", p.dataset.preset === "all"));
       renderCategories();
       renderTools();
-      document.getElementById("directory").scrollIntoView({behavior:"smooth", block:"start"});
-    }
-
-    function toggleFavorite(id) {
-      if (state.favorites.has(id)) state.favorites.delete(id); else state.favorites.add(id);
-      saveJSON("gina-favorites", [...state.favorites]);
-      renderTools();
-      showToast(state.favorites.has(id) ? "已加入收藏" : "已取消收藏");
-    }
-
-    document.addEventListener("click", event => {
-      const categoryButton = event.target.closest("[data-category]");
-      const presetButton = event.target.closest("[data-preset]");
-      const favoriteButton = event.target.closest("[data-favorite]");
-      const actionButton = event.target.closest("[data-action]");
-      const visitLink = event.target.closest("[data-visit]");
-      if (categoryButton) { state.category = categoryButton.dataset.category; state.preset = "all"; renderCategories(); renderTools(); document.getElementById("directory").scrollIntoView({behavior:"smooth",block:"start"}); }
-      if (presetButton) applyPreset(presetButton.dataset.preset);
-      if (favoriteButton) toggleFavorite(favoriteButton.dataset.favorite);
-      if (visitLink) { const recent = loadJSON("gina-recent", []).filter(id => id !== visitLink.dataset.visit); recent.unshift(visitLink.dataset.visit); saveJSON("gina-recent", recent.slice(0, 12)); }
-      if (!actionButton) return;
-      if (actionButton.dataset.action === "home") { state.category="all"; state.preset="all"; state.query=""; searchInput.value=""; renderCategories(); renderTools(); document.getElementById("home").scrollIntoView({behavior:"smooth"}); }
-      if (actionButton.dataset.action === "favorites") applyPreset("favorites");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    searchInput.addEventListener("input", () => { state.query = searchInput.value; state.category = "all"; state.preset = "all"; renderCategories(); renderTools(); });
-    document.addEventListener("keydown", event => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") { event.preventDefault(); searchInput.focus(); }
-    });
-
+    // Initialize
+    updateFavBadge();
     renderCategories();
     renderTools();
-
-</script></body></html>
+  </script>
+</body>
+</html>
