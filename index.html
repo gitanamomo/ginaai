@@ -325,9 +325,9 @@
     <!-- ===== TOOLS TAB ===== -->
     <div class="page-section active" id="tab-tools">
       <div class="hero-stat-bar">
-        <div class="stat-item"><div class="stat-num">120+</div><div class="stat-label">AI 工具</div></div>
+        <div class="stat-item"><div class="stat-num" id="statTotalCount">100+</div><div class="stat-label">AI 工具</div></div>
         <div class="stat-sep"></div>
-        <div class="stat-item"><div class="stat-num">11</div><div class="stat-label">大类别</div></div>
+        <div class="stat-item"><div class="stat-num" id="statCatCount">10</div><div class="stat-label">大类别</div></div>
         <div class="stat-sep"></div>
         <div class="stat-item"><div class="stat-num">2026</div><div class="stat-label">最新更新</div></div>
         <div class="results-info">已筛选 <span class="results-count" id="resultsCount">0</span> 款</div>
@@ -356,10 +356,22 @@
 
       <!-- 零基础入门 -->
       <div class="learn-section-header">
-        <span class="learn-section-tag badge-beginner">🌱 零基础入门</span>
+        <span class="learn-section-tag badge-beginner">🌱 零基础与官方学院</span>
         <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(255,107,0,0.3),transparent)"></div>
       </div>
       <div class="learn-grid">
+        <div class="learn-card" style="--card-accent:#10a37f" onclick="window.open('https://academy.openai.com/','_blank','noopener')">
+          <div class="learn-card-top"><div class="learn-logo">🌀</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-cert">徽章</span><span class="learn-badge badge-hot">🔥 2026必学</span></div></div>
+          <div><div class="learn-title">OpenAI Academy</div><div class="learn-provider">OpenAI 官方学院</div></div>
+          <div class="learn-desc">OpenAI 官方推出的免费在线互动学院，涵盖 AI 基础、提示词工程、结构化工作流与 Agent 任务编排，普通账号即可 100% 免费学习并考取官方完成徽章。</div>
+          <div class="learn-meta"><span>academy.openai.com</span><span class="learn-arrow">→</span></div>
+        </div>
+        <div class="learn-card" style="--card-accent:#ff6b00" onclick="window.open('https://anthropic.skilljar.com/','_blank','noopener')">
+          <div class="learn-card-top"><div class="learn-logo">🏛️</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-cert">CERT</span><span class="learn-badge badge-hot">🔥 HOT</span></div></div>
+          <div><div class="learn-title">Anthropic Academy (Claude)</div><div class="learn-provider">Anthropic 官方学院</div></div>
+          <div class="learn-desc">Anthropic 官方免费课程库，包含《AI Fluency 4D 框架》《Claude 101》《Claude Code 101》以及行业标准的《MCP 协议开发课》，完成测验可获官方证书。</div>
+          <div class="learn-meta"><span>anthropic.skilljar.com</span><span class="learn-arrow">→</span></div>
+        </div>
         <div class="learn-card" style="--card-accent:#ff6b00" onclick="window.open('https://www.elementsofai.com/','_blank','noopener')">
           <div class="learn-card-top"><div class="learn-logo">🎓</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-cert">CERT</span><span class="learn-badge badge-beginner">入门</span></div></div>
           <div><div class="learn-title">Elements of AI</div><div class="learn-provider">赫尔辛基大学 × MinnaLearn</div></div>
@@ -373,15 +385,15 @@
           <div class="learn-meta"><span>learn.microsoft.com</span><span class="learn-arrow">→</span></div>
         </div>
         <div class="learn-card" style="--card-accent:#4285f4" onclick="window.open('https://www.cloudskillsboost.google/paths','_blank','noopener')">
-          <div class="learn-card-top"><div class="learn-logo">🔵</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-hot">🔥 HOT</span></div></div>
+          <div class="learn-card-top"><div class="learn-logo">🔵</div><div class="learn-badges"><span class="learn-badge badge-free">核心免费</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-hot">🔥 HOT</span></div></div>
           <div><div class="learn-title">Google Cloud Skills Boost</div><div class="learn-provider">Google Cloud 官方</div></div>
-          <div class="learn-desc">Google 官方 AI/ML 学习路径，含《Generative AI 基础》《机器学习速成课》《Gemini 开发》，实验室环境完全免费。</div>
+          <div class="learn-desc">Google 官方 AI/ML 学习路径，含《Generative AI 基础》《机器学习速成课》《Gemini 开发》等核心免费公开课，快速掌握 Google AI 生态。</div>
           <div class="learn-meta"><span>cloudskillsboost.google</span><span class="learn-arrow">→</span></div>
         </div>
         <div class="learn-card" style="--card-accent:#ff6b00" onclick="window.open('https://www.kaggle.com/learn','_blank','noopener')">
           <div class="learn-card-top"><div class="learn-logo">📊</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-cert">CERT</span></div></div>
           <div><div class="learn-title">Kaggle Learn</div><div class="learn-provider">Kaggle (Google) 官方</div></div>
-          <div class="learn-desc">Google 旗下最大 AI 竞赛平台免费课程。机器学习、深度学习、NLP、AI Agent，Jupyter Notebook 动手实战，完成颁发证书。</div>
+          <div class="learn-desc">Google 旗下最大 AI 竞赛平台免费课程。机器学习、深度学习、NLP 及《5-Day AI Agents 强化营》，Jupyter Notebook 动手实战并颁发证书。</div>
           <div class="learn-meta"><span>kaggle.com/learn</span><span class="learn-arrow">→</span></div>
         </div>
       </div>
@@ -395,7 +407,7 @@
         <div class="learn-card" style="--card-accent:#a855f7" onclick="window.open('https://www.deeplearning.ai/','_blank','noopener')">
           <div class="learn-card-top"><div class="learn-logo">🧠</div><div class="learn-badges"><span class="learn-badge badge-free">视频免费</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-hot">🔥 HOT</span></div></div>
           <div><div class="learn-title">DeepLearning.AI</div><div class="learn-provider">Andrew Ng · 吴恩达</div></div>
-          <div class="learn-desc">吴恩达创立，全球顶级 AI 教育机构。《机器学习》《深度学习》《LLMOps》《AI Agents》等精品课视频全部免费观看，内容最权威。</div>
+          <div class="learn-desc">吴恩达创立，全球顶级 AI 教育机构。《Agentic AI》《MCP》《深度学习》《RAG》等最新精品短课与专项视频全部免费观看，内容最权威。</div>
           <div class="learn-meta"><span>deeplearning.ai</span><span class="learn-arrow">→</span></div>
         </div>
         <div class="learn-card" style="--card-accent:#ffd700" onclick="window.open('https://huggingface.co/learn','_blank','noopener')">
@@ -423,7 +435,7 @@
           <div class="learn-meta"><span>stanford.edu/class/cs229</span><span class="learn-arrow">→</span></div>
         </div>
         <div class="learn-card" style="--card-accent:#ff6b00" onclick="window.open('https://cookbook.openai.com/','_blank','noopener')">
-          <div class="learn-card-top"><div class="learn-logo">🌀</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-hot">🔥 前沿</span></div></div>
+          <div class="learn-card-top"><div class="learn-logo">📓</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-hot">🔥 前沿</span></div></div>
           <div><div class="learn-title">OpenAI Cookbook</div><div class="learn-provider">OpenAI 官方</div></div>
           <div class="learn-desc">OpenAI 官方提供数百个实战 Notebook，GPT API 调用、Prompt Engineering、Function Calling、RAG、Fine-tuning 全有权威示例。</div>
           <div class="learn-meta"><span>cookbook.openai.com</span><span class="learn-arrow">→</span></div>
@@ -438,8 +450,8 @@
       <div class="learn-grid">
         <div class="learn-card" style="--card-accent:#00c8ff" onclick="window.open('https://aistudio.baidu.com/course/introduce','_blank','noopener')">
           <div class="learn-card-top"><div class="learn-logo">🚣</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">官方</span><span class="learn-badge badge-cert">证书</span></div></div>
-          <div><div class="learn-title">百度飞桨 AI Studio</div><div class="learn-provider">百度 PaddlePaddle 官方</div></div>
-          <div class="learn-desc">百度官方深度学习平台，提供从零基础到高阶完整中文 AI 课程体系。免费算力、免费课程、免费证书，国内开发者必备学习平台。</div>
+          <div><div class="learn-title">飞桨星河社区 AI Studio</div><div class="learn-provider">百度 PaddlePaddle 官方</div></div>
+          <div class="learn-desc">百度官方 AI 社区（原飞桨 AI Studio），提供从零基础到高阶完整中文大模型与深度学习课程体系。免费算力、免费课程、免费证书。</div>
           <div class="learn-meta"><span>aistudio.baidu.com</span><span class="learn-arrow">→</span></div>
         </div>
         <div class="learn-card" style="--card-accent:#ff0080" onclick="window.open('https://modelscope.cn/learn','_blank','noopener')">
@@ -451,7 +463,7 @@
         <div class="learn-card" style="--card-accent:#a855f7" onclick="window.open('https://github.com/datawhalechina','_blank','noopener')">
           <div class="learn-card-top"><div class="learn-logo">🐳</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">社区</span><span class="learn-badge badge-hot">🔥 强推</span></div></div>
           <div><div class="learn-title">Datawhale 开源学习</div><div class="learn-provider">Datawhale 社区</div></div>
-          <div class="learn-desc">国内最大 AI 开源学习社区，数十本机器学习、大模型、Prompt Engineering 中文开源教程，所有内容在 GitHub 免费获取，质量极高。</div>
+          <div class="learn-desc">国内最大 AI 开源学习社区，数十本机器学习、大模型、Agent 与 Prompt Engineering 中文开源教程，在 GitHub 免费获取，质量极高。</div>
           <div class="learn-meta"><span>github.com/datawhalechina</span><span class="learn-arrow">→</span></div>
         </div>
       </div>
@@ -491,59 +503,69 @@
 
     const TOOLS_DATA = [
       // AI 对话
-      { id:"chatgpt",    name:"ChatGPT",            cat:"chat",   emoji:"🌀", url:"https://chat.openai.com/",                  region:"global", price:"free", isNew:false, tint:"rgba(16,163,127,0.15)" },
+      { id:"chatgpt",    name:"ChatGPT",            cat:"chat",   emoji:"🌀", url:"https://chatgpt.com/",                      region:"global", price:"free", isNew:false, tint:"rgba(16,163,127,0.15)" },
       { id:"claude",     name:"Claude",             cat:"chat",   emoji:"🏛️", url:"https://claude.ai/",                        region:"global", price:"free", isNew:false, tint:"rgba(255,107,0,0.12)" },
       { id:"gemini",     name:"Gemini",             cat:"chat",   emoji:"♊",  url:"https://gemini.google.com/",               region:"global", price:"free", isNew:false, tint:"rgba(66,133,244,0.12)" },
       { id:"deepseek",   name:"DeepSeek",           cat:"chat",   emoji:"🌊", url:"https://chat.deepseek.com/",               region:"china",  price:"free", isNew:false, tint:"rgba(99,102,241,0.12)" },
+      { id:"yuanbao",    name:"腾讯元宝",             cat:"chat",   emoji:"💎", url:"https://yuanbao.tencent.com/",             region:"china",  price:"free", isNew:true,  tint:"rgba(0,200,255,0.15)" },
       { id:"kimi",       name:"Kimi",               cat:"chat",   emoji:"🌕", url:"https://kimi.moonshot.cn/",                region:"china",  price:"free", isNew:false, tint:"rgba(168,85,247,0.12)" },
       { id:"doubao",     name:"豆包",                cat:"chat",   emoji:"🫘", url:"https://www.doubao.com/",                  region:"china",  price:"free", isNew:false, tint:"rgba(255,185,0,0.12)" },
-      { id:"qianwen",    name:"通义千问",             cat:"chat",   emoji:"🔶", url:"https://tongyi.aliyun.com/",               region:"china",  price:"free", isNew:false, tint:"rgba(255,107,0,0.12)" },
+      { id:"qianwen",    name:"通义千问",             cat:"chat",   emoji:"🔶", url:"https://www.tongyi.com/",                  region:"china",  price:"free", isNew:false, tint:"rgba(255,107,0,0.12)" },
       { id:"yiyan",      name:"文心一言",             cat:"chat",   emoji:"🐾", url:"https://yiyan.baidu.com/",                 region:"china",  price:"free", isNew:false, tint:"rgba(23,162,255,0.12)" },
       { id:"xinghuo",    name:"讯飞星火",             cat:"chat",   emoji:"✨", url:"https://xinghuo.xfyun.cn/",               region:"china",  price:"free", isNew:false, tint:"rgba(0,180,255,0.12)" },
       { id:"zhipu",      name:"智谱清言",             cat:"chat",   emoji:"💫", url:"https://chatglm.cn/",                      region:"china",  price:"free", isNew:false, tint:"rgba(0,200,255,0.12)" },
-      { id:"hailuo",     name:"海螺 AI",             cat:"chat",   emoji:"🐚", url:"https://hailuoai.com/",                    region:"china",  price:"free", isNew:true,  tint:"rgba(255,0,128,0.12)" },
+      { id:"stepfun",    name:"跃问 StepFun",        cat:"chat",   emoji:"⚡", url:"https://yuewen.cn/",                       region:"china",  price:"free", isNew:true,  tint:"rgba(0,255,136,0.12)" },
+      { id:"hailuo",     name:"海螺 AI",             cat:"chat",   emoji:"🐚", url:"https://hailuoai.com/",                    region:"china",  price:"free", isNew:false, tint:"rgba(255,0,128,0.12)" },
       { id:"perplexity", name:"Perplexity",         cat:"chat",   emoji:"🔮", url:"https://www.perplexity.ai/",               region:"global", price:"free", isNew:false, tint:"rgba(99,102,241,0.12)" },
-      { id:"meta-ai",    name:"Meta AI",            cat:"chat",   emoji:"🔵", url:"https://ai.meta.com/",                     region:"global", price:"free", isNew:true,  tint:"rgba(24,119,242,0.12)" },
+      { id:"meta-ai",    name:"Meta AI",            cat:"chat",   emoji:"🔵", url:"https://ai.meta.com/",                     region:"global", price:"free", isNew:false, tint:"rgba(24,119,242,0.12)" },
       { id:"grok",       name:"Grok",               cat:"chat",   emoji:"🚀", url:"https://grok.com/",                        region:"global", price:"free", isNew:true,  tint:"rgba(0,200,255,0.12)" },
       { id:"notebooklm", name:"NotebookLM",         cat:"chat",   emoji:"📓", url:"https://notebooklm.google.com/",           region:"global", price:"free", isNew:true,  tint:"rgba(66,133,244,0.12)" },
       { id:"poe",        name:"Poe",                cat:"chat",   emoji:"🦋", url:"https://poe.com/",                         region:"global", price:"free", isNew:false, tint:"rgba(168,85,247,0.12)" },
       // AI 搜索
-      { id:"metaso",     name:"秘塔 AI 搜索",         cat:"search", emoji:"🕵️", url:"https://metaso.cn/",                       region:"china",  price:"free", isNew:true,  tint:"rgba(0,255,136,0.12)" },
+      { id:"metaso",     name:"秘塔 AI 搜索",         cat:"search", emoji:"🕵️", url:"https://metaso.cn/",                       region:"china",  price:"free", isNew:false, tint:"rgba(0,255,136,0.12)" },
+      { id:"dots",       name:"点点 Dots",           cat:"search", emoji:"🔴", url:"https://www.dots.ai/",                     region:"china",  price:"free", isNew:true,  tint:"rgba(255,50,80,0.15)" },
+      { id:"nami",       name:"纳米 AI 搜索",         cat:"search", emoji:"🔬", url:"https://www.n.cn/",                        region:"china",  price:"free", isNew:true,  tint:"rgba(0,200,255,0.12)" },
       { id:"tiangong",   name:"天工 AI",             cat:"search", emoji:"🌤️", url:"https://www.tiangong.cn/",                 region:"china",  price:"free", isNew:false, tint:"rgba(255,185,0,0.12)" },
       { id:"you",        name:"You.com",            cat:"search", emoji:"🌍", url:"https://you.com/",                         region:"global", price:"free", isNew:false, tint:"rgba(0,200,255,0.12)" },
       { id:"phind",      name:"Phind",              cat:"search", emoji:"🔭", url:"https://www.phind.com/",                   region:"global", price:"free", isNew:false, tint:"rgba(168,85,247,0.12)" },
       // 图像创作
       { id:"midjourney", name:"Midjourney",         cat:"image",  emoji:"🎨", url:"https://www.midjourney.com/",              region:"global", price:"paid", isNew:false, tint:"rgba(99,102,241,0.12)" },
-      { id:"dalle3",     name:"DALL·E 3",           cat:"image",  emoji:"🖼️", url:"https://openai.com/dall-e-3",              region:"global", price:"free", isNew:false, tint:"rgba(16,163,127,0.12)" },
-      { id:"ideogram",   name:"Ideogram",           cat:"image",  emoji:"🅰️", url:"https://ideogram.ai/",                     region:"global", price:"free", isNew:true,  tint:"rgba(255,107,0,0.12)" },
+      { id:"gpt-image",  name:"GPT Image",          cat:"image",  emoji:"🖼️", url:"https://chatgpt.com/",                     region:"global", price:"free", isNew:true,  tint:"rgba(16,163,127,0.12)" },
+      { id:"flux",       name:"FLUX.2",             cat:"image",  emoji:"⚡", url:"https://bfl.ai/",                          region:"global", price:"free", isNew:true,  tint:"rgba(255,215,0,0.12)" },
+      { id:"recraft",    name:"Recraft",            cat:"image",  emoji:"📐", url:"https://www.recraft.ai/",                  region:"global", price:"free", isNew:true,  tint:"rgba(255,0,128,0.12)" },
+      { id:"ideogram",   name:"Ideogram",           cat:"image",  emoji:"🅰️", url:"https://ideogram.ai/",                     region:"global", price:"free", isNew:false, tint:"rgba(255,107,0,0.12)" },
       { id:"stable-diff",name:"Stable Diffusion",  cat:"image",  emoji:"🌌", url:"https://stability.ai/",                   region:"global", price:"free", isNew:false, tint:"rgba(168,85,247,0.12)" },
-      { id:"kolors",     name:"可图 Kolors",         cat:"image",  emoji:"🌈", url:"https://kolors.kuaishou.com/",             region:"china",  price:"free", isNew:true,  tint:"rgba(255,0,128,0.12)" },
+      { id:"kolors",     name:"可图 Kolors",         cat:"image",  emoji:"🌈", url:"https://kolors.kuaishou.com/",             region:"china",  price:"free", isNew:false, tint:"rgba(255,0,128,0.12)" },
       { id:"jimeng",     name:"即梦 AI",             cat:"image",  emoji:"🎭", url:"https://jimeng.jianying.com/",             region:"china",  price:"free", isNew:true,  tint:"rgba(0,200,255,0.12)" },
-      { id:"tongyi-wanx",name:"通义万象",             cat:"image",  emoji:"🔶", url:"https://tongyi.aliyun.com/wanxiang/",      region:"china",  price:"free", isNew:false, tint:"rgba(255,107,0,0.12)" },
-      { id:"yige",       name:"文心一格",             cat:"image",  emoji:"🖌️", url:"https://yige.baidu.com/",                  region:"china",  price:"free", isNew:false, tint:"rgba(23,162,255,0.12)" },
+      { id:"tongyi-wanx",name:"通义万相",             cat:"image",  emoji:"🔶", url:"https://tongyi.aliyun.com/wanxiang/",      region:"china",  price:"free", isNew:false, tint:"rgba(255,107,0,0.12)" },
+      { id:"liblib",     name:"LiblibAI 哩布",       cat:"image",  emoji:"🖌️", url:"https://www.liblib.art/",                  region:"china",  price:"free", isNew:true,  tint:"rgba(23,162,255,0.12)" },
       { id:"firefly",    name:"Adobe Firefly",      cat:"image",  emoji:"🔥", url:"https://firefly.adobe.com/",              region:"global", price:"free", isNew:false, tint:"rgba(255,50,0,0.12)" },
       { id:"canva-ai",   name:"Canva AI",           cat:"image",  emoji:"🎨", url:"https://www.canva.com/ai-image-generator/",region:"global", price:"free", isNew:false, tint:"rgba(0,200,255,0.12)" },
-      { id:"flux",       name:"Flux",               cat:"image",  emoji:"⚡", url:"https://flux.ai/",                        region:"global", price:"free", isNew:true,  tint:"rgba(255,215,0,0.12)" },
-      { id:"playground", name:"Playground",         cat:"image",  emoji:"🛝", url:"https://playground.com/",                 region:"global", price:"free", isNew:true,  tint:"rgba(168,85,247,0.12)" },
+      { id:"playground", name:"Playground",         cat:"image",  emoji:"🛝", url:"https://playground.com/",                 region:"global", price:"free", isNew:false, tint:"rgba(168,85,247,0.12)" },
       // 视频生成
-      { id:"sora",       name:"Sora",               cat:"video",  emoji:"📹", url:"https://sora.openai.com/",                region:"global", price:"paid", isNew:true,  tint:"rgba(16,163,127,0.12)" },
       { id:"veo3",       name:"Veo 3",              cat:"video",  emoji:"🎥", url:"https://deepmind.google/technologies/veo/",region:"global", price:"free", isNew:true,  tint:"rgba(66,133,244,0.12)" },
-      { id:"runway",     name:"Runway Gen-3",       cat:"video",  emoji:"🎬", url:"https://runwayml.com/",                   region:"global", price:"free", isNew:true,  tint:"rgba(0,200,255,0.12)" },
+      { id:"seedance",   name:"即梦 Seedance",       cat:"video",  emoji:"🎞️", url:"https://jimeng.jianying.com/",             region:"china",  price:"free", isNew:true,  tint:"rgba(0,200,255,0.15)" },
       { id:"kling",      name:"可灵 AI",             cat:"video",  emoji:"🌠", url:"https://klingai.com/",                    region:"global", price:"free", isNew:true,  tint:"rgba(168,85,247,0.12)" },
+      { id:"runway",     name:"Runway Gen-4",       cat:"video",  emoji:"🎬", url:"https://runwayml.com/",                   region:"global", price:"free", isNew:true,  tint:"rgba(0,200,255,0.12)" },
       { id:"vidu",       name:"Vidu",               cat:"video",  emoji:"📽️", url:"https://www.vidu.studio/",                region:"china",  price:"free", isNew:true,  tint:"rgba(0,255,136,0.12)" },
+      { id:"minimax-video",name:"海螺视频",           cat:"video",  emoji:"🐚", url:"https://hailuoai.com/video",              region:"china",  price:"free", isNew:true,  tint:"rgba(255,0,128,0.12)" },
+      { id:"sora",       name:"Sora",               cat:"video",  emoji:"📹", url:"https://openai.com/sora/",                region:"global", price:"paid", isNew:false, tint:"rgba(16,163,127,0.12)" },
       { id:"pika",       name:"Pika",               cat:"video",  emoji:"🍿", url:"https://pika.art/",                       region:"global", price:"free", isNew:false, tint:"rgba(255,185,0,0.12)" },
-      { id:"heygen",     name:"HeyGen",             cat:"video",  emoji:"🎭", url:"https://www.heygen.com/",                 region:"global", price:"free", isNew:true,  tint:"rgba(168,85,247,0.12)" },
-      { id:"luma",       name:"Luma Dream Machine", cat:"video",  emoji:"💫", url:"https://lumalabs.ai/dream-machine",       region:"global", price:"free", isNew:true,  tint:"rgba(255,0,128,0.12)" },
+      { id:"heygen",     name:"HeyGen",             cat:"video",  emoji:"🎭", url:"https://www.heygen.com/",                 region:"global", price:"free", isNew:false, tint:"rgba(168,85,247,0.12)" },
+      { id:"luma",       name:"Luma Dream Machine", cat:"video",  emoji:"💫", url:"https://lumalabs.ai/dream-machine",       region:"global", price:"free", isNew:false, tint:"rgba(255,0,128,0.12)" },
       { id:"jianying",   name:"剪映 AI",             cat:"video",  emoji:"✂️", url:"https://www.capcut.cn/",                  region:"china",  price:"free", isNew:false, tint:"rgba(0,255,136,0.12)" },
-      { id:"minimax-video",name:"海螺视频",           cat:"video",  emoji:"🎞️", url:"https://hailuoai.com/video",              region:"china",  price:"free", isNew:true,  tint:"rgba(255,0,128,0.12)" },
       // 代码开发
       { id:"cursor",     name:"Cursor",             cat:"code",   emoji:"⌨️", url:"https://www.cursor.com/",                 region:"global", price:"free", isNew:true,  tint:"rgba(0,200,255,0.12)" },
-      { id:"copilot",    name:"GitHub Copilot",     cat:"code",   emoji:"🐙", url:"https://github.com/features/copilot",     region:"global", price:"paid", isNew:false, tint:"rgba(0,200,255,0.12)" },
+      { id:"claude-code",name:"Claude Code",        cat:"code",   emoji:"🐚", url:"https://claude.ai/code",                  region:"global", price:"paid", isNew:true,  tint:"rgba(255,107,0,0.15)" },
+      { id:"windsurf",   name:"Windsurf",           cat:"code",   emoji:"🏄", url:"https://codeium.com/windsurf",            region:"global", price:"free", isNew:true,  tint:"rgba(0,255,136,0.12)" },
+      { id:"trae",       name:"Trae",               cat:"code",   emoji:"🚀", url:"https://www.trae.ai/",                    region:"global", price:"free", isNew:true,  tint:"rgba(0,200,255,0.15)" },
+      { id:"jules",      name:"Google Jules",       cat:"code",   emoji:"🪐", url:"https://jules.google/",                   region:"global", price:"free", isNew:true,  tint:"rgba(66,133,244,0.15)" },
+      { id:"codex",      name:"OpenAI Codex",       cat:"code",   emoji:"🧠", url:"https://chatgpt.com/codex",               region:"global", price:"paid", isNew:true,  tint:"rgba(16,163,127,0.15)" },
       { id:"v0",         name:"v0 by Vercel",       cat:"code",   emoji:"▲",  url:"https://v0.dev/",                         region:"global", price:"free", isNew:true,  tint:"rgba(255,255,255,0.06)" },
       { id:"lovable",    name:"Lovable",            cat:"code",   emoji:"💖", url:"https://lovable.dev/",                    region:"global", price:"free", isNew:true,  tint:"rgba(255,0,128,0.12)" },
       { id:"bolt",       name:"Bolt.new",           cat:"code",   emoji:"⚡", url:"https://bolt.new/",                       region:"global", price:"free", isNew:true,  tint:"rgba(255,215,0,0.12)" },
-      { id:"replit",     name:"Replit Agent",       cat:"code",   emoji:"👾", url:"https://replit.com/",                     region:"global", price:"free", isNew:true,  tint:"rgba(255,107,0,0.12)" },
-      { id:"windsurf",   name:"Windsurf",           cat:"code",   emoji:"🏄", url:"https://codeium.com/windsurf",            region:"global", price:"free", isNew:true,  tint:"rgba(0,255,136,0.12)" },
+      { id:"replit",     name:"Replit Agent",       cat:"code",   emoji:"👾", url:"https://replit.com/",                     region:"global", price:"free", isNew:false, tint:"rgba(255,107,0,0.12)" },
+      { id:"copilot",    name:"GitHub Copilot",     cat:"code",   emoji:"🐙", url:"https://github.com/features/copilot",     region:"global", price:"free", isNew:false, tint:"rgba(0,200,255,0.12)" },
       { id:"tabnine",    name:"Tabnine",            cat:"code",   emoji:"🔁", url:"https://www.tabnine.com/",                region:"global", price:"free", isNew:false, tint:"rgba(168,85,247,0.12)" },
       // 音频生成
       { id:"suno",       name:"Suno",               cat:"audio",  emoji:"🎵", url:"https://suno.com/",                       region:"global", price:"free", isNew:false, tint:"rgba(255,0,128,0.12)" },
@@ -564,19 +586,19 @@
       { id:"copy-ai",    name:"Copy.ai",            cat:"write",  emoji:"📋", url:"https://www.copy.ai/",                    region:"global", price:"free", isNew:false, tint:"rgba(99,102,241,0.12)" },
       { id:"grammarly",  name:"Grammarly AI",       cat:"write",  emoji:"📝", url:"https://www.grammarly.com/",              region:"global", price:"free", isNew:false, tint:"rgba(0,200,255,0.12)" },
       { id:"character",  name:"Character.AI",       cat:"write",  emoji:"🎭", url:"https://character.ai/",                   region:"global", price:"free", isNew:false, tint:"rgba(99,102,241,0.12)" },
-      { id:"xiaomeng",   name:"彩云小梦",             cat:"write",  emoji:"💭", url:"https://www.xiaomengai.com/",             region:"china",  price:"free", isNew:false, tint:"rgba(255,0,128,0.12)" },
+      { id:"wawawriter", name:"蛙蛙写作",             cat:"write",  emoji:"🐸", url:"https://wawawriter.com/",                 region:"china",  price:"free", isNew:true,  tint:"rgba(0,255,136,0.12)" },
       // AI Agent
       { id:"muse-meta",  name:"Muse by Meta",       cat:"agent",  emoji:"🔮", url:"https://muse.ai/",                        region:"global", price:"free", isNew:true,  tint:"rgba(24,119,242,0.15)" },
       { id:"manus",      name:"Manus",              cat:"agent",  emoji:"🦾", url:"https://manus.im/",                       region:"global", price:"free", isNew:true,  tint:"rgba(255,215,0,0.12)" },
       { id:"cue-manus",  name:"Cue (Manus)",        cat:"agent",  emoji:"🎯", url:"https://manus.im/",                       region:"global", price:"free", isNew:true,  tint:"rgba(0,255,136,0.15)" },
       { id:"openai-dots",name:"OpenAI Dots",        cat:"agent",  emoji:"🟢", url:"https://chatgpt.com/",                    region:"global", price:"paid", isNew:true,  tint:"rgba(16,163,127,0.15)" },
+      { id:"workbuddy",  name:"腾讯 WorkBuddy",      cat:"agent",  emoji:"🤝", url:"https://copilot.tencent.com/",            region:"china",  price:"free", isNew:true,  tint:"rgba(0,200,255,0.15)" },
       { id:"coze",       name:"扣子 Coze",           cat:"agent",  emoji:"🪢", url:"https://www.coze.cn/",                    region:"china",  price:"free", isNew:false, tint:"rgba(0,200,255,0.12)" },
       { id:"dify",       name:"Dify",               cat:"agent",  emoji:"🐳", url:"https://dify.ai/",                        region:"global", price:"free", isNew:false, tint:"rgba(99,102,241,0.12)" },
       { id:"devin",      name:"Devin",              cat:"agent",  emoji:"👾", url:"https://devin.ai/",                       region:"global", price:"paid", isNew:true,  tint:"rgba(0,255,136,0.12)" },
       { id:"n8n",        name:"n8n AI",             cat:"agent",  emoji:"🔄", url:"https://n8n.io/",                         region:"global", price:"free", isNew:true,  tint:"rgba(255,107,0,0.12)" },
       { id:"zapier-ai",  name:"Zapier AI",          cat:"agent",  emoji:"⚡", url:"https://zapier.com/ai",                   region:"global", price:"free", isNew:true,  tint:"rgba(255,107,0,0.12)" },
       { id:"langchain",  name:"LangChain",          cat:"agent",  emoji:"🔗", url:"https://www.langchain.com/",              region:"global", price:"free", isNew:false, tint:"rgba(0,255,136,0.12)" },
-      { id:"autogpt",    name:"AutoGPT",            cat:"agent",  emoji:"🤖", url:"https://autogpt.net/",                    region:"global", price:"free", isNew:false, tint:"rgba(255,185,0,0.12)" },
       { id:"browser-use",name:"Browser Use",        cat:"agent",  emoji:"🌐", url:"https://browser-use.com/",                region:"global", price:"free", isNew:true,  tint:"rgba(0,200,255,0.12)" },
       // API 平台
       { id:"openai-api", name:"OpenAI API",         cat:"api",    emoji:"🗝️", url:"https://platform.openai.com/",            region:"global", price:"paid", isNew:false, tint:"rgba(16,163,127,0.12)" },
@@ -745,6 +767,8 @@
       window.scrollTo({top:0, behavior:"smooth"});
     });
 
+    document.getElementById("statTotalCount").textContent = TOOLS_DATA.length;
+    document.getElementById("statCatCount").textContent = Object.keys(CATEGORIES).length - 1;
     updateFavBadge(); renderCategories(); renderTools();
   </script>
 </body>
