@@ -4,8 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0a0e1a">
-  <meta name="description" content="Gina AI · 全球顶尖 AI 网站导航 2026。赛博科技风，精选 120+ AI 工具 + 免费学习资源。">
+  <meta name="description" content="Gina AI · 全球顶尖 AI 导航 2026。赛博科技风，精选 110+ 款前沿 AI 工具与官方权威免费学习资源，支持网络环境直连筛选。">
   <title>Gina AI · 全球顶尖 AI 导航 2026</title>
+  <link rel="canonical" href="https://gitanamomo.github.io/ginaai/">
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gitanamomo.github.io/ginaai/">
+  <meta property="og:title" content="Gina AI · 全球顶尖 AI 导航 2026">
+  <meta property="og:description" content="精选全球 110+ 款顶尖 AI 工具与官方权威免费学习资源，赛博科技风，支持直连与网络环境快速筛选。">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Gina AI · 全球顶尖 AI 导航 2026">
+  <meta name="twitter:description" content="精选全球 110+ 款顶尖 AI 工具与官方权威免费学习资源，赛博科技风，支持直连与网络环境快速筛选。">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0e1a'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='36'%3E🤖%3C/text%3E%3C/svg%3E">
   <style>
     :root {
@@ -18,7 +27,7 @@
       --border-hover: rgba(0, 200, 255, 0.5);
       --text: #e8f4ff;
       --text-sub: #7ea8c8;
-      --text-muted: #4a6a88;
+      --text-muted: #7093b5;
       --cyan: #00c8ff;
       --cyan-dim: rgba(0, 200, 255, 0.12);
       --cyan-glow: rgba(0, 200, 255, 0.4);
@@ -194,7 +203,7 @@
     .tool-card:hover::after { opacity: 1; }
     .tool-card.is-new::after { opacity: 1; background: linear-gradient(135deg, transparent 50%, var(--cyan) 50%); }
 
-    .fav-heart-btn { position: absolute; top: 8px; left: 8px; font-size: 14px; cursor: pointer; opacity: 0; transition: opacity .2s, transform .2s; z-index: 2; background: rgba(0,0,0,0.4); border-radius: 6px; padding: 2px 5px; line-height: 1; }
+    .fav-heart-btn { position: absolute; top: 8px; left: 8px; font-size: 14px; cursor: pointer; opacity: 0; transition: opacity .2s, transform .2s; z-index: 2; background: rgba(0,0,0,0.4); border-radius: 6px; padding: 2px 5px; line-height: 1; display: inline-block; user-select: none; border: none; }
     .tool-card:hover .fav-heart-btn, .fav-heart-btn.active { opacity: 1; }
     .fav-heart-btn:hover { transform: scale(1.2); }
 
@@ -309,6 +318,7 @@
         <div class="search-input-wrap">
           <span class="search-icon">🔍</span>
           <input class="search-input" id="searchInput" type="search" placeholder="搜索 AI 工具..." autocomplete="off">
+          <button class="search-clear-btn" id="searchClearBtn" type="button" aria-label="清空搜索" style="display:none;cursor:pointer;color:var(--text-muted);padding:0 6px;font-size:13px;line-height:1;">✕</button>
           <span class="search-kbd">⌘K</span>
         </div>
       </div>
@@ -325,7 +335,7 @@
     <!-- ===== TOOLS TAB ===== -->
     <div class="page-section active" id="tab-tools">
       <div class="hero-stat-bar">
-        <div class="stat-item"><div class="stat-num" id="statTotalCount">100+</div><div class="stat-label">AI 工具</div></div>
+        <div class="stat-item"><div class="stat-num" id="statTotalCount">110+</div><div class="stat-label">AI 工具</div></div>
         <div class="stat-sep"></div>
         <div class="stat-item"><div class="stat-num" id="statCatCount">10</div><div class="stat-label">大类别</div></div>
         <div class="stat-sep"></div>
@@ -360,42 +370,42 @@
         <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(255,107,0,0.3),transparent)"></div>
       </div>
       <div class="learn-grid">
-        <div class="learn-card" style="--card-accent:#10a37f" onclick="window.open('https://academy.openai.com/','_blank','noopener')">
+        <a class="learn-card" style="--card-accent:#10a37f" href="https://academy.openai.com/" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">🌀</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-cert">徽章</span><span class="learn-badge badge-hot">🔥 2026必学</span></div></div>
           <div><div class="learn-title">OpenAI Academy</div><div class="learn-provider">OpenAI 官方学院</div></div>
           <div class="learn-desc">OpenAI 官方推出的免费在线互动学院，涵盖 AI 基础、提示词工程、结构化工作流与 Agent 任务编排，普通账号即可 100% 免费学习并考取官方完成徽章。</div>
           <div class="learn-meta"><span>academy.openai.com</span><span class="learn-arrow">→</span></div>
-        </div>
-        <div class="learn-card" style="--card-accent:#ff6b00" onclick="window.open('https://anthropic.skilljar.com/','_blank','noopener')">
+        </a>
+        <a class="learn-card" style="--card-accent:#ff6b00" href="https://anthropic.skilljar.com/" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">🏛️</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-cert">CERT</span><span class="learn-badge badge-hot">🔥 HOT</span></div></div>
           <div><div class="learn-title">Anthropic Academy (Claude)</div><div class="learn-provider">Anthropic 官方学院</div></div>
           <div class="learn-desc">Anthropic 官方免费课程库，包含《AI Fluency 4D 框架》《Claude 101》《Claude Code 101》以及行业标准的《MCP 协议开发课》，完成测验可获官方证书。</div>
           <div class="learn-meta"><span>anthropic.skilljar.com</span><span class="learn-arrow">→</span></div>
-        </div>
-        <div class="learn-card" style="--card-accent:#ff6b00" onclick="window.open('https://www.elementsofai.com/','_blank','noopener')">
+        </a>
+        <a class="learn-card" style="--card-accent:#ff6b00" href="https://www.elementsofai.com/" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">🎓</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-cert">CERT</span><span class="learn-badge badge-beginner">入门</span></div></div>
           <div><div class="learn-title">Elements of AI</div><div class="learn-provider">赫尔辛基大学 × MinnaLearn</div></div>
           <div class="learn-desc">全球最知名零基础入门课，无需编程背景，深入浅出讲解 AI 是什么、能做什么。多国语言，完成后可获官方证书，欧洲百万人学过。</div>
           <div class="learn-meta"><span>elementsofai.com</span><span class="learn-arrow">→</span></div>
-        </div>
-        <div class="learn-card" style="--card-accent:#00c8ff" onclick="window.open('https://learn.microsoft.com/zh-cn/ai/','_blank','noopener')">
+        </a>
+        <a class="learn-card" style="--card-accent:#00c8ff" href="https://learn.microsoft.com/zh-cn/ai/" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">🪟</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-cert">CERT</span><span class="learn-badge badge-hot">🔥 HOT</span></div></div>
           <div><div class="learn-title">Microsoft Learn — AI</div><div class="learn-provider">Microsoft 官方</div></div>
           <div class="learn-desc">微软官方完全免费 AI 学习平台，从 AI 基础到 Azure AI、Copilot 构建、LLM 微调、AI Agent 开发，内容海量持续更新，附实操练习。</div>
           <div class="learn-meta"><span>learn.microsoft.com</span><span class="learn-arrow">→</span></div>
-        </div>
-        <div class="learn-card" style="--card-accent:#4285f4" onclick="window.open('https://www.cloudskillsboost.google/paths','_blank','noopener')">
+        </a>
+        <a class="learn-card" style="--card-accent:#4285f4" href="https://www.cloudskillsboost.google/paths" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">🔵</div><div class="learn-badges"><span class="learn-badge badge-free">核心免费</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-hot">🔥 HOT</span></div></div>
           <div><div class="learn-title">Google Cloud Skills Boost</div><div class="learn-provider">Google Cloud 官方</div></div>
           <div class="learn-desc">Google 官方 AI/ML 学习路径，含《Generative AI 基础》《机器学习速成课》《Gemini 开发》等核心免费公开课，快速掌握 Google AI 生态。</div>
           <div class="learn-meta"><span>cloudskillsboost.google</span><span class="learn-arrow">→</span></div>
-        </div>
-        <div class="learn-card" style="--card-accent:#ff6b00" onclick="window.open('https://www.kaggle.com/learn','_blank','noopener')">
+        </a>
+        <a class="learn-card" style="--card-accent:#ff6b00" href="https://www.kaggle.com/learn" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">📊</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-cert">CERT</span></div></div>
           <div><div class="learn-title">Kaggle Learn</div><div class="learn-provider">Kaggle (Google) 官方</div></div>
           <div class="learn-desc">Google 旗下最大 AI 竞赛平台免费课程。机器学习、深度学习、NLP 及《5-Day AI Agents 强化营》，Jupyter Notebook 动手实战并颁发证书。</div>
           <div class="learn-meta"><span>kaggle.com/learn</span><span class="learn-arrow">→</span></div>
-        </div>
+        </a>
       </div>
 
       <!-- 进阶实战 -->
@@ -404,42 +414,42 @@
         <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(168,85,247,0.3),transparent)"></div>
       </div>
       <div class="learn-grid">
-        <div class="learn-card" style="--card-accent:#a855f7" onclick="window.open('https://www.deeplearning.ai/','_blank','noopener')">
+        <a class="learn-card" style="--card-accent:#a855f7" href="https://www.deeplearning.ai/" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">🧠</div><div class="learn-badges"><span class="learn-badge badge-free">视频免费</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-hot">🔥 HOT</span></div></div>
           <div><div class="learn-title">DeepLearning.AI</div><div class="learn-provider">Andrew Ng · 吴恩达</div></div>
           <div class="learn-desc">吴恩达创立，全球顶级 AI 教育机构。《Agentic AI》《MCP》《深度学习》《RAG》等最新精品短课与专项视频全部免费观看，内容最权威。</div>
           <div class="learn-meta"><span>deeplearning.ai</span><span class="learn-arrow">→</span></div>
-        </div>
-        <div class="learn-card" style="--card-accent:#ffd700" onclick="window.open('https://huggingface.co/learn','_blank','noopener')">
+        </a>
+        <a class="learn-card" style="--card-accent:#ffd700" href="https://huggingface.co/learn" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">🤗</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-cert">证书</span><span class="learn-badge badge-hot">🔥 HOT</span></div></div>
           <div><div class="learn-title">Hugging Face Courses</div><div class="learn-provider">Hugging Face 官方</div></div>
           <div class="learn-desc">AI 开源社区第一平台的免费课程。LLM 完整教程、AI Agent 课（含免费结业证书）、Transformer、NLP、强化学习、机器人全系列。</div>
           <div class="learn-meta"><span>huggingface.co/learn</span><span class="learn-arrow">→</span></div>
-        </div>
-        <div class="learn-card" style="--card-accent:#00ff88" onclick="window.open('https://course.fast.ai/','_blank','noopener')">
+        </a>
+        <a class="learn-card" style="--card-accent:#00ff88" href="https://course.fast.ai/" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">⚡</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-advanced">进阶</span></div></div>
           <div><div class="learn-title">fast.ai — Practical Deep Learning</div><div class="learn-provider">fast.ai</div></div>
           <div class="learn-desc">程序员最爱的深度学习课，"代码优先"理念，从实战出发学神经网络。完全开源免费，Jeremy Howard 亲授，业内口碑极佳。</div>
           <div class="learn-meta"><span>course.fast.ai</span><span class="learn-arrow">→</span></div>
-        </div>
-        <div class="learn-card" style="--card-accent:#00c8ff" onclick="window.open('https://www.coursera.org/specializations/machine-learning-introduction','_blank','noopener')">
+        </a>
+        <a class="learn-card" style="--card-accent:#00c8ff" href="https://www.coursera.org/specializations/machine-learning-introduction" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">🎯</div><div class="learn-badges"><span class="learn-badge badge-free">可免费旁听</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-cert">证书</span></div></div>
           <div><div class="learn-title">机器学习专项课程</div><div class="learn-provider">DeepLearning.AI × Stanford × Coursera</div></div>
           <div class="learn-desc">吴恩达与斯坦福联手打造，Coursera 观看量最大 AI 专项课。监督/无监督/强化学习三大块，"免费旁听"即可看完全部视频。</div>
           <div class="learn-meta"><span>coursera.org</span><span class="learn-arrow">→</span></div>
-        </div>
-        <div class="learn-card" style="--card-accent:#ff0080" onclick="window.open('https://web.stanford.edu/class/cs229/','_blank','noopener')">
+        </a>
+        <a class="learn-card" style="--card-accent:#ff0080" href="https://web.stanford.edu/class/cs229/" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">🏛️</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-advanced">进阶</span></div></div>
           <div><div class="learn-title">Stanford CS229 — 机器学习</div><div class="learn-provider">斯坦福大学官方</div></div>
           <div class="learn-desc">斯坦福顶级 CS 课程，全套讲义、作业、视频公开免费。数学推导严谨，适合有一定基础的学习者，打牢理论基础的权威选择。</div>
           <div class="learn-meta"><span>stanford.edu/class/cs229</span><span class="learn-arrow">→</span></div>
-        </div>
-        <div class="learn-card" style="--card-accent:#ff6b00" onclick="window.open('https://cookbook.openai.com/','_blank','noopener')">
+        </a>
+        <a class="learn-card" style="--card-accent:#ff6b00" href="https://cookbook.openai.com/" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">📓</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">OFFICIAL</span><span class="learn-badge badge-hot">🔥 前沿</span></div></div>
           <div><div class="learn-title">OpenAI Cookbook</div><div class="learn-provider">OpenAI 官方</div></div>
           <div class="learn-desc">OpenAI 官方提供数百个实战 Notebook，GPT API 调用、Prompt Engineering、Function Calling、RAG、Fine-tuning 全有权威示例。</div>
           <div class="learn-meta"><span>cookbook.openai.com</span><span class="learn-arrow">→</span></div>
-        </div>
+        </a>
       </div>
 
       <!-- 中文精品 -->
@@ -448,24 +458,24 @@
         <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(0,200,255,0.3),transparent)"></div>
       </div>
       <div class="learn-grid">
-        <div class="learn-card" style="--card-accent:#00c8ff" onclick="window.open('https://aistudio.baidu.com/course/introduce','_blank','noopener')">
+        <a class="learn-card" style="--card-accent:#00c8ff" href="https://aistudio.baidu.com/course/introduce" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">🚣</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">官方</span><span class="learn-badge badge-cert">证书</span></div></div>
           <div><div class="learn-title">飞桨星河社区 AI Studio</div><div class="learn-provider">百度 PaddlePaddle 官方</div></div>
           <div class="learn-desc">百度官方 AI 社区（原飞桨 AI Studio），提供从零基础到高阶完整中文大模型与深度学习课程体系。免费算力、免费课程、免费证书。</div>
           <div class="learn-meta"><span>aistudio.baidu.com</span><span class="learn-arrow">→</span></div>
-        </div>
-        <div class="learn-card" style="--card-accent:#ff0080" onclick="window.open('https://modelscope.cn/learn','_blank','noopener')">
+        </a>
+        <a class="learn-card" style="--card-accent:#ff0080" href="https://modelscope.cn/learn" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">🔭</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">官方</span><span class="learn-badge badge-hot">🔥 HOT</span></div></div>
           <div><div class="learn-title">魔搭社区 ModelScope</div><div class="learn-provider">阿里云 × 达摩院官方</div></div>
           <div class="learn-desc">阿里达摩院打造，中国版 Hugging Face。大模型课程、RAG 教程、Agent 开发实战，模型一键部署，免费 GPU 算力体验。</div>
           <div class="learn-meta"><span>modelscope.cn</span><span class="learn-arrow">→</span></div>
-        </div>
-        <div class="learn-card" style="--card-accent:#a855f7" onclick="window.open('https://github.com/datawhalechina','_blank','noopener')">
+        </a>
+        <a class="learn-card" style="--card-accent:#a855f7" href="https://github.com/datawhalechina" target="_blank" rel="noopener noreferrer">
           <div class="learn-card-top"><div class="learn-logo">🐳</div><div class="learn-badges"><span class="learn-badge badge-free">FREE</span><span class="learn-badge badge-official">社区</span><span class="learn-badge badge-hot">🔥 强推</span></div></div>
           <div><div class="learn-title">Datawhale 开源学习</div><div class="learn-provider">Datawhale 社区</div></div>
           <div class="learn-desc">国内最大 AI 开源学习社区，数十本机器学习、大模型、Agent 与 Prompt Engineering 中文开源教程，在 GitHub 免费获取，质量极高。</div>
           <div class="learn-meta"><span>github.com/datawhalechina</span><span class="learn-arrow">→</span></div>
-        </div>
+        </a>
       </div>
     </div>
   </main>
@@ -692,9 +702,10 @@
       const tools = getFilteredTools();
       resultsCount.textContent = tools.length;
       if (!tools.length) {
-        toolsGrid.innerHTML = `<div class="empty-box"><div class="empty-emoji">🫧</div><h3>没找到匹配的 AI 工具</h3><p>试试其他筛选条件或搜索词</p><button class="btn-reset" id="resetBtn">🔄 查看全部</button></div>`;
+        toolsGrid.innerHTML = `<div class="empty-box"><div class="empty-emoji">🫧</div><h3>没找到匹配的 AI 工具</h3><p>试试其他筛选条件或搜索词</p><button class="btn-reset" id="resetBtn" type="button">🔄 查看全部</button></div>`;
         document.getElementById("resetBtn")?.addEventListener("click", () => {
           state.category="all"; state.preset="all"; state.query=""; state.onlyFavorites=false; searchInput.value="";
+          searchClearBtn.style.display = "none";
           document.querySelectorAll(".filter-chip").forEach(p => p.classList.toggle("active", p.dataset.preset==="all"));
           renderCategories(); renderTools();
         });
@@ -703,45 +714,58 @@
       toolsGrid.innerHTML = tools.map(t => {
         const isFav = state.favorites.has(t.id);
         return `
-          <div class="tool-card${t.isNew?" is-new":""}" data-url="${t.url}" title="${esc(t.name)}">
-            <button class="fav-heart-btn${isFav?" active":""}" data-id="${t.id}">${isFav?"❤️":"🤍"}</button>
+          <a class="tool-card${t.isNew?" is-new":""}" href="${esc(t.url)}" target="_blank" rel="noopener noreferrer" title="${esc(t.name)}">
+            <span class="fav-heart-btn${isFav?" active":""}" role="button" tabindex="0" data-id="${t.id}" aria-label="收藏 ${esc(t.name)}">${isFav?"❤️":"🤍"}</span>
             ${t.isNew?'<span class="new-badge">NEW</span>':""}
             <div class="emoji-logo-box" style="--card-tint:${t.tint}">${t.emoji}</div>
             <div class="tool-name">${esc(t.name)}</div>
             <span class="network-badge ${t.region==="global"?"vpn":"china"}">${t.region==="global"?"🌐 VPN":"🇨🇳 直连"}</span>
-          </div>`;
+          </a>`;
       }).join("");
-
-      toolsGrid.querySelectorAll(".tool-card").forEach(card => {
-        card.addEventListener("click", e => {
-          if (e.target.closest(".fav-heart-btn")) return;
-          window.open(card.dataset.url, "_blank", "noopener,noreferrer");
-        });
-      });
-      toolsGrid.querySelectorAll(".fav-heart-btn").forEach(btn => {
-        btn.addEventListener("click", e => {
-          e.stopPropagation();
-          const id = btn.dataset.id, tool = TOOLS_DATA.find(t => t.id === id);
-          if (state.favorites.has(id)) {
-            state.favorites.delete(id); btn.classList.remove("active"); btn.textContent="🤍";
-            showToast(`💔 已移除 ${tool?.name||""}`);
-          } else {
-            state.favorites.add(id); btn.classList.add("active"); btn.textContent="❤️";
-            showToast(`❤️ 已收藏 ${tool?.name||""}`);
-          }
-          saveFav(); if (state.onlyFavorites) renderTools();
-        });
-      });
     }
+
+    // 事件委托统一处理工具收藏，支持原生右键、滚轮中键与防冒泡
+    toolsGrid.addEventListener("click", e => {
+      const btn = e.target.closest(".fav-heart-btn");
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const id = btn.dataset.id, tool = TOOLS_DATA.find(t => t.id === id);
+      if (state.favorites.has(id)) {
+        state.favorites.delete(id); btn.classList.remove("active"); btn.textContent="🤍";
+        showToast(`💔 已移除 ${tool?.name||""}`);
+      } else {
+        state.favorites.add(id); btn.classList.add("active"); btn.textContent="❤️";
+        showToast(`❤️ 已收藏 ${tool?.name||""}`);
+      }
+      saveFav(); if (state.onlyFavorites) renderTools();
+    });
+
+    toolsGrid.addEventListener("keydown", e => {
+      const btn = e.target.closest(".fav-heart-btn");
+      if (btn && (e.key === "Enter" || e.key === " ")) {
+        e.preventDefault();
+        btn.click();
+      }
+    });
 
     document.querySelectorAll(".filter-chip").forEach(btn => btn.addEventListener("click", () => {
       document.querySelectorAll(".filter-chip").forEach(b => b.classList.remove("active"));
       btn.classList.add("active"); state.preset = btn.dataset.preset; renderTools();
     }));
 
+    const searchClearBtn = document.getElementById("searchClearBtn");
     let searchT = null;
     searchInput.addEventListener("input", e => {
+      searchClearBtn.style.display = e.target.value ? "inline-block" : "none";
       clearTimeout(searchT); searchT = setTimeout(() => { state.query=e.target.value; renderTools(); }, 120);
+    });
+    searchClearBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      state.query = "";
+      searchClearBtn.style.display = "none";
+      searchInput.focus();
+      renderTools();
     });
 
     window.addEventListener("keydown", e => {
