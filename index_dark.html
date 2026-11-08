@@ -1,0 +1,2885 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0e1a">
+  <meta name="description" content="Gina AI · 全球顶尖 AI 导航 2026。支持明朗亮色与赛博暗色双主题切换，精选 100 款前沿 AI 工具与 15 项官方权威免费学习资源。">
+  <title>Gina AI · 全球顶尖 AI 导航 2026</title>
+  <link rel="canonical" href="https://gitanamomo.github.io/ginaai/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gitanamomo.github.io/ginaai/">
+  <meta property="og:title" content="Gina AI · 全球顶尖 AI 导航 2026">
+  <meta property="og:description" content="精选全球 100 款顶尖 AI 工具与 15 项官方权威免费学习资源，支持亮色/深色模式切换与国内外直连筛选。">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Gina AI · 全球顶尖 AI 导航 2026">
+  <meta name="twitter:description" content="精选全球 100 款顶尖 AI 工具与 15 项官方权威免费学习资源，支持亮色/深色模式切换与国内外直连筛选。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230284c7'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='36'%3E🤖%3C/text%3E%3C/svg%3E">
+  <style>
+    /* ===== DARK THEME (Cyber Neon) ===== */
+    :root, [data-theme="dark"] {
+      --bg: #060a14;
+      --bg2: #0a0e1a;
+      --header-bg: rgba(6, 10, 20, 0.9);
+      --panel: rgba(12, 22, 44, 0.92);
+      --panel-hover: rgba(16, 30, 60, 0.98);
+      --border: rgba(0, 200, 255, 0.16);
+      --border-hover: rgba(0, 200, 255, 0.5);
+      --text: #e8f4ff;
+      --text-sub: #8ab0d0;
+      --text-muted: #7093b5;
+      --cyan: #00c8ff;
+      --cyan-dim: rgba(0, 200, 255, 0.12);
+      --purple: #7c3aed;
+      --purple-bright: #a855f7;
+      --green: #00ff88;
+      --green-dim: rgba(0, 255, 136, 0.1);
+      --orange: #ff6b00;
+      --pink: #ff0080;
+      --gold: #ffd700;
+      --price-free: #5eead4;
+      --grid-line: rgba(0, 200, 255, 0.03);
+      --card-shadow: 0 8px 26px rgba(0, 200, 255, 0.16);
+      --fav-bg: rgba(6, 10, 20, 0.65);
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-mono: "SF Mono", "Fira Code", Menlo, Consolas, monospace;
+    }
+
+    /* ===== LIGHT THEME (Clean Daylight Glass) ===== */
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg2: #f1f5f9;
+      --header-bg: rgba(255, 255, 255, 0.88);
+      --panel: #ffffff;
+      --panel-hover: #ffffff;
+      --border: #e2e8f0;
+      --border-hover: #0284c7;
+      --text: #0f172a;
+      --text-sub: #475569;
+      --text-muted: #64748b;
+      --cyan: #0284c7;
+      --cyan-dim: rgba(2, 132, 199, 0.08);
+      --purple: #6d28d9;
+      --purple-bright: #7c3aed;
+      --green: #059669;
+      --green-dim: rgba(5, 150, 105, 0.08);
+      --orange: #ea580c;
+      --pink: #db2777;
+      --gold: #d97706;
+      --price-free: #0284c7;
+      --grid-line: rgba(15, 23, 42, 0.03);
+      --card-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.12), 0 4px 10px -3px rgba(15, 23, 42, 0.05);
+      --fav-bg: rgba(241, 245, 249, 0.9);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      transition: background-color .2s ease, color .2s ease;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+      will-change: transform;
+      animation: orbFloat 24s ease-in-out infinite alternate;
+    }
+    .orb-1 { top: -200px; left: -100px; width: 650px; height: 650px; background: radial-gradient(circle, rgba(2,132,199,0.08), transparent 70%); }
+    .orb-2 { top: 30%; right: -200px; width: 580px; height: 580px; background: radial-gradient(circle, rgba(124,58,237,0.08), transparent 70%); animation-direction: alternate-reverse; }
+    @keyframes orbFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 60px) scale(1.1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .orb, .header-scan-line, .badge-hot { animation: none !important; }
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; border: none; outline: none; background: none; }
+    /* ===== HEADER ===== */
+    .top-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--header-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-scan-line {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), var(--purple-bright), transparent);
+    }
+    .header-inner {
+      max-width: 1440px; margin: 0 auto;
+      padding: 12px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .brand-area { display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; flex-shrink: 0; }
+    .brand-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      display: grid; place-items: center; font-size: 21px;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(2,132,199,0.28);
+      transition: transform .2s ease;
+    }
+    .brand-area:hover .brand-icon { transform: scale(1.06) rotate(-4deg); }
+    .brand-title-text {
+      font-size: 18px; font-weight: 800;
+      background: linear-gradient(90deg, var(--cyan), var(--purple-bright));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .brand-sub { font-size: 10px; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+    .tab-nav { display: flex; align-items: center; gap: 4px; background: var(--cyan-dim); border: 1px solid var(--border); border-radius: 10px; padding: 4px; }
+    .tab-btn { padding: 7px 16px; border-radius: 7px; font-size: 13px; font-weight: 600; color: var(--text-sub); cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: #ffffff; background: linear-gradient(135deg, var(--cyan), var(--purple-bright)); }
+    .search-container { flex: 1; max-width: 440px; position: relative; }
+    .search-input-wrap {
+      display: flex; align-items: center;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0 14px; height: 40px; transition: all .2s;
+    }
+    .search-input-wrap:focus-within { border-color: var(--cyan); box-shadow: 0 0 0 3px var(--cyan-dim); }
+    .search-icon { font-size: 15px; margin-right: 8px; opacity: .6; }
+    .search-input { flex: 1; font-size: 13.5px; color: var(--text); background: transparent; }
+    .search-input::placeholder { color: var(--text-muted); }
+    .search-kbd { font-size: 10px; font-weight: 600; font-family: var(--font-mono); color: var(--text-muted); background: var(--cyan-dim); padding: 2px 7px; border-radius: 5px; border: 1px solid var(--border); }
+    .header-actions { display: flex; align-items: center; gap: 8px; }
+    .pill-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border-radius: 8px; background: var(--panel); border: 1px solid var(--border); font-size: 12.5px; font-weight: 600; color: var(--text-sub); cursor: pointer; transition: all .2s; white-space: nowrap; }
+    .pill-btn:hover { color: var(--cyan); border-color: var(--cyan); }
+    .pill-btn.active { color: var(--cyan); border-color: var(--cyan); background: var(--cyan-dim); }
+    /* ===== MAIN ===== */
+    main { max-width: 1440px; margin: 0 auto; padding: 26px 24px 80px; width: 100%; flex: 1; position: relative; z-index: 1; }
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+    /* ===== STAT BAR ===== */
+    .hero-stat-bar {
+      display: flex; align-items: center; gap: 24px; margin-bottom: 20px;
+      padding: 14px 20px;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+      flex-wrap: wrap;
+    }
+    .stat-item { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .stat-num { font-size: 20px; font-weight: 800; font-family: var(--font-mono); font-variant-numeric: tabular-nums; background: linear-gradient(135deg, var(--cyan), var(--purple-bright)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .stat-label { font-size: 12px; color: var(--text-muted); }
+    .stat-sep { width: 1px; height: 26px; background: var(--border); }
+    .results-info { margin-left: auto; font-size: 12px; font-family: var(--font-mono); font-variant-numeric: tabular-nums; color: var(--text-muted); }
+    .results-count { color: var(--cyan); font-weight: 700; }
+    /* ===== CATEGORY DOCK ===== */
+    .category-dock-wrap { margin-bottom: 16px; }
+    .category-dock { display: flex; gap: 8px; flex-wrap: wrap; padding: 4px 2px 6px; }
+    .cat-pill { flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; background: var(--panel); border: 1px solid var(--border); font-size: 12.5px; font-weight: 600; color: var(--text-sub); cursor: pointer; transition: all .18s; user-select: none; white-space: nowrap; }
+    .cat-pill:hover { color: var(--cyan); border-color: var(--cyan); }
+    .cat-pill.active { color: #ffffff; background: linear-gradient(135deg, var(--cyan), var(--purple-bright)); border-color: transparent; }
+    .cat-count { font-size: 10px; font-family: var(--font-mono); font-variant-numeric: tabular-nums; opacity: .85; background: rgba(128,128,128,0.14); padding: 1px 6px; border-radius: 20px; }
+    .cat-pill.active .cat-count { background: rgba(0,0,0,0.22); color: #ffffff; }
+    /* ===== FILTER BAR ===== */
+    .filter-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .filter-label { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: .08em; flex-shrink: 0; }
+    .filter-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .filter-chip { font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 6px; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; transition: all .15s; background: var(--panel); white-space: nowrap; }
+    .filter-chip:hover { color: var(--text); border-color: var(--cyan); }
+    .filter-chip.active { color: var(--green); border-color: var(--green); background: var(--green-dim); }
+    /* ===== TOOLS GRID ===== */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 14px; }
+    /* ===== TOOL CARD ===== */
+    .tool-card {
+      position: relative;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+      padding: 20px 14px 15px; cursor: pointer; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+      display: flex; flex-direction: column; align-items: center; gap: 7px;
+      overflow: hidden;
+    }
+    .tool-card:hover { transform: translateY(-3px); border-color: var(--border-hover); background: var(--panel-hover); box-shadow: var(--card-shadow); }
+    .tool-card.is-new { border-color: rgba(2, 132, 199, 0.35); }
+    .fav-heart-btn {
+      position: absolute; top: 8px; left: 8px; width: 32px; height: 32px;
+      font-size: 14px; cursor: pointer; opacity: 0.55; transition: opacity .2s, transform .2s, background .2s;
+      z-index: 2; background: var(--fav-bg); border: 1px solid var(--border);
+      border-radius: 8px; display: grid; place-items: center; user-select: none;
+    }
+    .tool-card:hover .fav-heart-btn, .fav-heart-btn.active { opacity: 1; }
+    .fav-heart-btn:hover { transform: scale(1.12); border-color: var(--cyan); }
+    .new-badge { position: absolute; top: 9px; right: 9px; font-size: 9px; font-weight: 700; font-family: var(--font-mono); color: #ffffff; background: var(--cyan); padding: 2px 6px; border-radius: 4px; letter-spacing: .04em; }
+    .emoji-logo-box { width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center; font-size: 30px; background: var(--card-tint, var(--cyan-dim)); border: 1px solid var(--border); transition: transform .2s ease; }
+    .tool-card:hover .emoji-logo-box { transform: scale(1.07); }
+    .tool-name { font-size: 13.5px; font-weight: 700; color: var(--text); text-align: center; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px; }
+    .tool-desc { font-size: 11.5px; color: var(--text-sub); text-align: center; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .tool-meta-row { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 3px; font-size: 10.5px; font-family: var(--font-mono); }
+    .network-badge { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 5px; font-family: var(--font-mono); }
+    .network-badge.vpn { background: rgba(124,58,237,0.1); color: var(--purple-bright); border: 1px solid rgba(124,58,237,0.25); }
+    .network-badge.china { background: var(--green-dim); color: var(--green); border: 1px solid rgba(5,150,105,0.25); }
+    .price-text { font-size: 10px; color: var(--text-muted); }
+    .price-text.free { color: var(--price-free); font-weight: 600; }
+    /* ===== LEARN SECTION ===== */
+    .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .section-tag { font-family: var(--font-mono); font-size: 11px; color: var(--cyan); letter-spacing: .08em; text-transform: uppercase; background: var(--cyan-dim); padding: 4px 10px; border-radius: 5px; border: 1px solid var(--border); }
+    .section-title { font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
+    .section-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+    .learn-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 16px; margin-bottom: 36px; }
+    .learn-card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 22px; cursor: pointer; transition: all .22s; display: flex; flex-direction: column; gap: 12px; position: relative; overflow: hidden; }
+    .learn-card:hover { transform: translateY(-3px); border-color: var(--card-accent, var(--cyan)); box-shadow: var(--card-shadow); }
+    .learn-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .learn-logo { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; font-size: 26px; flex-shrink: 0; background: var(--bg2); border: 1px solid var(--border); }
+    .learn-badges { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
+    .learn-badge { font-size: 10px; font-weight: 700; font-family: var(--font-mono); padding: 3px 8px; border-radius: 5px; }
+    .badge-free { background: var(--green-dim); color: var(--green); border: 1px solid rgba(5,150,105,0.28); }
+    .badge-official { background: var(--cyan-dim); color: var(--cyan); border: 1px solid rgba(2,132,199,0.28); }
+    .badge-cert { background: rgba(217,119,6,0.1); color: var(--gold); border: 1px solid rgba(217,119,6,0.28); }
+    .badge-beginner { background: rgba(234,88,12,0.1); color: var(--orange); border: 1px solid rgba(234,88,12,0.28); }
+    .badge-advanced { background: rgba(124,58,237,0.1); color: var(--purple-bright); border: 1px solid rgba(124,58,237,0.28); }
+    .badge-hot { background: rgba(219,39,119,0.1); color: var(--pink); border: 1px solid rgba(219,39,119,0.28); }
+    .learn-title { font-size: 15px; font-weight: 700; color: var(--text); }
+    .learn-provider { font-size: 11.5px; color: var(--text-muted); font-family: var(--font-mono); }
+    .learn-desc { font-size: 13px; color: var(--text-sub); line-height: 1.6; flex: 1; }
+    .learn-meta { display: flex; align-items: center; justify-content: space-between; font-size: 11.5px; color: var(--text-muted); font-family: var(--font-mono); padding-top: 10px; border-top: 1px solid var(--border); }
+    .learn-section-header { display: flex; align-items: center; gap: 12px; margin: 28px 0 16px; }
+    .learn-section-tag { font-size: 11px; font-family: var(--font-mono); font-weight: 700; padding: 4px 10px; border-radius: 5px; }
+    /* ===== EMPTY STATE & TOAST & FOOTER ===== */
+    .empty-box { grid-column: 1/-1; text-align: center; padding: 70px 24px; color: var(--text-muted); }
+    .empty-emoji { font-size: 52px; margin-bottom: 12px; }
+    .empty-box h3 { font-size: 17px; color: var(--text); margin-bottom: 6px; }
+    .empty-box p { font-size: 13px; margin-bottom: 18px; }
+    .btn-reset { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 8px; background: linear-gradient(135deg, var(--cyan), var(--purple-bright)); color: #ffffff; font-weight: 700; font-size: 13px; cursor: pointer; }
+    .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--panel); border: 1px solid var(--cyan); color: var(--text); font-size: 13px; font-weight: 600; padding: 10px 20px; border-radius: 10px; z-index: 999; pointer-events: none; opacity: 0; transition: all .25s; box-shadow: var(--card-shadow); white-space: nowrap; }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .footer { text-align: center; padding: 28px 24px; font-size: 12px; color: var(--text-muted); font-family: var(--font-mono); border-top: 1px solid var(--border); position: relative; z-index: 1; }
+    .footer a { color: var(--cyan); }
+    @media (max-width: 768px) {
+      .header-inner { padding: 10px 14px; gap: 10px; }
+      .tab-nav { display: none; }
+      .search-container { max-width: none; }
+      main { padding: 18px 14px 74px; }
+      .category-dock { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+      .category-dock::-webkit-scrollbar { display: none; }
+      .tools-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+      .learn-grid { grid-template-columns: 1fr; }
+      .brand-sub { display: none; }
+      .tab-mobile-bar { display: flex !important; }
+    }
+    @media (min-width: 769px) { .tab-mobile-bar { display: none; } }
+    .tab-mobile-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--header-bg); border-top: 1px solid var(--border); z-index: 100; padding: 8px 0 calc(8px + env(safe-area-inset-bottom)); backdrop-filter: blur(20px); }
+    .tab-mobile-inner { display: flex; justify-content: center; gap: 4px; max-width: 400px; margin: 0 auto; }
+    .tab-mobile-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 4px; border-radius: 8px; color: var(--text-muted); cursor: pointer; font-size: 11px; font-weight: 600; }
+    .tab-mobile-btn.active { color: var(--cyan); }
+  </style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <header class="top-header">
+    <div class="header-scan-line"></div>
+    <div class="header-inner">
+      <div class="brand-area" id="brandBtn">
+        <div class="brand-icon">🤖</div>
+        <div>
+          <div class="brand-title-text">Gina AI</div>
+          <div class="brand-sub">AI Navigator 2026</div>
+        </div>
+      </div>
+      <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="tools" type="button">⚡ AI 工具导航</button>
+        <button class="tab-btn" data-tab="learn" type="button">🎓 免费学 AI</button>
+      </nav>
+      <div class="search-container">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input class="search-input" id="searchInput" type="search" placeholder="搜索 AI 工具、用途（如 PPT、会议、音乐）..." autocomplete="off">
+          <button class="search-clear-btn" id="searchClearBtn" type="button" aria-label="清空搜索" style="display:none;cursor:pointer;color:var(--text-muted);padding:0 6px;font-size:13px;">✕</button>
+          <span class="search-kbd">⌘K</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="pill-btn" id="themeToggleBtn" type="button" title="切换亮色 / 暗色模式">
+          <span id="themeIcon">☀️</span>
+          <span id="themeLabel">亮色</span>
+        </button>
+        <button class="pill-btn" id="favFilterBtn" type="button">
+          <span id="favHeartIcon">🤍</span> 收藏
+          <span id="favCountBadge" style="font-family:var(--font-mono);font-size:11px">(0)</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <!-- ===== TOOLS TAB ===== -->
+    <div class="page-section active" id="tab-tools">
+      <div class="hero-stat-bar">
+        <div class="stat-item"><div class="stat-num" id="statTotalCount">100</div><div class="stat-label">AI 工具</div></div>
+        <div class="stat-sep"></div>
+        <div class="stat-item"><div class="stat-num" id="statCatCount">10</div><div class="stat-label">大类别</div></div>
+        <div class="stat-sep"></div>
+        <div class="stat-item"><div class="stat-num">2026</div><div class="stat-label">最新核验</div></div>
+        <div class="results-info">当前展示 <span class="results-count" id="resultsCount">100</span> 款</div>
+      </div>
+      <div class="category-dock-wrap"><div class="category-dock" id="catScroll"></div></div>
+      <div class="filter-bar">
+        <span class="filter-label">筛选条件</span>
+        <div class="filter-group">
+          <button class="filter-chip active" data-preset="all" type="button">全部</button>
+          <button class="filter-chip" data-preset="free" type="button">🆓 免费可用</button>
+          <button class="filter-chip" data-preset="china" type="button">🇨🇳 国内直连</button>
+          <button class="filter-chip" data-preset="vpn" type="button">🌐 需VPN</button>
+          <button class="filter-chip" data-preset="new" type="button">🆕 最新入选</button>
+        </div>
+      </div>
+      <div class="tools-grid" id="toolsGrid"></div>
+    </div>
+
+    <!-- ===== LEARN TAB ===== -->
+    <div class="page-section" id="tab-learn">
+      <div class="section-header">
+        <span class="section-tag">FREE LEARNING</span>
+        <h2 class="section-title">免费学习 AI — 官方重磅资源 (15)</h2>
+        <div class="section-line"></div>
+      </div>
+      <div id="learnContainer"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Gina AI · 全球顶尖 AI 导航与学习平台 · 支持明朗亮色与赛博暗色双模式 · <a href="./index_classic.html">切换经典深色仪表盘</a></p>
+  </footer>
+
+  <nav class="tab-mobile-bar">
+    <div class="tab-mobile-inner">
+      <button class="tab-mobile-btn active" data-tab="tools" type="button"><span class="icon">⚡</span><span>AI工具</span></button>
+      <button class="tab-mobile-btn" data-tab="learn" type="button"><span class="icon">🎓</span><span>免费学AI</span></button>
+    </div>
+  </nav>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const CATEGORIES = {
+      "all": {
+            "icon": "🌐",
+            "label": "全部"
+      },
+      "chat": {
+            "icon": "💬",
+            "label": "AI 对话"
+      },
+      "image": {
+            "icon": "🎨",
+            "label": "图像创作"
+      },
+      "video": {
+            "icon": "🎬",
+            "label": "视频生成"
+      },
+      "code": {
+            "icon": "💻",
+            "label": "代码开发"
+      },
+      "search": {
+            "icon": "🔍",
+            "label": "AI 搜索"
+      },
+      "audio": {
+            "icon": "🎵",
+            "label": "音频生成"
+      },
+      "office": {
+            "icon": "📋",
+            "label": "办公效率"
+      },
+      "agent": {
+            "icon": "🤖",
+            "label": "AI Agent"
+      },
+      "api": {
+            "icon": "🔑",
+            "label": "API 平台"
+      },
+      "write": {
+            "icon": "✍️",
+            "label": "写作创意"
+      }
+};
+    const TOOLS_DATA = [
+      {
+            "id": "chatgpt",
+            "name": "ChatGPT",
+            "cat": "chat",
+            "emoji": "🌀",
+            "url": "https://chatgpt.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(16,163,127,0.15)",
+            "desc": "OpenAI 全能多模态对话与推理助手",
+            "tags": [
+                  "对话",
+                  "写作",
+                  "多模态",
+                  "推理",
+                  "GPT-5",
+                  "o3",
+                  "翻译"
+            ]
+      },
+      {
+            "id": "claude",
+            "name": "Claude",
+            "cat": "chat",
+            "emoji": "🏛️",
+            "url": "https://claude.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,107,0,0.12)",
+            "desc": "Anthropic 出品，擅长代码与长文深度写作",
+            "tags": [
+                  "长文本",
+                  "代码",
+                  "写作",
+                  "Artifacts",
+                  "分析",
+                  "论文"
+            ]
+      },
+      {
+            "id": "gemini",
+            "name": "Gemini",
+            "cat": "chat",
+            "emoji": "♊",
+            "url": "https://gemini.google.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(66,133,244,0.12)",
+            "desc": "Google 原生多模态助手，超长上下文",
+            "tags": [
+                  "Google",
+                  "多模态",
+                  "长窗口",
+                  "视频理解",
+                  "Deep Research"
+            ]
+      },
+      {
+            "id": "deepseek",
+            "name": "DeepSeek",
+            "cat": "chat",
+            "emoji": "🌊",
+            "url": "https://chat.deepseek.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(99,102,241,0.12)",
+            "desc": "深度求索开源推理模型，数学与编程顶尖",
+            "tags": [
+                  "R1",
+                  "V3",
+                  "深度思考",
+                  "推理",
+                  "数学",
+                  "代码",
+                  "国产"
+            ]
+      },
+      {
+            "id": "yuanbao",
+            "name": "腾讯元宝",
+            "cat": "chat",
+            "emoji": "💎",
+            "url": "https://yuanbao.tencent.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,200,255,0.15)",
+            "desc": "融合混元与 DeepSeek，直通公众号信源",
+            "tags": [
+                  "腾讯",
+                  "混元",
+                  "微信公众号",
+                  "搜索",
+                  "文档解读"
+            ]
+      },
+      {
+            "id": "kimi",
+            "name": "Kimi",
+            "cat": "chat",
+            "emoji": "🌕",
+            "url": "https://www.kimi.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(168,85,247,0.12)",
+            "desc": "月之暗面长文本助手，擅长文献与财报精读",
+            "tags": [
+                  "长文本",
+                  "文件阅读",
+                  "论文",
+                  "PDF",
+                  "k1.5",
+                  "搜索"
+            ],
+            "auditFixed": "域名由 kimi.moonshot.cn 更新为 www.kimi.com"
+      },
+      {
+            "id": "doubao",
+            "name": "豆包",
+            "cat": "chat",
+            "emoji": "🫘",
+            "url": "https://www.doubao.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,185,0,0.12)",
+            "desc": "字节跳动全能助手，实时语音与日常创作",
+            "tags": [
+                  "字节跳动",
+                  "语音通话",
+                  "日常问答",
+                  "生图",
+                  "播客"
+            ]
+      },
+      {
+            "id": "qianwen",
+            "name": "通义千问",
+            "cat": "chat",
+            "emoji": "🔶",
+            "url": "https://www.qianwen.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,107,0,0.12)",
+            "desc": "阿里 Qwen 官方助手，全尺寸开源模型底座",
+            "tags": [
+                  "阿里",
+                  "Qwen",
+                  "文档处理",
+                  "音视频速读",
+                  "PPT"
+            ],
+            "auditFixed": "域名由 www.tongyi.com 更新为 www.qianwen.com"
+      },
+      {
+            "id": "yiyan",
+            "name": "文心一言 (文小言)",
+            "cat": "chat",
+            "emoji": "🐾",
+            "url": "https://wenxin.baidu.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(23,162,255,0.12)",
+            "desc": "百度文心大模型助手，融合百度搜索生态",
+            "tags": [
+                  "百度",
+                  "文小言",
+                  "中文写作",
+                  "搜索问答"
+            ],
+            "auditFixed": "域名由 yiyan.baidu.com 更新为 wenxin.baidu.com"
+      },
+      {
+            "id": "xinghuo",
+            "name": "讯飞星火",
+            "cat": "chat",
+            "emoji": "✨",
+            "url": "https://xinghuo.xfyun.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,180,255,0.12)",
+            "desc": "科大讯飞大模型，语音交互与教育公文强项",
+            "tags": [
+                  "讯飞",
+                  "语音",
+                  "公文写作",
+                  "教育",
+                  "翻译"
+            ]
+      },
+      {
+            "id": "zhipu",
+            "name": "智谱清言",
+            "cat": "chat",
+            "emoji": "💫",
+            "url": "https://chatglm.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "智谱 GLM 官方助手，含 AutoGLM 沉思模式",
+            "tags": [
+                  "GLM",
+                  "清华",
+                  "数据分析",
+                  "智能体",
+                  "沉思"
+            ]
+      },
+      {
+            "id": "stepfun",
+            "name": "阶跃 AI (StepFun)",
+            "cat": "chat",
+            "emoji": "⚡",
+            "url": "https://www.stepfun.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,255,136,0.12)",
+            "desc": "阶跃星辰多模态助手，视觉理解与创作出色",
+            "tags": [
+                  "跃问",
+                  "阶跃星辰",
+                  "多模态",
+                  "拍照识图"
+            ],
+            "auditFixed": "修复 yuewen.cn 死链，更新为 www.stepfun.com"
+      },
+      {
+            "id": "hailuo",
+            "name": "海螺 AI",
+            "cat": "chat",
+            "emoji": "🐚",
+            "url": "https://hailuoai.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,0,128,0.12)",
+            "desc": "MiniMax 旗下对话与长文语音拟真助手",
+            "tags": [
+                  "MiniMax",
+                  "语音",
+                  "长文本",
+                  "对话"
+            ]
+      },
+      {
+            "id": "perplexity",
+            "name": "Perplexity",
+            "cat": "chat",
+            "emoji": "🔮",
+            "url": "https://www.perplexity.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(99,102,241,0.12)",
+            "desc": "全球标杆级 AI 答案引擎，逐句标注信源",
+            "tags": [
+                  "AI搜索",
+                  "学术检索",
+                  "实时信源",
+                  "深度研究",
+                  "引用"
+            ]
+      },
+      {
+            "id": "meta-ai",
+            "name": "Meta AI",
+            "cat": "chat",
+            "emoji": "🔵",
+            "url": "https://www.meta.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(24,119,242,0.12)",
+            "desc": "基于 Llama 开源旗舰模型的免费对话助手",
+            "tags": [
+                  "Llama",
+                  "Meta",
+                  "开源模型",
+                  "生图"
+            ]
+      },
+      {
+            "id": "grok",
+            "name": "Grok",
+            "cat": "chat",
+            "emoji": "🚀",
+            "url": "https://grok.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "xAI 旗舰模型，实时接入 X (Twitter) 全球资讯",
+            "tags": [
+                  "xAI",
+                  "Grok-3",
+                  "DeepSearch",
+                  "实时社交资讯"
+            ]
+      },
+      {
+            "id": "notebooklm",
+            "name": "NotebookLM",
+            "cat": "chat",
+            "emoji": "📓",
+            "url": "https://notebook.google.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(66,133,244,0.12)",
+            "desc": "Google 私人知识库，支持文档一键转双人播客",
+            "tags": [
+                  "知识库",
+                  "笔记",
+                  "论文精读",
+                  "Audio Overview",
+                  "播客"
+            ],
+            "auditFixed": "域名由 notebooklm.google.com 更新为 notebook.google.com"
+      },
+      {
+            "id": "poe",
+            "name": "Poe",
+            "cat": "chat",
+            "emoji": "🦋",
+            "url": "https://poe.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(168,85,247,0.12)",
+            "desc": "Quora 旗下聚合平台，一站式调用全球主流模型",
+            "tags": [
+                  "模型聚合",
+                  "多模型对比",
+                  "Bot创建"
+            ]
+      },
+      {
+            "id": "metaso",
+            "name": "秘塔 AI 搜索",
+            "cat": "search",
+            "emoji": "🕵️",
+            "url": "https://metaso.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,255,136,0.12)",
+            "desc": "无广告深度研究搜索，自动生成大纲与脑图",
+            "tags": [
+                  "学术搜索",
+                  "思维导图",
+                  "文库",
+                  "研究报告",
+                  "PPT导出"
+            ]
+      },
+      {
+            "id": "nami",
+            "name": "纳米 AI 搜索",
+            "cat": "search",
+            "emoji": "🔬",
+            "url": "https://www.n.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "360 多模态 AI 搜索，聚合十余家国内大模型",
+            "tags": [
+                  "多模型协作",
+                  "拍照搜索",
+                  "语音搜索"
+            ]
+      },
+      {
+            "id": "tiangong",
+            "name": "天工 AI",
+            "cat": "search",
+            "emoji": "🌤️",
+            "url": "https://www.tiangong.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,185,0,0.12)",
+            "desc": "昆仑万维 AI 搜索与超级智能体文档生成",
+            "tags": [
+                  "财报分析",
+                  "学术论文",
+                  "研究图表",
+                  "智能体"
+            ]
+      },
+      {
+            "id": "you",
+            "name": "You.com",
+            "cat": "search",
+            "emoji": "🌍",
+            "url": "https://you.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "海外多模型自定义研究与科研检索工作台",
+            "tags": [
+                  "Research",
+                  "多模型搜索",
+                  "引文核查"
+            ]
+      },
+      {
+            "id": "phind",
+            "name": "Phind",
+            "cat": "search",
+            "emoji": "🔭",
+            "url": "https://www.phind.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(168,85,247,0.12)",
+            "desc": "专为程序员打造的技术文档与代码检索引擎",
+            "tags": [
+                  "编程搜索",
+                  "开发者",
+                  "报错排查",
+                  "技术栈"
+            ]
+      },
+      {
+            "id": "midjourney",
+            "name": "Midjourney",
+            "cat": "image",
+            "emoji": "🎨",
+            "url": "https://www.midjourney.com/",
+            "region": "global",
+            "price": "paid",
+            "isNew": false,
+            "tint": "rgba(99,102,241,0.12)",
+            "desc": "审美与质感行业天花板，支持网页端直接创作",
+            "tags": [
+                  "V7",
+                  "艺术质感",
+                  "商业海报",
+                  "摄影级生图"
+            ]
+      },
+      {
+            "id": "gpt-image",
+            "name": "GPT Image (Sora Studio)",
+            "cat": "image",
+            "emoji": "🖼️",
+            "url": "https://sora.chatgpt.com/explore",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(16,163,127,0.12)",
+            "desc": "OpenAI 原生多模态生图，精准文字排版与改图",
+            "tags": [
+                  "4o生图",
+                  "文字海报",
+                  "角色一致性",
+                  "精准改图"
+            ],
+            "auditFixed": "消除与 ChatGPT 的重复链接，指向专属视觉创作画廊"
+      },
+      {
+            "id": "flux",
+            "name": "FLUX.2 (BFL)",
+            "cat": "image",
+            "emoji": "⚡",
+            "url": "https://bfl.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(255,215,0,0.12)",
+            "desc": "Black Forest Labs 出品，最强开源权重生图系列",
+            "tags": [
+                  "Flux",
+                  "写实人像",
+                  "开源图像",
+                  "Kontext"
+            ]
+      },
+      {
+            "id": "recraft",
+            "name": "Recraft",
+            "cat": "image",
+            "emoji": "📐",
+            "url": "https://www.recraft.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(255,0,128,0.12)",
+            "desc": "设计师首选，支持原生 SVG 矢量图标与品牌套图",
+            "tags": [
+                  "SVG矢量图",
+                  "Logo设计",
+                  "UI图标",
+                  "品牌视觉"
+            ]
+      },
+      {
+            "id": "ideogram",
+            "name": "Ideogram",
+            "cat": "image",
+            "emoji": "🅰️",
+            "url": "https://ideogram.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,107,0,0.12)",
+            "desc": "英文艺术字体排版、海报与电商印花设计利器",
+            "tags": [
+                  "文字排版",
+                  "海报设计",
+                  "Logo",
+                  "T恤印花"
+            ]
+      },
+      {
+            "id": "stable-diff",
+            "name": "Stable Diffusion",
+            "cat": "image",
+            "emoji": "🌌",
+            "url": "https://stability.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(168,85,247,0.12)",
+            "desc": "Stability AI 开源生图鼻祖，生态插件最丰富",
+            "tags": [
+                  "SD3.5",
+                  "ControlNet",
+                  "LoRA",
+                  "开源生图"
+            ]
+      },
+      {
+            "id": "kolors",
+            "name": "可图 Kolors",
+            "cat": "image",
+            "emoji": "🌈",
+            "url": "https://kolors.kuaishou.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,0,128,0.12)",
+            "desc": "快手自研中文语义生图模型，精通国风与人像",
+            "tags": [
+                  "快手",
+                  "中文海报",
+                  "国风",
+                  "模特换装"
+            ]
+      },
+      {
+            "id": "jimeng",
+            "name": "即梦 AI",
+            "cat": "image",
+            "emoji": "🎭",
+            "url": "https://jimeng.jianying.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "字节剪映旗下，中文艺术字海报与无限画布创作",
+            "tags": [
+                  "Seedream",
+                  "中文字体海报",
+                  "智能画布",
+                  "扩图"
+            ]
+      },
+      {
+            "id": "tongyi-wanx",
+            "name": "通义万相",
+            "cat": "image",
+            "emoji": "🔶",
+            "url": "https://tongyi.aliyun.com/wan/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,107,0,0.12)",
+            "desc": "阿里 Wan 系列开源视觉创意与图像视频生成平台",
+            "tags": [
+                  "阿里",
+                  "万相",
+                  "电商主图",
+                  "风格重绘"
+            ],
+            "auditFixed": "链接由 /wanxiang/ 更新为最新 /wan/"
+      },
+      {
+            "id": "liblib",
+            "name": "LiblibAI 哩布",
+            "cat": "image",
+            "emoji": "🖌️",
+            "url": "https://www.liblib.art/",
+            "region": "china",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(23,162,255,0.12)",
+            "desc": "国内最大 AI 模型社区，在线运行 ComfyUI 与 LoRA",
+            "tags": [
+                  "LoRA模型库",
+                  "ComfyUI在线",
+                  "建筑室内",
+                  "电商生图"
+            ]
+      },
+      {
+            "id": "firefly",
+            "name": "Adobe Firefly",
+            "cat": "image",
+            "emoji": "🔥",
+            "url": "https://firefly.adobe.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,50,0,0.12)",
+            "desc": "Adobe 商用版权安全生图，无缝衔接 PS 创意填充",
+            "tags": [
+                  "Photoshop",
+                  "版权合规",
+                  "创意填充",
+                  "矢量上色"
+            ]
+      },
+      {
+            "id": "canva-ai",
+            "name": "Canva AI",
+            "cat": "image",
+            "emoji": "🎨",
+            "url": "https://www.canva.com/ai-image-generator/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "Canva 魔力设计套件，一键生成配图与社媒排版",
+            "tags": [
+                  "平面设计",
+                  "社交媒体",
+                  "海报模板",
+                  "一键抠图"
+            ]
+      },
+      {
+            "id": "playground",
+            "name": "Playground",
+            "cat": "image",
+            "emoji": "🛝",
+            "url": "https://playgroundai.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(168,85,247,0.12)",
+            "desc": "在线图像混合编辑、贴纸与图形模板创作工具",
+            "tags": [
+                  "贴纸设计",
+                  "画布编辑",
+                  "混合修图"
+            ],
+            "auditFixed": "域名由 playground.com 更新为 playgroundai.com"
+      },
+      {
+            "id": "veo3",
+            "name": "Veo 3 (Google Flow)",
+            "cat": "video",
+            "emoji": "🎥",
+            "url": "https://labs.google/fx/tools/flow",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(66,133,244,0.12)",
+            "desc": "Google 电影级音画同步视频模型与分镜创作台",
+            "tags": [
+                  "原生音效",
+                  "对白口型",
+                  "电影镜头",
+                  "Google"
+            ],
+            "auditFixed": "由公关介绍页更新为实际可体验的 Google Flow 创作入口"
+      },
+      {
+            "id": "seedance",
+            "name": "即梦 Seedance",
+            "cat": "video",
+            "emoji": "🎞️",
+            "url": "https://seed.bytedance.com/zh/seedance",
+            "region": "china",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,200,255,0.15)",
+            "desc": "字节 Seed 团队高动态多镜头叙事视频生成模型",
+            "tags": [
+                  "字节跳动",
+                  "多镜头切换",
+                  "图生视频",
+                  "高帧率"
+            ],
+            "auditFixed": "消除与即梦生图的重复链接，指向 Seedance 专属页"
+      },
+      {
+            "id": "kling",
+            "name": "可灵 AI",
+            "cat": "video",
+            "emoji": "🌠",
+            "url": "https://klingai.kuaishou.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(168,85,247,0.12)",
+            "desc": "快手自研旗舰视频大模型，支持运动笔刷与对口型",
+            "tags": [
+                  "快手",
+                  "图生视频",
+                  "首尾帧",
+                  "长视频",
+                  "国产直连"
+            ],
+            "auditFixed": "由国际站需 VPN 修正为快手国内直连站 klingai.kuaishou.com"
+      },
+      {
+            "id": "runway",
+            "name": "Runway Gen-4",
+            "cat": "video",
+            "emoji": "🎬",
+            "url": "https://runway.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "好莱坞级 AI 影视工作流，强角色与场景一致性",
+            "tags": [
+                  "影视特效",
+                  "镜头控制",
+                  "角色一致",
+                  "Act-One"
+            ],
+            "auditFixed": "域名由 runwayml.com 更新为最新主域名 runway.com"
+      },
+      {
+            "id": "vidu",
+            "name": "Vidu",
+            "cat": "video",
+            "emoji": "📽️",
+            "url": "https://www.vidu.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,255,136,0.12)",
+            "desc": "生数科技×清华出品，多主体参考一致性与动漫强项",
+            "tags": [
+                  "参考生视频",
+                  "动漫番剧",
+                  "极速生成",
+                  "清华"
+            ],
+            "auditFixed": "域名由 vidu.studio 更新为国内直连官网 www.vidu.cn"
+      },
+      {
+            "id": "minimax-video",
+            "name": "海螺视频",
+            "cat": "video",
+            "emoji": "🐚",
+            "url": "https://hailuoai.com/video",
+            "region": "china",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(255,0,128,0.12)",
+            "desc": "MiniMax 视频生成平台，擅长细腻微表情与运镜控制",
+            "tags": [
+                  "MiniMax",
+                  "导演运镜",
+                  "人物表演",
+                  "高画质"
+            ]
+      },
+      {
+            "id": "sora",
+            "name": "Sora",
+            "cat": "video",
+            "emoji": "📹",
+            "url": "https://sora.chatgpt.com/",
+            "region": "global",
+            "price": "paid",
+            "isNew": false,
+            "tint": "rgba(16,163,127,0.12)",
+            "desc": "OpenAI 物理世界模拟视频创作端，支持 Storyboard",
+            "tags": [
+                  "OpenAI",
+                  "分镜编辑",
+                  "Remix",
+                  "视频混剪"
+            ],
+            "auditFixed": "由宣传页 openai.com/sora 更新为实际创作端 sora.chatgpt.com"
+      },
+      {
+            "id": "pika",
+            "name": "Pika",
+            "cat": "video",
+            "emoji": "🍿",
+            "url": "https://pika.art/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,185,0,0.12)",
+            "desc": "趣味创意特效视频生成（捏扁、融化、换装特效）",
+            "tags": [
+                  "Pikaffects",
+                  "创意短视频",
+                  "社媒爆款",
+                  "局部修改"
+            ]
+      },
+      {
+            "id": "heygen",
+            "name": "HeyGen",
+            "cat": "video",
+            "emoji": "🎭",
+            "url": "https://www.heygen.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(168,85,247,0.12)",
+            "desc": "全球领先数字人播报与多语种视频口型翻译平台",
+            "tags": [
+                  "数字人",
+                  "口播视频",
+                  "视频出海翻译",
+                  "对口型"
+            ]
+      },
+      {
+            "id": "luma",
+            "name": "Luma Dream Machine",
+            "cat": "video",
+            "emoji": "💫",
+            "url": "https://lumalabs.ai/app",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,0,128,0.12)",
+            "desc": "Luma Ray 模型驱动，擅长 3D 空间感与流畅物理运动",
+            "tags": [
+                  "Ray2",
+                  "首尾帧",
+                  "3D运镜",
+                  "光影质感"
+            ],
+            "auditFixed": "链接更新为 lumalabs.ai/app 直接工作台入口"
+      },
+      {
+            "id": "jianying",
+            "name": "剪映 AI",
+            "cat": "video",
+            "emoji": "✂️",
+            "url": "https://www.capcut.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,255,136,0.12)",
+            "desc": "国民级视频剪辑工具，内置图文成片、智能字幕与配音",
+            "tags": [
+                  "自动字幕",
+                  "图文成片",
+                  "数字人口播",
+                  "短视频剪辑"
+            ]
+      },
+      {
+            "id": "cursor",
+            "name": "Cursor",
+            "cat": "code",
+            "emoji": "⌨️",
+            "url": "https://cursor.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "全球最火 AI 原生代码编辑器，支持多文件 Agent 协同",
+            "tags": [
+                  "IDE",
+                  "Composer",
+                  "代码补全",
+                  "Vibe Coding"
+            ],
+            "auditFixed": "域名由 www.cursor.com 更新为 cursor.com"
+      },
+      {
+            "id": "claude-code",
+            "name": "Claude Code",
+            "cat": "code",
+            "emoji": "🐚",
+            "url": "https://claude.ai/code",
+            "region": "global",
+            "price": "paid",
+            "isNew": true,
+            "tint": "rgba(255,107,0,0.15)",
+            "desc": "Anthropic 终端级自主编程 Agent，擅长大型仓库重构",
+            "tags": [
+                  "CLI终端",
+                  "架构重构",
+                  "自动测试",
+                  "Git提交"
+            ]
+      },
+      {
+            "id": "windsurf",
+            "name": "Windsurf",
+            "cat": "code",
+            "emoji": "🏄",
+            "url": "https://windsurf.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,255,136,0.12)",
+            "desc": "Cascade 深度上下文感知 AI IDE，流式协同开发体验",
+            "tags": [
+                  "Codeium",
+                  "Cascade",
+                  "AI编辑器",
+                  "上下文感知"
+            ],
+            "auditFixed": "修复 codeium.com/windsurf 跳转异常，更新为 windsurf.com"
+      },
+      {
+            "id": "trae",
+            "name": "Trae",
+            "cat": "code",
+            "emoji": "🚀",
+            "url": "https://www.trae.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,200,255,0.15)",
+            "desc": "字节跳动出品原生中文友好 AI IDE，Builder 模式一键建站",
+            "tags": [
+                  "字节跳动",
+                  "Builder模式",
+                  "免费IDE",
+                  "中文原生"
+            ]
+      },
+      {
+            "id": "jules",
+            "name": "Google Jules",
+            "cat": "code",
+            "emoji": "🪐",
+            "url": "https://jules.google/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(66,133,244,0.15)",
+            "desc": "Google 异步后台编程 Agent，自动克隆仓库并提 PR",
+            "tags": [
+                  "异步Agent",
+                  "GitHub PR",
+                  "Bug修复",
+                  "云端沙箱"
+            ]
+      },
+      {
+            "id": "codex",
+            "name": "OpenAI Codex",
+            "cat": "code",
+            "emoji": "🧠",
+            "url": "https://chatgpt.com/codex",
+            "region": "global",
+            "price": "paid",
+            "isNew": true,
+            "tint": "rgba(16,163,127,0.15)",
+            "desc": "OpenAI 云端并行软件工程 Agent，独立完成多任务开发",
+            "tags": [
+                  "云端工程",
+                  "并行任务",
+                  "代码审查",
+                  "自动化PR"
+            ]
+      },
+      {
+            "id": "v0",
+            "name": "v0 by Vercel",
+            "cat": "code",
+            "emoji": "▲",
+            "url": "https://v0.app/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(255,255,255,0.06)",
+            "desc": "Vercel 出品，一句话生成高颜值 React + Tailwind 界面",
+            "tags": [
+                  "前端UI",
+                  "shadcn",
+                  "Next.js",
+                  "原型设计",
+                  "一键部署"
+            ],
+            "auditFixed": "域名由 v0.dev 更新为全新 v0.app"
+      },
+      {
+            "id": "lovable",
+            "name": "Lovable",
+            "cat": "code",
+            "emoji": "💖",
+            "url": "https://lovable.dev/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(255,0,128,0.12)",
+            "desc": "全栈自然语言建站神器，原生打通 Supabase 数据库",
+            "tags": [
+                  "全栈应用",
+                  "无代码建站",
+                  "Supabase",
+                  "SaaS生成"
+            ]
+      },
+      {
+            "id": "bolt",
+            "name": "Bolt.new",
+            "cat": "code",
+            "emoji": "⚡",
+            "url": "https://bolt.new/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(255,215,0,0.12)",
+            "desc": "浏览器内秒级运行 Node 全栈容器，对话即构建部署",
+            "tags": [
+                  "WebContainer",
+                  "浏览器IDE",
+                  "全栈开发",
+                  "StackBlitz"
+            ]
+      },
+      {
+            "id": "replit",
+            "name": "Replit Agent",
+            "cat": "code",
+            "emoji": "👾",
+            "url": "https://replit.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,107,0,0.12)",
+            "desc": "从零配置环境、数据库到云端发布的一体化编程平台",
+            "tags": [
+                  "云端编程",
+                  "自动部署",
+                  "数据库托管"
+            ]
+      },
+      {
+            "id": "copilot",
+            "name": "GitHub Copilot",
+            "cat": "code",
+            "emoji": "🐙",
+            "url": "https://github.com/features/copilot",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "GitHub 官方 AI 结对编程助手，现已提供免费基础版",
+            "tags": [
+                  "VSCode",
+                  "代码补全",
+                  "PR总结",
+                  "GitHub"
+            ]
+      },
+      {
+            "id": "tabnine",
+            "name": "Tabnine",
+            "cat": "code",
+            "emoji": "🔁",
+            "url": "https://www.tabnine.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(168,85,247,0.12)",
+            "desc": "注重企业隐私与本地合规部署的老牌 AI 代码助手",
+            "tags": [
+                  "企业合规",
+                  "私有化部署",
+                  "代码补全"
+            ]
+      },
+      {
+            "id": "suno",
+            "name": "Suno",
+            "cat": "audio",
+            "emoji": "🎵",
+            "url": "https://suno.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,0,128,0.12)",
+            "desc": "输入歌词或灵感，30 秒生成录音室级完整人声歌曲",
+            "tags": [
+                  "AI作曲",
+                  "写歌",
+                  "人声演唱",
+                  "编曲",
+                  "BGM"
+            ]
+      },
+      {
+            "id": "udio",
+            "name": "Udio",
+            "cat": "audio",
+            "emoji": "🎸",
+            "url": "https://www.udio.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "高保真音乐生成平台，器乐细节与混音质感极佳",
+            "tags": [
+                  "高保真音乐",
+                  "编曲混音",
+                  "流派丰富"
+            ]
+      },
+      {
+            "id": "elevenlabs",
+            "name": "ElevenLabs",
+            "cat": "audio",
+            "emoji": "🎙️",
+            "url": "https://elevenlabs.io/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,255,136,0.12)",
+            "desc": "全球顶尖情感语音合成、声音克隆与影视音效生成",
+            "tags": [
+                  "TTS配音",
+                  "声音克隆",
+                  "有声书",
+                  "音效生成"
+            ]
+      },
+      {
+            "id": "haimian",
+            "name": "海绵音乐",
+            "cat": "audio",
+            "emoji": "🎧",
+            "url": "https://www.haimian.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(255,185,0,0.12)",
+            "desc": "字节跳动出品免费 AI 音乐创作，中文咬字自然清晰",
+            "tags": [
+                  "字节音乐",
+                  "中文写歌",
+                  "免费作曲",
+                  "热曲改编"
+            ]
+      },
+      {
+            "id": "skymusic",
+            "name": "天工音乐",
+            "cat": "audio",
+            "emoji": "🎹",
+            "url": "https://music.tiangong.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(168,85,247,0.12)",
+            "desc": "昆仑万维 SkyMusic 中文流行与古风歌曲创作平台",
+            "tags": [
+                  "中文歌曲",
+                  "古风音乐",
+                  "伴奏生成"
+            ]
+      },
+      {
+            "id": "gamma",
+            "name": "Gamma",
+            "cat": "office",
+            "emoji": "📑",
+            "url": "https://gamma.app/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(168,85,247,0.12)",
+            "desc": "全球口碑最佳 AI 演示文稿、网页与文档一键生成工具",
+            "tags": [
+                  "PPT生成",
+                  "演示文稿",
+                  "汇报幻灯片",
+                  "网页排版"
+            ]
+      },
+      {
+            "id": "notion-ai",
+            "name": "Notion AI",
+            "cat": "office",
+            "emoji": "📝",
+            "url": "https://www.notion.com/product/ai",
+            "region": "global",
+            "price": "paid",
+            "isNew": false,
+            "tint": "rgba(255,255,255,0.06)",
+            "desc": "深度融合团队知识库、项目看板与文档问答的智能工作区",
+            "tags": [
+                  "笔记知识库",
+                  "文档润色",
+                  "项目管理",
+                  "Wiki"
+            ]
+      },
+      {
+            "id": "aippt",
+            "name": "AiPPT",
+            "cat": "office",
+            "emoji": "📊",
+            "url": "https://www.aippt.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,107,0,0.12)",
+            "desc": "国内职场 PPT 自动生成平台，支持 Word/思维导图导入",
+            "tags": [
+                  "PPT模板",
+                  "述职报告",
+                  "课件制作",
+                  "办公演示"
+            ]
+      },
+      {
+            "id": "feishu",
+            "name": "飞书智能伙伴",
+            "cat": "office",
+            "emoji": "🕊️",
+            "url": "https://www.feishu.cn/hc/zh-CN/articles/326827707829",
+            "region": "china",
+            "price": "paid",
+            "isNew": false,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "飞书会议纪要、多维表格自动化与企业知识问答助手",
+            "tags": [
+                  "飞书妙记",
+                  "多维表格",
+                  "企业协同",
+                  "会议总结"
+            ],
+            "auditFixed": "修正原链接跳转至英文版页面的问题"
+      },
+      {
+            "id": "fathom",
+            "name": "Fathom",
+            "cat": "office",
+            "emoji": "🎤",
+            "url": "https://fathom.video/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,255,136,0.12)",
+            "desc": "免费音视频会议实时录音、转写与待办事项自动提炼",
+            "tags": [
+                  "会议纪要",
+                  "Zoom录音",
+                  "语音转文字",
+                  "行动项提取"
+            ]
+      },
+      {
+            "id": "otter",
+            "name": "Otter.ai",
+            "cat": "office",
+            "emoji": "🦦",
+            "url": "https://otter.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "老牌英文会议实时语音转写、说话人识别与摘要工具",
+            "tags": [
+                  "英文会议",
+                  "课堂录音",
+                  "语音转写",
+                  "字幕记录"
+            ]
+      },
+      {
+            "id": "gitmind",
+            "name": "GitMind 思乎",
+            "cat": "office",
+            "emoji": "🧩",
+            "url": "https://gitmind.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,255,136,0.12)",
+            "desc": "AI 一键生成思维导图、流程图与读书结构脑图",
+            "tags": [
+                  "思维导图",
+                  "脑图",
+                  "流程图",
+                  "知识梳理"
+            ]
+      },
+      {
+            "id": "jasper",
+            "name": "Jasper",
+            "cat": "write",
+            "emoji": "✍️",
+            "url": "https://www.jasper.ai/",
+            "region": "global",
+            "price": "paid",
+            "isNew": false,
+            "tint": "rgba(255,107,0,0.12)",
+            "desc": "面向出海营销团队的品牌语调定制与多渠道文案工作台",
+            "tags": [
+                  "营销文案",
+                  "品牌声量",
+                  "广告创意",
+                  "SEO文章"
+            ]
+      },
+      {
+            "id": "copy-ai",
+            "name": "Copy.ai",
+            "cat": "write",
+            "emoji": "📋",
+            "url": "https://www.copy.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(99,102,241,0.12)",
+            "desc": "自动化销售开发信、社媒贴文与 GTM 营销工作流平台",
+            "tags": [
+                  "外贸邮件",
+                  "销售文案",
+                  "社媒运营",
+                  "营销自动化"
+            ]
+      },
+      {
+            "id": "grammarly",
+            "name": "Grammarly AI",
+            "cat": "write",
+            "emoji": "📝",
+            "url": "https://www.grammarly.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "英文学术论文润色、语法纠错与地道商务语气改写必备",
+            "tags": [
+                  "英文润色",
+                  "语法检查",
+                  "SCI论文",
+                  "商务邮件"
+            ]
+      },
+      {
+            "id": "character",
+            "name": "Character.AI",
+            "cat": "write",
+            "emoji": "🎭",
+            "url": "https://character.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(99,102,241,0.12)",
+            "desc": "全球最大 AI 角色扮演、人格定制与互动故事创作社区",
+            "tags": [
+                  "角色扮演",
+                  "人设设定",
+                  "互动小说",
+                  "情感陪伴"
+            ]
+      },
+      {
+            "id": "wawawriter",
+            "name": "蛙蛙写作",
+            "cat": "write",
+            "emoji": "🐸",
+            "url": "https://wawawriter.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,255,136,0.12)",
+            "desc": "中文网文小说续写、剧本大纲构思与小红书爆款文案工具",
+            "tags": [
+                  "小说创作",
+                  "剧本杀",
+                  "小红书文案",
+                  "故事续写"
+            ]
+      },
+      {
+            "id": "muse-meta",
+            "name": "Muse by Meta",
+            "cat": "agent",
+            "emoji": "🔮",
+            "url": "https://muse.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(24,119,242,0.15)",
+            "desc": "Meta 个人全能 AI Agent，支持跨应用理解与自主规划",
+            "tags": [
+                  "Meta",
+                  "个人智能体",
+                  "任务规划"
+            ]
+      },
+      {
+            "id": "manus",
+            "name": "Manus",
+            "cat": "agent",
+            "emoji": "🦾",
+            "url": "https://manus.im/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(255,215,0,0.12)",
+            "desc": "通用型自主执行 Agent，云端操作浏览器、写代码与交付报告",
+            "tags": [
+                  "通用Agent",
+                  "云端沙箱",
+                  "自动调研",
+                  "文件交付"
+            ]
+      },
+      {
+            "id": "openhands",
+            "name": "OpenHands (原 OpenDevin)",
+            "cat": "agent",
+            "emoji": "🙌",
+            "url": "https://www.all-hands.dev/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,255,136,0.15)",
+            "desc": "全球高星开源自主软件开发与终端操作 Agent 平台",
+            "tags": [
+                  "开源Agent",
+                  "OpenDevin",
+                  "自动编程",
+                  "终端操作"
+            ],
+            "auditFixed": "替换原与 Manus URL 完全重复的 Cue (Manus) 占位项"
+      },
+      {
+            "id": "workbuddy",
+            "name": "腾讯 WorkBuddy",
+            "cat": "agent",
+            "emoji": "🤝",
+            "url": "https://cloud.tencent.com/product/workbuddy",
+            "region": "china",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,200,255,0.15)",
+            "desc": "腾讯云企业级职场协同 Agent，自动化处理业务流与工单",
+            "tags": [
+                  "腾讯云",
+                  "企业Agent",
+                  "流程自动化"
+            ]
+      },
+      {
+            "id": "coze",
+            "name": "扣子 Coze",
+            "cat": "agent",
+            "emoji": "🪢",
+            "url": "https://www.coze.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "字节跳动零代码智能体工作流平台，一键发布至微信/飞书",
+            "tags": [
+                  "智能体搭建",
+                  "工作流Workflow",
+                  "插件生态",
+                  "字节跳动"
+            ]
+      },
+      {
+            "id": "dify",
+            "name": "Dify",
+            "cat": "agent",
+            "emoji": "🐳",
+            "url": "https://dify.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(99,102,241,0.12)",
+            "desc": "全球最流行开源 LLM 应用与 RAG 工作流可视化编排平台",
+            "tags": [
+                  "开源LLMOps",
+                  "RAG知识库",
+                  "工作流编排",
+                  "私有化"
+            ]
+      },
+      {
+            "id": "devin",
+            "name": "Devin",
+            "cat": "agent",
+            "emoji": "👾",
+            "url": "https://devin.ai/",
+            "region": "global",
+            "price": "paid",
+            "isNew": true,
+            "tint": "rgba(0,255,136,0.12)",
+            "desc": "Cognition 出品全球首位商业化全自主 AI 软件工程师",
+            "tags": [
+                  "自主工程师",
+                  "端到端开发",
+                  "Cognition"
+            ]
+      },
+      {
+            "id": "n8n",
+            "name": "n8n AI",
+            "cat": "agent",
+            "emoji": "🔄",
+            "url": "https://n8n.io/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(255,107,0,0.12)",
+            "desc": "可自托管的开源节点式自动化平台，内置原生 AI Agent 节点",
+            "tags": [
+                  "自动化工作流",
+                  "开源可自建",
+                  "节点编排",
+                  "API连接"
+            ]
+      },
+      {
+            "id": "zapier-ai",
+            "name": "Zapier AI",
+            "cat": "agent",
+            "emoji": "⚡",
+            "url": "https://zapier.com/ai",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(255,107,0,0.12)",
+            "desc": "连接 7000+ 海外 SaaS 应用的自动化触发器与 AI 助手",
+            "tags": [
+                  "SaaS连接器",
+                  "跨应用自动化",
+                  "无代码"
+            ]
+      },
+      {
+            "id": "langchain",
+            "name": "LangChain & LangSmith",
+            "cat": "agent",
+            "emoji": "🔗",
+            "url": "https://www.langchain.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,255,136,0.12)",
+            "desc": "行业标准级 Agent 开发框架（LangGraph）与可观测调试平台",
+            "tags": [
+                  "LangGraph",
+                  "Agent开发框架",
+                  "Python",
+                  "可观测性"
+            ]
+      },
+      {
+            "id": "browser-use",
+            "name": "Browser Use",
+            "cat": "agent",
+            "emoji": "🌐",
+            "url": "https://browser-use.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "让 AI Agent 像人类一样精准操控网页、点击与填表的开源框架",
+            "tags": [
+                  "浏览器自动化",
+                  "网页操控",
+                  "RPA智能体",
+                  "开源"
+            ]
+      },
+      {
+            "id": "openai-api",
+            "name": "OpenAI Platform",
+            "cat": "api",
+            "emoji": "🗝️",
+            "url": "https://platform.openai.com/",
+            "region": "global",
+            "price": "paid",
+            "isNew": false,
+            "tint": "rgba(16,163,127,0.12)",
+            "desc": "GPT、o3 推理、Realtime 实时语音与 Responses API 官方控制台",
+            "tags": [
+                  "GPT-API",
+                  "Responses",
+                  "Realtime语音",
+                  "微调"
+            ]
+      },
+      {
+            "id": "claude-api",
+            "name": "Claude Console",
+            "cat": "api",
+            "emoji": "🏛️",
+            "url": "https://platform.claude.com/",
+            "region": "global",
+            "price": "paid",
+            "isNew": false,
+            "tint": "rgba(255,107,0,0.12)",
+            "desc": "Anthropic 官方 API 平台，支持提示词缓存、Computer Use 与 MCP",
+            "tags": [
+                  "Anthropic",
+                  "MCP协议",
+                  "Prompt Caching",
+                  "Computer Use"
+            ],
+            "auditFixed": "域名由 console.anthropic.com 更新为 platform.claude.com"
+      },
+      {
+            "id": "aistudio",
+            "name": "Google AI Studio",
+            "cat": "api",
+            "emoji": "🔬",
+            "url": "https://aistudio.google.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": true,
+            "tint": "rgba(66,133,244,0.12)",
+            "desc": "Gemini 开发者工作台，提供慷慨免费 API Key 与实时多模态调试",
+            "tags": [
+                  "免费API",
+                  "Gemini-API",
+                  "Live实时视频",
+                  "应用构建"
+            ]
+      },
+      {
+            "id": "deepseek-api",
+            "name": "DeepSeek 开放平台",
+            "cat": "api",
+            "emoji": "🌊",
+            "url": "https://platform.deepseek.com/",
+            "region": "china",
+            "price": "paid",
+            "isNew": true,
+            "tint": "rgba(99,102,241,0.12)",
+            "desc": "极致性价比的国产推理与代码模型 API，兼容 OpenAI 接口格式",
+            "tags": [
+                  "高性价比Token",
+                  "硬盘缓存优惠",
+                  "兼容OpenAI"
+            ]
+      },
+      {
+            "id": "bailian",
+            "name": "阿里云百炼",
+            "cat": "api",
+            "emoji": "☁️",
+            "url": "https://bailian.console.aliyun.com/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,107,0,0.12)",
+            "desc": "通义千问全系 API 与企业级智能体搭建平台（赠百万免费额度）",
+            "tags": [
+                  "通义API",
+                  "免费Token额度",
+                  "阿里云",
+                  "知识库检索"
+            ],
+            "auditFixed": "提供新用户百万免费 Token，价格属性更新为含免费额度"
+      },
+      {
+            "id": "volcengine",
+            "name": "火山方舟",
+            "cat": "api",
+            "emoji": "🌋",
+            "url": "https://www.volcengine.com/product/ark",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,50,0,0.12)",
+            "desc": "字节跳动大模型服务平台，高并发调用豆包与满血 DeepSeek",
+            "tags": [
+                  "豆包API",
+                  "字节云",
+                  "高并发推理",
+                  "联网插件"
+            ]
+      },
+      {
+            "id": "siliconflow",
+            "name": "硅基流动 SiliconFlow",
+            "cat": "api",
+            "emoji": "🧪",
+            "url": "https://www.siliconflow.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,255,136,0.12)",
+            "desc": "集合顶尖开源大模型的高速推理云，多款小模型永久免费调用",
+            "tags": [
+                  "开源模型API",
+                  "CherryStudio首选",
+                  "免费小模型",
+                  "高速推理"
+            ],
+            "auditFixed": "域名规范为 www.siliconflow.cn，且多款开源模型永久免费"
+      },
+      {
+            "id": "openrouter",
+            "name": "OpenRouter",
+            "cat": "api",
+            "emoji": "🔀",
+            "url": "https://openrouter.ai/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,255,255,0.06)",
+            "desc": "统一 API 路由网关，一个密钥调用全球 300+ 闭源与免费模型",
+            "tags": [
+                  "聚合API网关",
+                  "含免费模型(:free)",
+                  "统一接口"
+            ]
+      },
+      {
+            "id": "groq",
+            "name": "GroqCloud",
+            "cat": "api",
+            "emoji": "🏎️",
+            "url": "https://console.groq.com/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,107,0,0.12)",
+            "desc": "自研 LPU 芯片驱动，每秒数百 Token 的闪电级开源模型 API",
+            "tags": [
+                  "LPU极速推理",
+                  "实时语音转写Whisper",
+                  "免费调用层"
+            ]
+      },
+      {
+            "id": "huggingface",
+            "name": "Hugging Face",
+            "cat": "api",
+            "emoji": "🤗",
+            "url": "https://huggingface.co/",
+            "region": "global",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(255,185,0,0.12)",
+            "desc": "全球最大 AI 开源社区，百万模型权重、数据集与 Spaces 演示",
+            "tags": [
+                  "开源模型权重",
+                  "Datasets数据集",
+                  "Spaces在线体验"
+            ]
+      },
+      {
+            "id": "together",
+            "name": "Together AI",
+            "cat": "api",
+            "emoji": "🤝",
+            "url": "https://api.together.ai/",
+            "region": "global",
+            "price": "paid",
+            "isNew": false,
+            "tint": "rgba(99,102,241,0.12)",
+            "desc": "专为开源大模型定制微调、Serverless 推理与 GPU 集群算力云",
+            "tags": [
+                  "开源模型云",
+                  "微调训练",
+                  "GPU算力"
+            ]
+      },
+      {
+            "id": "bigmodel",
+            "name": "智谱开放平台",
+            "cat": "api",
+            "emoji": "💫",
+            "url": "https://open.bigmodel.cn/",
+            "region": "china",
+            "price": "free",
+            "isNew": false,
+            "tint": "rgba(0,200,255,0.12)",
+            "desc": "提供 GLM-4-Flash 永久免费 API 及视觉、语音全模态接口",
+            "tags": [
+                  "GLM-4-Flash免费",
+                  "智谱API",
+                  "WebSearch接口"
+            ]
+      },
+      {
+            "id": "minimax-api",
+            "name": "MiniMax 开放平台",
+            "cat": "api",
+            "emoji": "🍬",
+            "url": "https://platform.minimax.cn/",
+            "region": "china",
+            "price": "paid",
+            "isNew": false,
+            "tint": "rgba(255,0,128,0.12)",
+            "desc": "MiniMax 文本、超拟人语音合成 (T2A) 与海螺视频生成 API",
+            "tags": [
+                  "拟人语音API",
+                  "视频API",
+                  "长上下文接口"
+            ],
+            "auditFixed": "域名由 platform.minimaxi.com 更新为 platform.minimax.cn"
+      }
+];
+    const LEARN_DATA = [
+      {
+            "id": "learn-1",
+            "section": "beginner",
+            "title": "OpenAI Academy",
+            "provider": "OpenAI 官方学院",
+            "emoji": "🌀",
+            "url": "https://academy.openai.com/",
+            "domainLabel": "academy.openai.com",
+            "region": "global",
+            "accent": "#10a37f",
+            "badges": [
+                  {
+                        "text": "FREE",
+                        "type": "free"
+                  },
+                  {
+                        "text": "OFFICIAL",
+                        "type": "official"
+                  },
+                  {
+                        "text": "徽章",
+                        "type": "cert"
+                  },
+                  {
+                        "text": "2026必学",
+                        "type": "hot"
+                  }
+            ],
+            "desc": "OpenAI 官方推出的免费在线互动学院，涵盖 AI 基础、提示词工程、结构化工作流与 Agent 任务编排，普通账号即可 100% 免费学习并考取官方完成徽章。"
+      },
+      {
+            "id": "learn-2",
+            "section": "beginner",
+            "title": "Anthropic Academy (Claude)",
+            "provider": "Anthropic 官方学院",
+            "emoji": "🏛️",
+            "url": "https://anthropic.skilljar.com/",
+            "domainLabel": "anthropic.skilljar.com",
+            "region": "global",
+            "accent": "#ff6b00",
+            "badges": [
+                  {
+                        "text": "FREE",
+                        "type": "free"
+                  },
+                  {
+                        "text": "OFFICIAL",
+                        "type": "official"
+                  },
+                  {
+                        "text": "CERT",
+                        "type": "cert"
+                  },
+                  {
+                        "text": "MCP标准",
+                        "type": "hot"
+                  }
+            ],
+            "desc": "Anthropic 官方免费课程库，包含《AI Fluency 4D 框架》《Claude 101》《Claude Code 101》以及行业标准的《MCP 协议开发课》，完成测验可获官方证书。"
+      },
+      {
+            "id": "learn-3",
+            "section": "beginner",
+            "title": "Elements of AI",
+            "provider": "赫尔辛基大学 × MinnaLearn",
+            "emoji": "🎓",
+            "url": "https://www.elementsofai.com/",
+            "domainLabel": "elementsofai.com",
+            "region": "global",
+            "accent": "#ff6b00",
+            "badges": [
+                  {
+                        "text": "FREE",
+                        "type": "free"
+                  },
+                  {
+                        "text": "OFFICIAL",
+                        "type": "official"
+                  },
+                  {
+                        "text": "CERT",
+                        "type": "cert"
+                  },
+                  {
+                        "text": "入门",
+                        "type": "beginner"
+                  }
+            ],
+            "desc": "全球最知名零基础通识入门课，无需编程背景，深入浅出讲解 AI 原理、概率推理与社会影响。支持多国语言，完成后可获大学官方证书。"
+      },
+      {
+            "id": "learn-4",
+            "section": "beginner",
+            "title": "Microsoft Learn — AI",
+            "provider": "Microsoft 官方",
+            "emoji": "🪟",
+            "url": "https://learn.microsoft.com/zh-cn/ai/",
+            "domainLabel": "learn.microsoft.com",
+            "region": "china",
+            "accent": "#00c8ff",
+            "badges": [
+                  {
+                        "text": "FREE",
+                        "type": "free"
+                  },
+                  {
+                        "text": "OFFICIAL",
+                        "type": "official"
+                  },
+                  {
+                        "text": "CERT",
+                        "type": "cert"
+                  },
+                  {
+                        "text": "全中文",
+                        "type": "hot"
+                  }
+            ],
+            "desc": "微软官方完全免费中文 AI 学习平台（国内可直连），从生成式 AI 初学者指南到 Copilot 构建、RAG 检索增强与 AI Agent 开发，附沙盒实操练习。"
+      },
+      {
+            "id": "learn-5",
+            "section": "beginner",
+            "title": "Google Skills (原 Cloud Skills Boost)",
+            "provider": "Google 官方",
+            "emoji": "🔵",
+            "url": "https://www.skills.google/paths",
+            "domainLabel": "skills.google/paths",
+            "region": "global",
+            "accent": "#4285f4",
+            "badges": [
+                  {
+                        "text": "核心免费",
+                        "type": "free"
+                  },
+                  {
+                        "text": "OFFICIAL",
+                        "type": "official"
+                  },
+                  {
+                        "text": "徽章",
+                        "type": "cert"
+                  }
+            ],
+            "desc": "Google 官方 AI/ML 学习路径，含《Generative AI 基础》《大语言模型导论》《Gemini 多模态开发》等核心免费公开课，完成后颁发 Google Cloud 技能徽章。",
+            "auditFixed": "域名由 cloudskillsboost.google/paths 更新为 www.skills.google/paths"
+      },
+      {
+            "id": "learn-6",
+            "section": "beginner",
+            "title": "Kaggle Learn",
+            "provider": "Kaggle (Google) 官方",
+            "emoji": "📊",
+            "url": "https://www.kaggle.com/learn",
+            "domainLabel": "kaggle.com/learn",
+            "region": "global",
+            "accent": "#ff6b00",
+            "badges": [
+                  {
+                        "text": "FREE",
+                        "type": "free"
+                  },
+                  {
+                        "text": "OFFICIAL",
+                        "type": "official"
+                  },
+                  {
+                        "text": "CERT",
+                        "type": "cert"
+                  }
+            ],
+            "desc": "Google 旗下最大 AI 竞赛平台微课程。涵盖 Python、Pandas、机器学习、深度学习及《5-Day GenAI / AI Agents 强化营》，浏览器内免费云端 Notebook 实战并颁发证书。"
+      },
+      {
+            "id": "learn-7",
+            "section": "advanced",
+            "title": "DeepLearning.AI Short Courses",
+            "provider": "Andrew Ng · 吴恩达",
+            "emoji": "🧠",
+            "url": "https://www.deeplearning.ai/short-courses/",
+            "domainLabel": "deeplearning.ai/short-courses",
+            "region": "global",
+            "accent": "#a855f7",
+            "badges": [
+                  {
+                        "text": "视频免费",
+                        "type": "free"
+                  },
+                  {
+                        "text": "OFFICIAL",
+                        "type": "official"
+                  },
+                  {
+                        "text": "行业标杆",
+                        "type": "hot"
+                  }
+            ],
+            "desc": "吴恩达联合 OpenAI、Anthropic、LangChain、LlamaIndex 创始人亲授的 1~2 小时精品实战短课，涵盖《Agentic AI》《MCP》《RAG》《Multi-Agent》，含在线代码实验室。"
+      },
+      {
+            "id": "learn-8",
+            "section": "advanced",
+            "title": "Hugging Face Learn",
+            "provider": "Hugging Face 官方",
+            "emoji": "🤗",
+            "url": "https://huggingface.co/learn",
+            "domainLabel": "huggingface.co/learn",
+            "region": "global",
+            "accent": "#ffd700",
+            "badges": [
+                  {
+                        "text": "FREE",
+                        "type": "free"
+                  },
+                  {
+                        "text": "OFFICIAL",
+                        "type": "official"
+                  },
+                  {
+                        "text": "CERT",
+                        "type": "cert"
+                  }
+            ],
+            "desc": "AI 开源第一平台的免费实战教程。包含《AI Agents Course》（含免费结业证书）、《LLM Course》、强化学习、计算机视觉与扩散模型全系列。"
+      },
+      {
+            "id": "learn-9",
+            "section": "advanced",
+            "title": "fast.ai — Practical Deep Learning",
+            "provider": "fast.ai · Jeremy Howard",
+            "emoji": "⚡",
+            "url": "https://course.fast.ai/",
+            "domainLabel": "course.fast.ai",
+            "region": "global",
+            "accent": "#00ff88",
+            "badges": [
+                  {
+                        "text": "FREE",
+                        "type": "free"
+                  },
+                  {
+                        "text": "代码优先",
+                        "type": "advanced"
+                  }
+            ],
+            "desc": "程序员口碑最佳的深度学习实战课，坚持“Top-Down 代码优先”理念，第一堂课即跑通完整视觉模型，再逐步拆解 PyTorch 与底层矩阵原理。"
+      },
+      {
+            "id": "learn-10",
+            "section": "advanced",
+            "title": "Machine Learning Specialization",
+            "provider": "Stanford × DeepLearning.AI",
+            "emoji": "🏛️",
+            "url": "https://www.coursera.org/specializations/machine-learning-introduction",
+            "domainLabel": "coursera.org",
+            "region": "global",
+            "accent": "#00c8ff",
+            "badges": [
+                  {
+                        "text": "免费旁听",
+                        "type": "free"
+                  },
+                  {
+                        "text": "Stanford",
+                        "type": "official"
+                  }
+            ],
+            "desc": "吴恩达与斯坦福联手重制的 Python 版经典机器学习专项课。涵盖监督学习、神经网络与推荐系统，单门课程选择“Audit（旁听）”即可免费看完全部视频。"
+      },
+      {
+            "id": "learn-11",
+            "section": "advanced",
+            "title": "Stanford CS229 — Machine Learning",
+            "provider": "斯坦福大学官方公开课",
+            "emoji": "🌲",
+            "url": "https://cs229.stanford.edu/",
+            "domainLabel": "cs229.stanford.edu",
+            "region": "global",
+            "accent": "#ff0080",
+            "badges": [
+                  {
+                        "text": "FREE",
+                        "type": "free"
+                  },
+                  {
+                        "text": "硬核理论",
+                        "type": "advanced"
+                  }
+            ],
+            "desc": "斯坦福殿堂级 CS 课程，全套 LaTeX 讲义、数学推导、课后作业与课程大纲完全公开免费，适合希望彻底打通机器学习数学底层原理的进阶者。",
+            "auditFixed": "域名由 web.stanford.edu/class/cs229/ 更新为 cs229.stanford.edu"
+      },
+      {
+            "id": "learn-12",
+            "section": "advanced",
+            "title": "OpenAI Cookbook",
+            "provider": "OpenAI 开发者中心",
+            "emoji": "📖",
+            "url": "https://developers.openai.com/cookbook",
+            "domainLabel": "developers.openai.com/cookbook",
+            "region": "global",
+            "accent": "#10a37f",
+            "badges": [
+                  {
+                        "text": "FREE",
+                        "type": "free"
+                  },
+                  {
+                        "text": "OFFICIAL",
+                        "type": "official"
+                  },
+                  {
+                        "text": "代码库",
+                        "type": "advanced"
+                  }
+            ],
+            "desc": "OpenAI 官方维护的数百个生产级 Jupyter Notebook 案例库，覆盖结构化输出、Function Calling、多模态 RAG、语音 Agent 与模型评测 (Evals) 最佳实践。",
+            "auditFixed": "域名由 cookbook.openai.com 更新为 developers.openai.com/cookbook"
+      },
+      {
+            "id": "learn-13",
+            "section": "chinese",
+            "title": "飞桨星河社区 AI Studio",
+            "provider": "百度 PaddlePaddle 官方",
+            "emoji": "🐼",
+            "url": "https://aistudio.baidu.com/course",
+            "domainLabel": "aistudio.baidu.com/course",
+            "region": "china",
+            "accent": "#00c8ff",
+            "badges": [
+                  {
+                        "text": "FREE",
+                        "type": "free"
+                  },
+                  {
+                        "text": "中文直连",
+                        "type": "official"
+                  },
+                  {
+                        "text": "免费算力",
+                        "type": "cert"
+                  }
+            ],
+            "desc": "百度官方中文 AI 实训社区，提供从 Python 入门到文心大模型 Agent 开发的完整中文视频课，配套免费云端 GPU 算力环境与结业证书。"
+      },
+      {
+            "id": "learn-14",
+            "section": "chinese",
+            "title": "魔搭社区 ModelScope 研习社",
+            "provider": "阿里云 × 达摩院官方",
+            "emoji": "🔮",
+            "url": "https://www.modelscope.cn/docs",
+            "domainLabel": "modelscope.cn/docs",
+            "region": "china",
+            "accent": "#a855f7",
+            "badges": [
+                  {
+                        "text": "FREE",
+                        "type": "free"
+                  },
+                  {
+                        "text": "中文直连",
+                        "type": "official"
+                  },
+                  {
+                        "text": "免费GPU",
+                        "type": "hot"
+                  }
+            ],
+            "desc": "阿里达摩院打造的国内最大开源模型社区，提供大模型微调 (SWIFT)、RAG 构建、Agent 开发全套中文文档教程，注册即送免费 Notebook GPU 算力时长。",
+            "auditFixed": "修复原 modelscope.cn/learn 下线重定向问题，更新为有效教程文档中心"
+      },
+      {
+            "id": "learn-15",
+            "section": "chinese",
+            "title": "Datawhale 开源学习社区",
+            "provider": "Datawhale 国内高校开源组织",
+            "emoji": "🐋",
+            "url": "https://github.com/datawhalechina",
+            "domainLabel": "github.com/datawhalechina",
+            "region": "china",
+            "accent": "#00ff88",
+            "badges": [
+                  {
+                        "text": "FREE",
+                        "type": "free"
+                  },
+                  {
+                        "text": "开源共学",
+                        "type": "official"
+                  },
+                  {
+                        "text": "极高口碑",
+                        "type": "hot"
+                  }
+            ],
+            "desc": "国内最具影响力的 AI 开源共学组织，出品《Happy-LLM（从零手搓大模型）》《Hello-Agents》《动手学大模型应用开发》《南瓜书》等数十部高星全免费中文教程。"
+      }
+];
+
+    const state = {
+      category: "all", preset: "all", query: "", onlyFavorites: false, tab: "tools",
+      theme: localStorage.getItem("ginaai_theme") || "dark",
+      favorites: new Set(loadFav()),
+    };
+
+    const toolsGrid = document.getElementById("toolsGrid");
+    const learnContainer = document.getElementById("learnContainer");
+    const catScroll = document.getElementById("catScroll");
+    const searchInput = document.getElementById("searchInput");
+    const searchClearBtn = document.getElementById("searchClearBtn");
+    const resultsCount = document.getElementById("resultsCount");
+    const favFilterBtn = document.getElementById("favFilterBtn");
+    const favCountBadge = document.getElementById("favCountBadge");
+    const favHeartIcon = document.getElementById("favHeartIcon");
+    const themeToggleBtn = document.getElementById("themeToggleBtn");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeLabel = document.getElementById("themeLabel");
+    const brandBtn = document.getElementById("brandBtn");
+    const toast = document.getElementById("toast");
+    let toastTimer;
+
+    function applyTheme(t) {
+      state.theme = t;
+      document.documentElement.setAttribute("data-theme", t);
+      localStorage.setItem("ginaai_theme", t);
+      themeIcon.textContent = t === "light" ? "🌙" : "☀️";
+      themeLabel.textContent = t === "light" ? "暗色" : "亮色";
+    }
+    applyTheme(state.theme);
+
+    themeToggleBtn.addEventListener("click", () => {
+      const next = state.theme === "light" ? "dark" : "light";
+      applyTheme(next);
+      showToast(next === "light" ? "☀️ 已切换为明朗亮色版" : "🌙 已切换为赛博暗色版");
+    });
+
+    function switchTab(tab) {
+      state.tab = tab;
+      document.querySelectorAll(".tab-btn, .tab-mobile-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tab));
+      document.querySelectorAll(".page-section").forEach(s => s.classList.toggle("active", s.id === "tab-" + tab));
+      searchInput.placeholder = tab === "learn" ? "搜索免费 AI 课程、机构（如 吴恩达、MCP、Stanford）..." : "搜索 AI 工具、用途（如 PPT、会议、音乐）...";
+      if (tab === "learn") renderLearn();
+      else renderTools();
+    }
+    document.querySelectorAll(".tab-btn, .tab-mobile-btn").forEach(btn => btn.addEventListener("click", () => switchTab(btn.dataset.tab)));
+
+    function loadFav() {
+      try { return JSON.parse(localStorage.getItem("ginaai_favs_v2") || "[]"); } catch(e) { return []; }
+    }
+    function saveFav() {
+      localStorage.setItem("ginaai_favs_v2", JSON.stringify([...state.favorites]));
+      updateFavBadge();
+    }
+    function updateFavBadge() {
+      const n = state.favorites.size;
+      favCountBadge.textContent = `(${n})`;
+      favFilterBtn.classList.toggle("active", state.onlyFavorites);
+      favHeartIcon.textContent = state.onlyFavorites ? "💖" : n > 0 ? "❤️" : "🤍";
+    }
+    function showToast(msg) {
+      toast.textContent = msg; toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2000);
+    }
+    function esc(str) {
+      return String(str).replace(/[&<>'"]/g, t => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[t]||t));
+    }
+
+    function renderCategories() {
+      catScroll.innerHTML = Object.entries(CATEGORIES).map(([key, item]) => {
+        const count = key === "all" ? TOOLS_DATA.length : TOOLS_DATA.filter(t => t.cat === key).length;
+        return `<button class="cat-pill${state.category===key?" active":""}" data-cat="${key}" type="button">
+          <span>${item.icon}</span><span>${item.label}</span><span class="cat-count">${count}</span>
+        </button>`;
+      }).join("");
+      catScroll.querySelectorAll(".cat-pill").forEach(btn => btn.addEventListener("click", () => {
+        state.category = btn.dataset.cat; state.onlyFavorites = false;
+        renderCategories(); renderTools();
+      }));
+    }
+
+    function getFilteredTools() {
+      const q = state.query.trim().toLowerCase();
+      return TOOLS_DATA.filter(t => {
+        if (state.category !== "all" && t.cat !== state.category) return false;
+        if (state.onlyFavorites && !state.favorites.has(t.id)) return false;
+        if (state.preset === "vpn"   && t.region !== "global") return false;
+        if (state.preset === "china" && t.region !== "china")  return false;
+        if (state.preset === "free"  && t.price  !== "free")   return false;
+        if (state.preset === "new"   && !t.isNew)              return false;
+        if (!q) return true;
+        return [t.name, t.id, t.desc || "", (t.tags || []).join(" "), CATEGORIES[t.cat]?.label || ""].join(" ").toLowerCase().includes(q);
+      });
+    }
+
+    function renderTools() {
+      const tools = getFilteredTools();
+      resultsCount.textContent = tools.length;
+      if (!tools.length) {
+        toolsGrid.innerHTML = `<div class="empty-box"><div class="empty-emoji">🫧</div><h3>没找到匹配的 AI 工具</h3><p>试试搜索“PPT”、“会议”、“生图”、“音乐”或清空筛选条件</p><button class="btn-reset" id="resetBtn" type="button">🔄 查看全部</button></div>`;
+        document.getElementById("resetBtn")?.addEventListener("click", resetAll);
+        return;
+      }
+      toolsGrid.innerHTML = tools.map(t => {
+        const isFav = state.favorites.has(t.id);
+        return `
+          <a class="tool-card${t.isNew?" is-new":""}" href="${esc(t.url)}" target="_blank" rel="noopener noreferrer" title="${esc(t.name)} — ${esc(t.desc)}">
+            <span class="fav-heart-btn${isFav?" active":""}" role="button" tabindex="0" data-id="${t.id}" aria-label="收藏 ${esc(t.name)}">${isFav?"❤️":"🤍"}</span>
+            ${t.isNew?'<span class="new-badge">NEW</span>':""}
+            <div class="emoji-logo-box" style="--card-tint:${t.tint}">${t.emoji}</div>
+            <div class="tool-name">${esc(t.name)}</div>
+            <div class="tool-desc">${esc(t.desc)}</div>
+            <div class="tool-meta-row">
+              <span class="network-badge ${t.region==="global"?"vpn":"china"}">${t.region==="global"?"🌐 VPN":"🇨🇳 直连"}</span>
+              <span class="price-text ${t.price==="free"?"free":""}">· ${t.price==="free"?"免费":"付费"}</span>
+            </div>
+          </a>`;
+      }).join("");
+    }
+
+    function renderLearn() {
+      const q = state.query.trim().toLowerCase();
+      const filtered = LEARN_DATA.filter(c => {
+        if (!q) return true;
+        return [c.title, c.provider, c.desc, c.domainLabel, c.badges.map(b => b.text).join(" ")].join(" ").toLowerCase().includes(q);
+      });
+      if (!filtered.length) {
+        learnContainer.innerHTML = `<div class="empty-box"><div class="empty-emoji">📚</div><h3>没找到匹配的免费学习资源</h3><p>试试其他关键词或清空搜索框</p><button class="btn-reset" id="resetLearnBtn" type="button">🔄 显示全部课程</button></div>`;
+        document.getElementById("resetLearnBtn")?.addEventListener("click", resetAll);
+        return;
+      }
+      const sections = [
+        { key: "beginner", label: "🌱 零基础与官方学院", badgeClass: "badge-beginner" },
+        { key: "advanced", label: "🚀 进阶实战与名校公开课", badgeClass: "badge-advanced" },
+        { key: "chinese",  label: "🇨🇳 中文社区精选（国内直连）", badgeClass: "badge-free" }
+      ];
+      learnContainer.innerHTML = sections.map(sec => {
+        const items = filtered.filter(c => c.section === sec.key);
+        if (!items.length) return "";
+        return `
+          <div class="learn-section-header">
+            <span class="learn-section-tag ${sec.badgeClass}">${sec.label}</span>
+            <div style="flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)"></div>
+          </div>
+          <div class="learn-grid">
+            ${items.map(c => `
+              <a class="learn-card" style="--card-accent:${c.accent}" href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">
+                <div class="learn-card-top">
+                  <div class="learn-logo">${c.emoji}</div>
+                  <div class="learn-badges">
+                    <span class="network-badge ${c.region==="global"?"vpn":"china"}">${c.region==="global"?"🌐 VPN":"🇨🇳 直连"}</span>
+                    ${c.badges.map(b => `<span class="learn-badge badge-${b.type}">${esc(b.text)}</span>`).join("")}
+                  </div>
+                </div>
+                <div>
+                  <div class="learn-title">${esc(c.title)}</div>
+                  <div class="learn-provider">${esc(c.provider)}</div>
+                </div>
+                <div class="learn-desc">${esc(c.desc)}</div>
+                <div class="learn-meta"><span>${esc(c.domainLabel)}</span><span class="learn-arrow">→</span></div>
+              </a>
+            `).join("")}
+          </div>
+        `;
+      }).join("");
+    }
+
+    function resetAll() {
+      state.category="all"; state.preset="all"; state.query=""; state.onlyFavorites=false; searchInput.value="";
+      searchClearBtn.style.display = "none";
+      document.querySelectorAll(".filter-chip").forEach(p => p.classList.toggle("active", p.dataset.preset==="all"));
+      updateFavBadge(); renderCategories(); renderTools(); renderLearn();
+    }
+
+    toolsGrid.addEventListener("click", e => {
+      const btn = e.target.closest(".fav-heart-btn");
+      if (!btn) return;
+      e.preventDefault(); e.stopPropagation();
+      const id = btn.dataset.id, tool = TOOLS_DATA.find(t => t.id === id);
+      if (state.favorites.has(id)) {
+        state.favorites.delete(id); btn.classList.remove("active"); btn.textContent="🤍";
+        showToast(`💔 已移除 ${tool?.name||""}`);
+      } else {
+        state.favorites.add(id); btn.classList.add("active"); btn.textContent="❤️";
+        showToast(`❤️ 已收藏 ${tool?.name||""}`);
+      }
+      saveFav(); if (state.onlyFavorites) renderTools();
+    });
+
+    document.querySelectorAll(".filter-chip").forEach(btn => btn.addEventListener("click", () => {
+      document.querySelectorAll(".filter-chip").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active"); state.preset = btn.dataset.preset; renderTools();
+    }));
+
+    let searchT = null;
+    searchInput.addEventListener("input", e => {
+      searchClearBtn.style.display = e.target.value ? "inline-block" : "none";
+      clearTimeout(searchT);
+      searchT = setTimeout(() => {
+        state.query = e.target.value;
+        if (state.tab === "learn") renderLearn();
+        else renderTools();
+      }, 100);
+    });
+    searchClearBtn.addEventListener("click", () => {
+      searchInput.value = ""; state.query = ""; searchClearBtn.style.display = "none";
+      searchInput.focus();
+      if (state.tab === "learn") renderLearn(); else renderTools();
+    });
+
+    window.addEventListener("keydown", e => {
+      if ((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==="k") {
+        e.preventDefault(); searchInput.focus(); searchInput.select();
+      }
+      if (e.key==="Escape" && document.activeElement===searchInput) searchInput.blur();
+    });
+
+    favFilterBtn.addEventListener("click", () => {
+      if (state.tab !== "tools") switchTab("tools");
+      state.onlyFavorites = !state.onlyFavorites;
+      if (state.onlyFavorites && !state.favorites.size) showToast("🤍 还没有收藏～点卡片左上角的小心心即可收藏");
+      updateFavBadge(); renderTools();
+    });
+
+    brandBtn.addEventListener("click", () => {
+      resetAll(); switchTab("tools");
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+
+    document.getElementById("statTotalCount").textContent = TOOLS_DATA.length;
+    document.getElementById("statCatCount").textContent = Object.keys(CATEGORIES).length - 1;
+    updateFavBadge(); renderCategories(); renderTools(); renderLearn();
+  </script>
+</body>
+</html>

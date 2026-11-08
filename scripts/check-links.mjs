@@ -1,11 +1,25 @@
 #!/usr/bin/env node
-
 import { readFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 
-const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
-const toolsBlock = html.match(/const TOOLS = \[([\s\S]*?)\n    \];\n\n    const state/);
-if (!toolsBlock) throw new Error("无法在 index.html 中找到 TOOLS 数据");
-const urls = [...new Set([...toolsBlock[1].matchAll(/url:"(https?:\/\/[^\"]+)"/g)].map(match => match[1]))];
+const targetPath = existsSync(new URL("../public/ginaai/index.html", import.meta.url))
+  ? new URL("../public/ginaai/index.html", import.meta.url)
+  : new URL("../index.html", import.meta.url);
+
+const html = await readFile(targetPath, "utf8");
+const toolsBlock = html.match(/const TOOLS(?:_DATA)? = \[([\s\S]*?)\n    \];/);
+
+if (!toolsBlock) {
+  throw new Error("无法在目标 HTML 中找到 TOOLS 或 TOOLS_DATA 数据");
+}
+
+const learnBlock = html.match(/const LEARN_DATA = \[([\s\S]*?)\n    \];/);
+const toolUrls = [...toolsBlock[1].matchAll(/"?url"?:\s*"(https?:\/\/[^"]+)"/g)].map(m => m[1]);
+const learnUrls = learnBlock
+  ? [...learnBlock[1].matchAll(/"?url"?:\s*"(https?:\/\/[^"]+)"/g)].map(m => m[1])
+  : [...html.matchAll(/<a class="learn-card"[^>]*href="(https?:\/\/[^"]+)"/g)].map(m => m[1]);
+
+const urls = [...new Set([...toolUrls, ...learnUrls])];
 const guarded = new Set([401, 403, 405, 429]);
 
 async function check(url) {
@@ -15,7 +29,7 @@ async function check(url) {
     const response = await fetch(url, {
       redirect: "follow",
       signal: controller.signal,
-      headers: { "user-agent": "Mozilla/5.0 GinaAI-Link-Audit/1.0" }
+      headers: { "user-agent": "Mozilla/5.0 GinaAI-Link-Audit/2.0" }
     });
     const status = response.status;
     return {
